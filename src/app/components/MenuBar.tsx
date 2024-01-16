@@ -3,9 +3,13 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
+
+import "../styles/menubar.css";
+
 import { HiMenuAlt3 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
+
 import Logo from "@/public/img/logo/logo-provisoire.png";
 
 export default function MenuBar() {
@@ -47,7 +51,7 @@ export default function MenuBar() {
         >
           <ul className="justify-end items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
             {menus.map((item, idx) => (
-              <li key={idx} className="text-gray-800">
+              <li key={idx} className="link-underline link-underline-black text-gray-800">
                 <Link href={item.path}>{item.title}</Link>
               </li>
             ))}
