@@ -20,7 +20,7 @@ export default function MenuBar() {
     { title: "Les Partenaires", path: "/partenaires" },
     { title: "J'achète ma carte", path: "/achetercarte" },
     { title: "Contact", path: "/contact" },
-    { title: <FaUserCircle size={25} />, path: "/login" },
+    { title: <FaUserCircle size={25} />, path: "/signup" },
   ];
 
   return (
