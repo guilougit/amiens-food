@@ -17,7 +17,7 @@ export default function MenuBar() {
 
   const menus = [
     { title: "Accueil", path: "/" },
-    { title: "Les Partenaires", path: "/partenaires" },
+    { title: "Les Partenaires", path: "/news" },
     { title: "J'achète ma carte", path: "/achetercarte" },
     { title: "Contact", path: "/contact" },
     { title: <FaUserCircle size={25} />, path: "/signup" },
