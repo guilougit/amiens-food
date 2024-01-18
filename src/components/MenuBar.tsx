@@ -4,8 +4,6 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import "../app/styles/menubar.css";
-
 import { HiMenuAlt3 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
@@ -22,22 +20,22 @@ const menus = [
 
 export default function MenuBar() {
   const [state, setState] = React.useState(false);
-  
+
   return (
-    <nav className="bg-white w-full border-b md:border-0">
+    <nav className="bg-gray-900 w-full">
       <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <Link href="/">
             <div className="flex items-center">
               <Image src={Logo} alt="Logo" width={50} />
-              <h1 className="text-2xl font-bold text-gray-800 ml-2">
+              <h1 className="text-2xl font-bold text-white ml-2">
                 Amiens Food
               </h1>
             </div>
           </Link>
           <div className="md:hidden">
             <button
-              className="text-gray-800 outline-none p-2 rounded-md"
+              className="text-white outline-none p-2 rounded-md"
               onClick={() => setState(!state)}
             >
               {state ? <AiOutlineClose size={25} /> : <HiMenuAlt3 size={25} />}
@@ -51,8 +49,9 @@ export default function MenuBar() {
         >
           <ul className="justify-end items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
             {menus.map((item, idx) => (
-              <li key={idx} className="link-underline link-underline-black text-gray-800">
+              <li key={idx} className="relative group text-white">
                 <Link href={item.path}>{item.title}</Link>
+                <span className="absolute left-0 bottom-0 w-full h-0.5 bg-orange-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-in-out"></span>
               </li>
             ))}
           </ul>

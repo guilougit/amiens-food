@@ -1,5 +1,5 @@
+import Footer from "@/src/components/Footer";
 import Jumbotron from "@/src/components/Jumbotron";
-import MenuBar from "@/src/components/MenuBar";
 import PartnersOffers from "@/src/components/PartnersOffers";
 
 export default function Home() {
@@ -7,6 +7,7 @@ export default function Home() {
     <>
       <Jumbotron />
       <PartnersOffers />
+      <Footer />
     </>
   )
 }
