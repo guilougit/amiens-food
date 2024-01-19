@@ -1,12 +1,10 @@
 import type { Config } from "tailwindcss"
 
 const config = {
-  darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
   prefix: "",
   theme: {
@@ -15,6 +13,7 @@ const config = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
+        "3xl": "1800px"
       },
     },
     extend: {
@@ -71,6 +70,29 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontFamily: {
+        aspekta: ['var(--font-aspekta)', 'sans-serif'],
+      },
+      fontSize: {
+        xs: ['0.75rem', { lineHeight: '1.5' }],
+        sm: ['0.875rem', { lineHeight: '1.5715' }],
+        base: ['1rem', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
+        lg: ['1.125rem', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
+        xl: ['1.25rem', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
+        '2xl': ['1.5rem', { lineHeight: '1.415', letterSpacing: '-0.01em' }],
+        '3xl': ['1.875rem', { lineHeight: '1.333', letterSpacing: '-0.01em' }],
+        '4xl': ['2.25rem', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
+        '5xl': ['2.75rem', { lineHeight: '1', letterSpacing: '-0.01em' }],
+        '6xl': ['3.25rem', { lineHeight: '1', letterSpacing: '-0.01em' }],
+      },
+      letterSpacing: {
+        tighter: '-0.02em',
+        tight: '-0.01em',
+        normal: '0',
+        wide: '0.01em',
+        wider: '0.02em',
+        widest: '0.4em',
       },
     },
   },

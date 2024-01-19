@@ -21,7 +21,7 @@ export default function PartnersOffers() {
       }}
       className="bg-opacity-75 pt-8 pb-8 relative"
     >
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mx-auto px-4 sm:px-6 lg:px-8">
         {offers.map((item, idx) => (
           <Card key={idx}>
           <CardHeader>

@@ -1,7 +1,11 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
+@import './default-style.css';
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -12,9 +16,9 @@
  
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
- 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+
+    --primary: 33 100% 66%;
+    --primary-foreground: 39 53% 0%;
  
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -73,4 +77,12 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.swipper-padding {
+  padding-top: 4rem !important;
+  padding-bottom: 2rem !important;
+}
+.swiper-slide {
+  height: auto !important;
 }
