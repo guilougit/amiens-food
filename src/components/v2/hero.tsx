@@ -8,6 +8,7 @@ import HeroImage from '@/public/img/mockup_carte.png'
 import * as React from "react";
 
 import Tilt from 'react-parallax-tilt';
+import {CheckoutButton} from "@/src/components/checkout-button";
 
 export default function Hero() {
     return (
@@ -19,13 +20,13 @@ export default function Hero() {
             />
 
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
-                <div className="pt-36 md:pt-40 md:pb-20">
+                <div className="pt-20 md:pt-40 md:pb-20">
                     {/* Hero content */}
                     <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left">
                         {/* Content */}
                         <div className="md:w-[600px]">
                             {/* Copy */}
-                            <h1 className="h1 text-slate-800 mb-6 leading-[1.2]" data-aos="fade-up" data-aos-delay="100">
+                            <h1 className="text-4xl sm:text-6xl font-bold text-slate-800 mb-6 leading-[1.6] sm:leading-[1.2]" data-aos="fade-up" data-aos-delay="100">
                                 Mangez bien, <br/>payez moins avec <br/> la carte {' '}
                                 <span className="relative inline-flex items-center justify-center">
                                   <svg className="absolute -z-10" width="246" height="76" xmlns="http://www.w3.org/2000/svg">
@@ -50,19 +51,7 @@ export default function Hero() {
                                 data-aos-delay="300"
                             >
                                 <div>
-                                    <Link
-                                        className="btn-sm inline-flex items-center text-slate-800 bg-gray-50 hover:bg-gray-100 group shadow-sm"
-                                        href="/apply">
-                                        {"J'achète ma carte"}
-                                        <span
-                                            className="tracking-normal text-sky-400 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-2">
-                                            <svg className="fill-primary" width="12" height="10"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                              <path
-                                                  d="M1 6.002h7.586L6.293 8.295a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.416l-4-4a1 1 0 0 0-1.414 1.416l2.293 2.293H1a1 1 0 1 0 0 2Z"/>
-                                            </svg>
-                                        </span>
-                                    </Link>
+                                    <CheckoutButton />
                                 </div>
                             </div>
                         </div>
@@ -78,7 +67,7 @@ export default function Hero() {
                                     aria-hidden="true"
                                 />
                                 <Tilt>
-                                    <Image src={HeroImage} className="md:max-w-none" width="548" height="545" alt="Credit card" data-aos="fade-up" />
+                                    <Image src={HeroImage} className="md:max-w-none -mt-10 md:mt-0" width="548" height="545" alt="Credit card" data-aos="fade-up" />
                                 </Tilt>
                             </div>
                         </div>

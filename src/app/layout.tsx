@@ -46,9 +46,11 @@ export default function RootLayout({
   return (
     <html lang="en">
         <body className={`${aspekta.variable} font-aspekta antialiased bg-white text-slate-800 font-[350]`}>
+        <div vaul-drawer-wrapper={""}>
             <div className="flex flex-col min-h-screen overflow-hidden">
-                {children}
+                    {children}
             </div>
+        </div>
         </body>
     </html>
   )

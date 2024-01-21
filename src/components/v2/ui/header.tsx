@@ -2,8 +2,9 @@ import Link from "next/link";
 
 import Image from "next/image";
 import Logo from '@/public/img/logo/logo-no-text.png'
-import {FaUserCircle} from "react-icons/fa";
 import * as React from "react";
+import {Button} from "@/src/components/ui/button";
+import {HiMenuAlt3} from "react-icons/hi";
 
 export default function Header() {
     return (
@@ -42,7 +43,7 @@ export default function Header() {
                     <nav className="flex grow md:grow-0">
                         {/* Desktop sign in links */}
                         <ul className="flex grow justify-end flex-wrap items-center">
-                            <li className="ml-3">
+                            <li className="ml-3 hidden md:block">
                                 <Link
                                     className="btn-sm inline-flex items-center text-slate-800 bg-gray-50 hover:bg-gray-100 group shadow-sm"
                                     href="/apply">
@@ -56,6 +57,11 @@ export default function Header() {
                                         </svg>
                                   </span>
                                 </Link>
+                            </li>
+                            <li className={"block md:hidden"}>
+                                <Button variant={"default"} size={"icon"}>
+                                    <HiMenuAlt3 size={35} color={"#fff"} />
+                                </Button>
                             </li>
                         </ul>
                     </nav>

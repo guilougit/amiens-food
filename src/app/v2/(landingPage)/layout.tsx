@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import Header from "@/src/components/v2/ui/header";
+import Footer from "@/src/components/v2/ui/footer";
 
 export default function HomeLayout({children}:{children: React.ReactNode}) {
     useEffect(() => {
@@ -21,6 +22,7 @@ export default function HomeLayout({children}:{children: React.ReactNode}) {
             <main className="grow">
                 {children}
             </main>
+            <Footer />
         </>
     )
 }

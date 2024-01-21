@@ -18,7 +18,7 @@
     --popover-foreground: 222.2 84% 4.9%;
 
     --primary: 33 100% 66%;
-    --primary-foreground: 39 53% 0%;
+    --primary-foreground: 180 0% 100%;
  
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -50,8 +50,8 @@
     --popover-foreground: 210 40% 98%;
  
     --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
- 
+    --primary-foreground: 180 0% 100%;
+    
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
  
@@ -67,6 +67,16 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+* {
+  outline: none !important;
+}
+
+@media screen and (max-width: 800px) {
+  input {
+    font-size: 16px !important;
   }
 }
  
