@@ -66,7 +66,7 @@ export default function SignIn() {
           <Link href="/signup">
             <p className="mt-2 text-xs text-center text-gray-700">
               {" "}
-              Vous n'êtes pas client ?{" "}
+              Vous {"n'êtes"} pas client ?{" "}
               <span className=" text-blue-600 hover:underline">
                 Créer un compte
               </span>

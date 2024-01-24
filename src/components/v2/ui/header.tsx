@@ -5,13 +5,13 @@ import Logo from '@/public/img/logo/logo-no-text.png'
 import * as React from "react";
 import {Button} from "@/src/components/ui/button";
 import {HiMenuAlt3} from "react-icons/hi";
+import MobileMenu from "@/src/components/v2/ui/mobile-menu";
 
 export default function Header() {
     return (
         <header className="absolute w-full z-30">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
                 <div className="flex items-center justify-between h-16 md:h-20">
-
                     {/* Site branding */}
                     <div className="shrink-0 mr-4">
                         {/* Logo */}
@@ -59,9 +59,7 @@ export default function Header() {
                                 </Link>
                             </li>
                             <li className={"block md:hidden"}>
-                                <Button variant={"default"} size={"icon"}>
-                                    <HiMenuAlt3 size={35} color={"#fff"} />
-                                </Button>
+                                <MobileMenu />
                             </li>
                         </ul>
                     </nav>

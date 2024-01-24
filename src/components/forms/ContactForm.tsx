@@ -67,9 +67,9 @@ export default function Contact() {
             className="text-sm font-normal text-gray-600 dark:text-gray-400"
             htmlFor="agreement"
           >
-            J'accepte les
+            {"J'accepte les"}
             <button className="underline underline-offset-2 text-gray-600 dark:text-gray-400 ml-2">
-              Conditions générales d'utilisation
+              Conditions générales {"d'utilisation"}
             </button>
           </Label>
         </div>

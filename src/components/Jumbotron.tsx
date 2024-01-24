@@ -18,7 +18,7 @@ export default function Jumbotron() {
           <Image src={MockupCard} alt="MockupCard" width={400} />
         </div>
       </div>
-      <Button variant="outline" className="border border-gray-800 rounded absolute left-1/2 bottom-0 transform -translate-x-1/2 -translate-y-1/2">J'ACHETE MA CARTE <PiShoppingCartBold className="ml-2" size={20}/></Button>
+      <Button variant="outline" className="border border-gray-800 rounded absolute left-1/2 bottom-0 transform -translate-x-1/2 -translate-y-1/2">{"J'ACHETE"} MA CARTE <PiShoppingCartBold className="ml-2" size={20}/></Button>
     </section>
   );
 }

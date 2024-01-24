@@ -15,7 +15,8 @@ import {Input} from "@/src/components/ui/input";
 import {Button} from "@/src/components/ui/button";
 import * as React from "react";
 import {useState} from "react";
-
+import {signIn} from "next-auth/react";
+import {prices} from "@/src/config/prices";
 
 const formSchema = z.object({
     firstname: z.string({required_error: ""}).min(1),
@@ -26,7 +27,10 @@ const formSchema = z.object({
     password: z.string({required_error: ""}).min(6, {
         message: "Le mot de passe doit contenir au moins 6 caractères"
     }),
-    picture: z.string({required_error: "Veuillez sélectionner un fichier"}).min(1, {message: " "})
+    picture: z
+        .custom<File>((v) => v instanceof File, {
+            message: ' ',
+        })
 })
 
 export const CheckoutAccount = ({price}:{price: Price}) => {
@@ -40,13 +44,42 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
             lastname: "",
             password: "",
             email: "",
-            picture: ""
+            picture: undefined
         }
     })
     
     const onSubmit = (data: any) => {
-        console.log(data, price)
         setIsSubmitting(true)
+        const formData = new FormData();
+        formData.append('file', data.picture);
+        formData.append('user', JSON.stringify({email:data.email,firstname:data.firstname,lastname:data.lastname,password:data.password}));
+        fetch("/api/auth/register",{method: 'POST', body: formData})
+            .then(res => res.json())
+            .then(async (res: any) => {
+                if (res.user) {
+                    //todo : handle error -> account already exists
+                    
+                    // Auto sign in the user
+                    await signIn("credentials", {
+                        redirect: false,
+                        email: data.email,
+                        password: data.password
+                    })
+                    
+                    const priceId = price === Price.Monthly ? prices.monthly.stripe_id : prices.annually.stripe_id
+
+                    fetch("/api/payment/checkout_sessions", {
+                        method: 'POST',
+                        body: JSON.stringify({priceId})
+                    })
+                        .then(res => res.json())
+                        .then(res => {
+                            // redirect the user to the checkout page
+                            window.location.assign(res.url)
+                        })
+                }
+
+            })
     }
     
     return (
@@ -112,11 +145,13 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
                 <FormField
                     control={form.control}
                     name={"picture"}
-                    render={({ field }) => (
+                    render={({ field: {ref, name, onBlur, onChange } }) => (
                         <FormItem>
                             <FormLabel>Photo {"d'identité"}</FormLabel>
                             <FormControl>
-                                <Input type={"file"} {...field} />
+                                <Input type={"file"} name={name} ref={ref} accept={"image/png, image/jpeg"} onBlur={onBlur} onChange={(e) => {
+                                    onChange(e.target.files?.[0]);
+                                }} />
                             </FormControl>
                             <FormDescription>Elle est seulement utilisée pour la génération de la carte.</FormDescription>
                             <FormMessage />
@@ -124,8 +159,8 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
                     )}
                 />
                 
-                <Button type={"submit"} color={"primary"} className={"font-extrabold mb-6"} isLoading={isSubmitting}>
-                    {"J'achète ma carte"}
+                <Button type={"submit"} color={"primary"} className={"font-extrabold mb-6 w-full lg:w-1/2 max-w-lg mx-auto"} isLoading={isSubmitting}>
+                    {!isSubmitting ? "J'achète ma carte" : "Redirection vers la page de paiement"}
                 </Button>
 
             </form>
