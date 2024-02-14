@@ -1,11 +1,9 @@
 "use client"
 
-import Link from 'next/link'
 import Image from 'next/image'
 
 import Illustration from '@/public/img/hero-illustration.svg'
 import HeroImage from '@/public/img/mockup_carte.png'
-import * as React from "react";
 
 import Tilt from 'react-parallax-tilt';
 import {CheckoutButton} from "@/src/components/checkout-button";
