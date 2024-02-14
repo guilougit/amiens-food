@@ -32,7 +32,7 @@
 /* Buttons */
 .btn,
 .btn-sm {
-    @apply text-[15px] font-[550] inline-flex items-center justify-center rounded-full leading-5 whitespace-nowrap transition duration-150 ease-in-out cursor-pointer;
+    @apply text-[17px] font-[550] inline-flex items-center justify-center rounded-full leading-5 whitespace-nowrap transition duration-150 ease-in-out cursor-pointer;
 }
 
 .btn {
@@ -99,4 +99,11 @@ input[type="search"]::-webkit-search-results-decoration {
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
+}
+
+.tab_custom {
+    @apply flex items-center gap-2 p-2 rounded-lg cursor-pointer transition-all duration-150 text-xs md:text-base
+}
+.tab_active {
+    @apply bg-primary text-white font-semibold
 }

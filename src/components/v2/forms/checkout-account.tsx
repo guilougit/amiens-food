@@ -4,23 +4,20 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {Price} from "@/src/components/v2/forms/checkout-choice-price";
 import {
     Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage
 } from "@/src/components/ui/form";
-import {Input} from "@/src/components/ui/input";
 import {Button} from "@/src/components/ui/button";
 import * as React from "react";
 import {useState} from "react";
 import {signIn} from "next-auth/react";
 import {prices} from "@/src/config/prices";
+import {CheckoutCardPreview} from "@/src/components/v2/forms/checkout-card-preview";
+import {Separator} from "@/src/components/ui/separator";
+import {CardInformations} from "@/src/components/v2/forms/card-informations";
 
 const formSchema = z.object({
     firstname: z.string({required_error: ""}).min(1),
     lastname: z.string({required_error: ""}).min(1),
+    surname: z.string({required_error: ""}).min(1),
     email: z.string({required_error: ""}).email({
         message: "Entrez une adresse mail correcte"
     }),
@@ -42,6 +39,7 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
         defaultValues: {
             firstname: "",
             lastname: "",
+            surname: "",
             password: "",
             email: "",
             picture: undefined
@@ -52,7 +50,7 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
         setIsSubmitting(true)
         const formData = new FormData();
         formData.append('file', data.picture);
-        formData.append('user', JSON.stringify({email:data.email,firstname:data.firstname,lastname:data.lastname,password:data.password}));
+        formData.append('user', JSON.stringify({email:data.email,firstname:data.firstname,lastname:data.lastname,surname: data.surname, password:data.password}));
         fetch("/api/auth/register",{method: 'POST', body: formData})
             .then(res => res.json())
             .then(async (res: any) => {
@@ -83,87 +81,37 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
     }
     
     return (
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className={"flex flex-col text-left gap-4"}>
-                <div className={"flex gap-6"}>
-                    <FormField
-                        control={form.control}
-                        name={"firstname"}
-                        render={({ field }) => (
-                            <FormItem className={"w-1/2"}>
-                                <FormLabel>Prénom</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="Matthieu" {...field} />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
+        <>
+            <Form {...form}>
+                <div className={"grid grid-cols-1 md:grid-cols-2"}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className={"flex flex-col text-left gap-2.5"}>
+                        <h3 className={"text-xl bold"}>1. Remplie tes informations</h3>
+                        
+                        <CardInformations />
+                        
+                        <Button type={"submit"} color={"primary"}
+                                className={"font-extrabold mb-6 w-full lg:w-2/3 max-w-lg mx-auto"}
+                                isLoading={isSubmitting}>
+                            {!isSubmitting ? "J'achète ma carte" : "Redirection vers la page de paiement"}
+                        </Button>
 
-                    <FormField
-                        control={form.control}
-                        name={"lastname"}
-                        render={({ field }) => (
-                            <FormItem className={"w-1/2"}>
-                                <FormLabel>Nom</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="Dumont" {...field} />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
+                    </form>
+
+
+                    <div className={"flex ml-0 gap-0 md:gap-6 md:ml-6"}>
+                        <Separator orientation={"vertical"} className={"hidden md:block"}/>
+                        <div className={"w-full"}>
+                            <h3 className={"text-xl mb-0 md:mb-4 bold text-left"}>2. Un aperçu de ta carte </h3>
+
+                            <CheckoutCardPreview/>
+                        </div>
+
+                    </div>
+
                 </div>
 
+            </Form>
 
-                <FormField
-                    control={form.control}
-                    name={"email"}
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Adresse email</FormLabel>
-                            <FormControl>
-                                <Input type={"email"} placeholder="matthieu.dumont@gmail.com" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <FormField
-                    control={form.control}
-                    name={"password"}
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Mot de passe</FormLabel>
-                            <FormControl>
-                                <Input type={"password"} {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <FormField
-                    control={form.control}
-                    name={"picture"}
-                    render={({ field: {ref, name, onBlur, onChange } }) => (
-                        <FormItem>
-                            <FormLabel>Photo {"d'identité"}</FormLabel>
-                            <FormControl>
-                                <Input type={"file"} name={name} ref={ref} accept={"image/png, image/jpeg"} onBlur={onBlur} onChange={(e) => {
-                                    onChange(e.target.files?.[0]);
-                                }} />
-                            </FormControl>
-                            <FormDescription>Elle est seulement utilisée pour la génération de la carte.</FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                
-                <Button type={"submit"} color={"primary"} className={"font-extrabold mb-6 w-full lg:w-1/2 max-w-lg mx-auto"} isLoading={isSubmitting}>
-                    {!isSubmitting ? "J'achète ma carte" : "Redirection vers la page de paiement"}
-                </Button>
-
-            </form>
-        </Form>
+        </>
     )
 }

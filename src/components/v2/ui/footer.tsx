@@ -77,7 +77,6 @@ export default function Footer() {
                         {/* Copyright */}
                         <div className="text-sm text-slate-600">
                             <p>Copyright © Amiens Food. Tous droits réservés.</p>
-                            <p className={"text-left text-xs"}>Développé par le G & R</p>
                         </div>
                     </div>
                 </div>

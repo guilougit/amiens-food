@@ -1,7 +1,8 @@
 import {headers} from "next/headers";
 import {NextResponse} from "next/server";
 import prisma from "@/src/lib/prisma";
-import {auth} from "@/src/app/api/auth/[...nextauth]/route";
+import {auth} from "@/src/auth";
+import {DateTime} from 'luxon';
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
@@ -42,6 +43,7 @@ export async function POST(request : Request) {
                         customer_id: customer.id,
                         userId: user.id,
                         subscription: '',
+                        expireAt: DateTime.now().plus({years: 1}).toISO() // +1 year
                     }
                 })
 

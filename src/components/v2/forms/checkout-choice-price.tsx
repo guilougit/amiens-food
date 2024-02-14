@@ -1,5 +1,3 @@
-import { Tabs, TabsList, TabsTrigger } from "@/src/components/ui/tabs"
-import { Badge } from "@/src/components/ui/badge"
 import {forwardRef, useImperativeHandle, useState} from "react";
 import {Card, CardContent, CardDescription, CardHeader} from "@/src/components/ui/card";
 import {prices} from "@/src/config/prices";
@@ -16,7 +14,7 @@ export interface CheckoutPriceRef {
 
 export const CheckoutChoicePrice = forwardRef<CheckoutPriceRef>((props: any, ref) => {
     
-    const [price, setPrice] = useState<Price>(Price.Monthly)
+    const [price, setPrice] = useState<Price>(Price.Annually)
 
     useImperativeHandle(ref, () => ({
         price: price
@@ -24,29 +22,17 @@ export const CheckoutChoicePrice = forwardRef<CheckoutPriceRef>((props: any, ref
     
     return (
         <>
-            <h3 className={"text-lg font-semibold"}>Choisi {"l'offre"} qui te convient</h3>
-
-            <Tabs defaultValue={price} className="mx-auto mt-5" onValueChange={(value: string) => setPrice(value as Price)}>
-                <TabsList className="py-6 px-2 w-full">
-                    <TabsTrigger value={Price.Monthly} className="text-base w-1/2">
-                        Mensuel
-                    </TabsTrigger>
-                    <TabsTrigger value={Price.Annually} className="text-base w-1/2">
-                        Annuel
-                    </TabsTrigger>
-                </TabsList>
-            </Tabs>
-
             <Card className={"mt-6 "}>
-                <CardHeader className={"flex justify-between flex-row pb-2 items-center space-y-0"}>
-                    <h4>
+                <CardHeader className={"flex flex-col pb-2 items-start space-y-0.5"}>
+                    <h4 className={"text-left"}>
                         <span className={"font-extrabold text-2xl"}>
                             {price === Price.Monthly ? prices.monthly.amount : prices.annually.amount}
                             €
                         </span>
                         /{price === Price.Monthly ? "mois" : "an"}
+
                     </h4>
-                    {price === Price.Annually && <Badge variant={"secondary"} className={"mt-0"}>Économise 20€</Badge>}
+                    {price === Price.Annually && <p className={"text-muted-foreground italic text-xs"}>Soit {(prices.annually.amount / 12).toFixed(2)} € par mois</p>}
                 </CardHeader>
                 <CardDescription className={"text-left pl-6 pr-2"}>
                     Profite de réductions instantanées sur {"l'ensemble"} de nos restaurants partenaires

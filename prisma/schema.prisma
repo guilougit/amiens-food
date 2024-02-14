@@ -41,12 +41,14 @@ model User {
   id            String         @id @default(cuid())
   firstname     String?
   lastname      String?
+  surname       String?
   email         String         @unique
   password      String
   role          Roles          @default(CUSTOMER)
   emailVerified DateTime?
   image         String?
   card          String?
+  card_number   Int?           @unique
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
   accounts      Account[]
@@ -63,6 +65,7 @@ model StripeAccount {
   userId       String    @unique
   sub_valid    Boolean   @default(false)
   start        DateTime?
+  expireAt     DateTime?
 }
 
 model VerificationRequest {

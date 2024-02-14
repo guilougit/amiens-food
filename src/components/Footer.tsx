@@ -198,11 +198,6 @@ export default function Footer() {
           @2024 Tous droits réservés - AmiensFood.
         </p>
       </div>
-      <div className="flex justify-center">
-        <p className="text-center text-sm text-white pb-2">
-          Développé par le G & le R.
-        </p>
-      </div>
     </footer>
   );
 }

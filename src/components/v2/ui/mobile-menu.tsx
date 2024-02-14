@@ -7,7 +7,6 @@ import Image from "next/image";
 import {Button} from "@/src/components/ui/button";
 import {CheckoutButton} from "@/src/components/checkout-button";
 import {HiMenuAlt3} from "react-icons/hi";
-import * as React from "react";
 
 export default function MobileMenu() {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
@@ -46,6 +45,15 @@ export default function MobileMenu() {
             <ul className={"space-y-2"}>
               <li>
                 <Link
+                    href="/"
+                    className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
+                    onClick={() => setMobileNavOpen(false)}
+                >
+                  Accueil
+                </Link>
+              </li>
+              <li>
+                <Link
                     href="/about"
                     className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
                     onClick={() => setMobileNavOpen(false)}
@@ -62,6 +70,15 @@ export default function MobileMenu() {
                   Actualités
                 </Link>
               </li>
+              <li>
+                <Link
+                    href="/compte"
+                    className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
+                    onClick={() => setMobileNavOpen(false)}
+                >
+                  Mon compte
+                </Link>
+              </li>
               <li className="pb-2 border-b border-gray-200 dark:border-gray-800">
                 <Link
                     href="/testimonials"
@@ -73,7 +90,7 @@ export default function MobileMenu() {
               </li>
               <li className={"text-center pt-3"}>
                 <div className={"max-w-max mx-auto"} onClick={() => setMobileNavOpen(false)}>
-                  <CheckoutButton variant={"solid"} />
+                  <CheckoutButton variant={"solid"}/>
                 </div>
               </li>
             </ul>

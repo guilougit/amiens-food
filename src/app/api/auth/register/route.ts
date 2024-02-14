@@ -6,7 +6,7 @@ import {NextResponse} from "next/server";
 
 import {ObjectCannedACL, PutObjectCommand, S3Client} from "@aws-sdk/client-s3";
 
-import {compressImage} from "@/src/utils/compressor";
+import {compressAndRoundImage} from "@/src/utils/compressor";
 
 
 const s3 = new S3Client({
@@ -22,6 +22,7 @@ export async function POST(request: Request) {
     const data = await request.formData()
     
     const user = JSON.parse(data.get("user") as string)
+    console.log(user)
     const file = data.get('file') as any
     
     // Check if user already exist.
@@ -53,6 +54,7 @@ export async function POST(request: Request) {
             data: {
                 firstname: user.firstname,
                 lastname: user.lastname,
+                surname: user.surname,
                 email: user.email,
                 image: filename,
                 password: hashedPassword,
@@ -61,11 +63,20 @@ export async function POST(request: Request) {
     }
     else { // Create new account
         try {
+            // Get card number : 
+            const latestUser = await prisma.user.findFirst({
+                orderBy: {
+                    card_number: 'desc'
+                }
+            });
+            const lastCardNumber = latestUser ? latestUser.card_number || 0 : 0;
 
             newUser = await prisma.user.create({
                 data: {
                     firstname: user.firstname,
                     lastname: user.lastname,
+                    surname: user.surname,
+                    card_number: lastCardNumber + 1,
                     email: user.email,
                     image: filename,
                     password: hashedPassword,
@@ -88,11 +99,16 @@ export async function POST(request: Request) {
 
 }
 
+/**
+ * Upload identity picture to S3
+ * @param buffer
+ * @param filename
+ */
 const uploadFileToS3 = async (buffer: Buffer, filename: string) => {
     if(filename === "") return
 
     console.log('start uploading to S3...')
-    const compressedBuffer = await compressImage(buffer)
+    const compressedBuffer = await compressAndRoundImage(buffer)
     
     const s3Params = {
         Bucket: process.env.S3_BUCKET_NAME,

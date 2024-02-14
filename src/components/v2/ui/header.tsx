@@ -2,12 +2,11 @@ import Link from "next/link";
 
 import Image from "next/image";
 import Logo from '@/public/img/logo/logo-no-text.png'
-import * as React from "react";
-import {Button} from "@/src/components/ui/button";
-import {HiMenuAlt3} from "react-icons/hi";
 import MobileMenu from "@/src/components/v2/ui/mobile-menu";
+import {CheckoutButton} from "@/src/components/checkout-button";
 
-export default function Header() {
+export default async function Header() {
+    
     return (
         <header className="absolute w-full z-30">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -24,17 +23,38 @@ export default function Header() {
                             />
                         </Link>
                     </div>
-                    
+
                     <div className={"hidden md:block"}>
                         <ul className={"flex gap-x-8"}>
-                            <li className={"text-lg text-slate-800 font-[500]"}>
-                                <Link href={'/'}>Partenaires</Link>
+                            <li className={"text-lg text-slate-800 font-[500] group"}>
+                                <Link href={'/'}
+                                      className={"group-hover:text-[#E66E04] transition-all"}>Accueil</Link>
+                                <div
+                                    className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>
                             </li>
-                            <li className={"text-lg text-slate-800 font-[500]"}>
-                                <Link href={'/'}>Actualités</Link>
+                            <li className={"text-lg text-slate-800 font-[500] group"}>
+                                <Link href={'/'}
+                                      className={"group-hover:text-[#E66E04] transition-all"}>Partenaires</Link>
+                                <div
+                                    className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>
                             </li>
-                            <li className={"text-lg text-slate-800 font-[500]"}>
-                                <Link href={'/'}>Contact</Link>
+                            <li className={"text-lg text-slate-800 font-[500] group"}>
+                                <Link href={'/'}
+                                      className={"group-hover:text-[#E66E04] transition-all"}>Actualités</Link>
+                                <div
+                                    className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>
+                            </li>
+                            <li className={"text-lg text-slate-800 font-[500] group"}>
+                                <Link href={'/compte'}
+                                      className={"group-hover:text-[#E66E04] transition-all"}>Mon compte</Link>
+                                <div
+                                    className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>
+                            </li>
+                            <li className={"text-lg text-slate-800 font-[500] group"}>
+                                <Link href={'/'}
+                                      className={"group-hover:text-[#E66E04] transition-all"}>Contact</Link>
+                                <div
+                                    className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>
                             </li>
                         </ul>
                     </div>
@@ -43,23 +63,11 @@ export default function Header() {
                     <nav className="flex grow md:grow-0">
                         {/* Desktop sign in links */}
                         <ul className="flex grow justify-end flex-wrap items-center">
-                            <li className="ml-3 hidden md:block">
-                                <Link
-                                    className="btn-sm inline-flex items-center text-slate-800 bg-gray-50 hover:bg-gray-100 group shadow-sm"
-                                    href="/apply">
-                                    {"J'achète ma carte"}
-                                    <span
-                                        className="tracking-normal text-sky-400 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-2">
-                                        <svg className="fill-primary" width="12" height="10"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                          <path
-                                              d="M1 6.002h7.586L6.293 8.295a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.416l-4-4a1 1 0 0 0-1.414 1.416l2.293 2.293H1a1 1 0 1 0 0 2Z"/>
-                                        </svg>
-                                  </span>
-                                </Link>
+                            <li className="ml-3 hidden lg:block">
+                                <CheckoutButton/>
                             </li>
-                            <li className={"block md:hidden"}>
-                                <MobileMenu />
+                            <li className={"block lg:hidden"}>
+                                <MobileMenu/>
                             </li>
                         </ul>
                     </nav>

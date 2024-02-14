@@ -13,21 +13,6 @@
       }
     },
     {
-      "name": "price_card_month",
-      "path": "/v1/prices",
-      "method": "post",
-      "params": {
-        "product": "${prod_card:id}",
-        "currency": "eur",
-        "billing_scheme": "per_unit",
-        "unit_amount": 1999,
-        "recurring": {
-          "interval": "month",
-          "interval_count": 1
-        }
-      }
-    },
-    {
       "name": "price_card_year",
       "path": "/v1/prices",
       "method": "post",

@@ -1,4 +1,4 @@
-import {auth} from "@/src/app/api/auth/[...nextauth]/route";
+import {auth} from "@/src/auth";
 import {NextResponse} from "next/server";
 import prisma from "@/src/lib/prisma";
 import fs from 'fs/promises';
@@ -6,6 +6,7 @@ import Jimp from 'jimp';
 
 import {GetObjectCommand, ObjectCannedACL, PutObjectCommand, S3Client} from "@aws-sdk/client-s3";
 import {Resend} from "resend";
+import {DateTime} from "luxon";
 
 const s3 = new S3Client({
     region: process.env.AWS_REGION,
@@ -29,7 +30,6 @@ export async function POST(request : Request) {
         include: {StripeAccount: true}
     })
     
-    
     if(/*!user?.StripeAccount || !user.StripeAccount.sub_valid */ false) {
         return NextResponse.json({success: false, error: 'Subscription invalid'})
     }
@@ -38,18 +38,30 @@ export async function POST(request : Request) {
         // Generate new image
         if(!params.afterPayment || (params.afterPayment && !user.card)) {
             // Create the picture
-            const baseImageBuffer = await fs.readFile('public/img/card_template.png');
+            const baseImageBuffer = await fs.readFile('public/img/card/front.png');
             const baseImage = await Jimp.read(baseImageBuffer);
 
             const font = await Jimp.loadFont('public/fonts/fnt/open-sans-32-black.fnt');
-            baseImage.print(font, 323, 332, user.firstname as string);
-            baseImage.print(font, 280, 421, user.lastname as string);
+            
+            const expiredDate = user.StripeAccount?.expireAt ? DateTime.fromISO(user.StripeAccount?.expireAt.toISOString()).toFormat('dd/MM/yyyy') : ''
+            
+            // Add text on card
+            baseImage.print(font, 330, 315, user.firstname ?? '');
+            baseImage.print(font, 285, 401, user.lastname ?? '');
+            baseImage.print(font, 315, 493, user.surname ?? '')
+            
+            // Card number
+            const nb = 777977
+            baseImage.print(font, getCardNumberPosition(nb), 60, nb)
+            
+            // Expiration date
+            baseImage.print(font, 420, 585, expiredDate ? expiredDate : '')    
             
             // Add profile picture on card
             if(user.image) {                 
                 const profileImage = await Jimp.read( `${process.env.AWS_S3_URL_FILE}/${user.image}`);
-                profileImage.resize(150, Jimp.AUTO);
-                baseImage.composite(profileImage, 20, 20);
+                profileImage.resize(228, Jimp.AUTO);
+                baseImage.composite(profileImage, 17, 19);
             }
             baseImage.resize(800, Jimp.AUTO);
 
@@ -89,7 +101,8 @@ export async function POST(request : Request) {
     return NextResponse.json({success: true, message: 'No generation'})
 }
 
-export const sendCardByEmail = async (path: string) => {
+const sendCardByEmail = async (path: string) => {
+    /*
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     await resend.emails.send({
@@ -101,5 +114,30 @@ export const sendCardByEmail = async (path: string) => {
         text: "Voici votre carte amiens Food",
         attachments: [{filename: 'amiens_food.png', path}]
     })
+    
+     */
 
+}
+
+/**
+ * Returns the X position of the card number : depends on the size of the number
+ * @param card_number
+ */
+const getCardNumberPosition = (card_number: number) => {
+    switch (card_number.toString().length) {
+        case 1:
+            return 950;
+        case 2:
+            return 940;
+        case 3:
+            return 930;
+        case 4:
+            return 920;
+        case 5:
+            return 910;
+        case 6:
+            return 902;
+        default:
+            return 902;
+    }
 }

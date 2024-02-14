@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './styles/globals.css'
 import localFont from 'next/font/local'
+import {SessionProvider} from "next-auth/react";
 
 export const metadata: Metadata = {
   title: 'Amiens Food',
@@ -46,11 +47,13 @@ export default function RootLayout({
   return (
     <html lang="en">
         <body className={`${aspekta.variable} font-aspekta antialiased bg-white text-slate-800 font-[350]`}>
-        <div vaul-drawer-wrapper={""}>
-            <div className="flex flex-col min-h-screen overflow-hidden">
-                    {children}
+            <div vaul-drawer-wrapper={""}>
+                <div className="flex flex-col min-h-screen overflow-hidden">
+                    <SessionProvider>
+                        {children}
+                    </SessionProvider>
+                </div>
             </div>
-        </div>
         </body>
     </html>
   )
