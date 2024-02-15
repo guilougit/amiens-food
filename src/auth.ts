@@ -1,7 +1,7 @@
-import Credentials from "@auth/core/providers/credentials";
 import prisma from "@/src/lib/prisma";
 import {compare} from "bcrypt";
 import NextAuth, {NextAuthConfig} from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 
 export const authConfig = {
     debug: true,
