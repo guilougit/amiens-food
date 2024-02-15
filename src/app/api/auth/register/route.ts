@@ -1,6 +1,6 @@
 import prisma from "@/src/lib/prisma";
 import {hash} from "bcrypt";
-import {$Enums} from ".prisma/client";
+import {$Enums} from "@prisma/client";
 import Roles = $Enums.Roles;
 import {NextResponse} from "next/server";
 
