@@ -1,5 +1,5 @@
 import prisma from "@/src/lib/prisma";
-import {hash} from "bcrypt";
+import {hash} from "bcryptjs";
 import {$Enums} from "@prisma/client";
 import Roles = $Enums.Roles;
 import {NextResponse} from "next/server";
@@ -22,7 +22,6 @@ export async function POST(request: Request) {
     const data = await request.formData()
     
     const user = JSON.parse(data.get("user") as string)
-    console.log(user)
     const file = data.get('file') as any
     
     // Check if user already exist.
@@ -89,7 +88,6 @@ export async function POST(request: Request) {
             await prisma.user.update({where: {id: newUser.id}, data: {image: filename}})
         }
         catch (e) {
-            console.log(e)
             return NextResponse.json({success: false, code: 'ERROR_CREATING_ACCOUNT'})
         }
 

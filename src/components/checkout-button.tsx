@@ -16,7 +16,7 @@ import {CheckoutForm, CheckoutFormRef} from "@/src/components/v2/forms/checkout-
 import {useRef, useState} from "react";
 import {useSession} from "next-auth/react";
 
-type Variant = "solid" | "default";
+type Variant = "solid" | "default" | "link";
 
 export const CheckoutButton = ({variant = "default"}: { variant?: Variant }) => {
     const { data: session, status } = useSession()
@@ -36,9 +36,6 @@ export const CheckoutButton = ({variant = "default"}: { variant?: Variant }) => 
             }
         }
     }
-
-    console.log(status)
-    
     return (
         <>
             {status !== 'loading' && !session?.user && (
@@ -62,11 +59,15 @@ export const CheckoutButton = ({variant = "default"}: { variant?: Variant }) => 
                         </svg>
                     </span>
                             </div>
-                        ) : (
+                        ) : variant === "solid" ? (
 
                             <Button color={"primary"} className={"font-bold"} asChild>
                                 <span>{"J'achète ma carte"}</span>
                             </Button>
+                        ) : (
+                            <>
+                                <span className={"underline"}>Clique ici</span>
+                            </>
                         )}
 
                     </DrawerTrigger>

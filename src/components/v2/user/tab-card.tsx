@@ -53,7 +53,9 @@ export const TabCard = ({user}: {user: any}) => {
 
     return (
         <>
-            <UserCard/>
+            <div data-aos="flip-right">
+                <UserCard />
+            </div>
 
             {/* Form */}
             <Form {...form}>

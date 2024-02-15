@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './styles/globals.css'
 import localFont from 'next/font/local'
 import {SessionProvider} from "next-auth/react";
+import {Toaster} from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: 'Amiens Food',
@@ -54,6 +55,7 @@ export default function RootLayout({
                     </SessionProvider>
                 </div>
             </div>
+            <Toaster position={"top-right"} />
         </body>
     </html>
   )

@@ -49,7 +49,7 @@ export default function Hero() {
                                 data-aos-delay="300"
                             >
                                 <div>
-                                    <CheckoutButton />
+                                    <CheckoutButton variant={"default"} />
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@ export default function Hero() {
                                     aria-hidden="true"
                                 />
                                 <Tilt>
-                                    <Image src={HeroImage} className="md:max-w-none -mt-10 md:mt-0" width="548" height="545" alt="Credit card" data-aos="fade-up" />
+                                    <Image src={HeroImage} className="md:max-w-none -mt-10 md:mt-0" width="548" height="545" alt="Carte amiens food" data-aos="fade-up" />
                                 </Tilt>
                             </div>
                         </div>

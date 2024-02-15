@@ -15,6 +15,9 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/src/components/ui/accordion"
+import {signOut} from "next-auth/react";
+import {LogOut} from "lucide-react";
+import {LogoutButton} from "@/src/components/ui/logout-button";
 
 
 const updateEmailFormSchema = z.object({
@@ -157,6 +160,9 @@ export const TabSettings = ({user}:{user: any}) => {
             
             
             <Button variant={"destructive"} className={"mt-8"}>Supprimer mon compte</Button>
+
+            <LogoutButton size={"mobile"} />
+
         </div>
     )
 }

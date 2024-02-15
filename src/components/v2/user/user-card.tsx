@@ -36,7 +36,7 @@ export const UserCard = () => {
                         </div>
                     </DrawerTrigger>
                     <DrawerContent>
-                        <Image src={card} alt={""} width={400} className={"mx-auto rounded-2xl rotate-90 md:rotate-0 mt-40 w-full md:w-[50%]"}
+                        <Image src={card} alt={""} width={400} className={"mx-auto rounded-2xl rotate-90 md:rotate-0 mt-40 xl:mt-16 w-full md:w-[50%]"}
                                height={200}/>
                     </DrawerContent>
                 </Drawer>

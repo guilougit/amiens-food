@@ -64,7 +64,7 @@ export default async function Header() {
                         {/* Desktop sign in links */}
                         <ul className="flex grow justify-end flex-wrap items-center">
                             <li className="ml-3 hidden lg:block">
-                                <CheckoutButton/>
+                                <CheckoutButton variant={"default"}/>
                             </li>
                             <li className={"block lg:hidden"}>
                                 <MobileMenu/>

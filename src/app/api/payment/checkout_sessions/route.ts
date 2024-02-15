@@ -71,7 +71,6 @@ export async function POST(request : Request) {
         return NextResponse.json({success: false, error: 'Missing data'})
     }
     catch (e) {
-        console.log(e)
         return NextResponse.json({success: false, error: e})
     }
 }
