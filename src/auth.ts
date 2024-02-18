@@ -2,6 +2,7 @@ import prisma from "@/src/lib/prisma";
 import {compare} from "bcryptjs";
 import NextAuth, {NextAuthConfig} from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import {User} from ".prisma/client";
 
 export const authConfig = {
     providers: [
@@ -28,16 +29,18 @@ export const authConfig = {
     ],
     callbacks: {
         session: async ({session, token}) => {
-            if(session.user) {
-                if(token.sub) {
-                    session.user.id = token.sub
-                }
+            if(session.user && token) {
+                session.user.id = token.sub
+                session.user.role = token.role
+                
             }
             return session
         },
         jwt: async ({user, token}) => {
             if(user) {
                 token.sub = user.id
+                //@ts-ignore
+                token.role = user.role
             }
             return token
         },

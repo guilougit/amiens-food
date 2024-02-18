@@ -15,7 +15,6 @@ const s3 = new S3Client({
         accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
     },
-
 });
 
 export async function POST(request: Request) {

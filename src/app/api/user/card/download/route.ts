@@ -1,6 +1,7 @@
 import {auth} from "@/src/auth";
 import {NextResponse} from "next/server";
 import prisma from "@/src/lib/prisma";
+import {DateTime} from "luxon";
 
 export async function GET() {
     const session = await auth()
@@ -15,7 +16,7 @@ export async function GET() {
         include: {StripeAccount: true}
     })
 
-    if(user && user.card /*&& user.StripeAccount && user.StripeAccount.sub_valid*/) {
+    if(user && user.card && user.StripeAccount && (user.StripeAccount.expireAt && (user.StripeAccount.expireAt >= new Date()))) {
         // Set headers or the response
         const headers = {
             'Content-Type': 'image/png',

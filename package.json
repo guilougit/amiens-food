@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate && prisma migrate deploy",
-    "stripe:listen": "stripe listen --forward-to localhost:3000/api/payment/webhooks",
+    "stripe:listen": "stripe listen --forward-to localhost:3000/api/stripe/webhooks",
     "load:fixtures": "stripe fixtures fixtures/stripe-fixtures.json"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-checkbox": "^1.0.4",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-navigation-menu": "^1.1.4",
     "@radix-ui/react-separator": "^1.0.3",

@@ -10,7 +10,7 @@ import {
 import * as React from "react";
 import { Skeleton } from "@/components/ui/skeleton"
 
-export const UserCard = () => {
+export const UserCard = ({newImageUrl}: {newImageUrl?: string | null}) => {
     const [openFullscreen, setOpenFullscreen] = useState(false)
     const [card, setCard] = useState("")
 
@@ -22,6 +22,13 @@ export const UserCard = () => {
                 setCard(res.card)
             })
     }, []);
+
+    useEffect(() => {
+        if(!newImageUrl || newImageUrl === "") return
+        
+        
+        setCard(newImageUrl)
+    }, [newImageUrl]);
 
     return (
         <>

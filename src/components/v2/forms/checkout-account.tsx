@@ -51,6 +51,7 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
         const formData = new FormData();
         formData.append('file', data.picture);
         formData.append('user', JSON.stringify({email:data.email,firstname:data.firstname,lastname:data.lastname,surname: data.surname, password:data.password}));
+        
         fetch("/api/auth/register",{method: 'POST', body: formData})
             .then(res => res.json())
             .then(async (res: any) => {
@@ -73,11 +74,11 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
                         .then(res => res.json())
                         .then(res => {
                             // redirect the user to the checkout page
-                            window.location.assign(res.url)
+                           window.location.assign(res.url)
                         })
                 }
 
-            })
+            })         
     }
     
     return (
@@ -87,7 +88,7 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
                     <form onSubmit={form.handleSubmit(onSubmit)} className={"flex flex-col text-left gap-2.5"}>
                         <h3 className={"text-xl bold"}>1. Remplie tes informations</h3>
                         
-                        <CardInformations />
+                        <CardInformations isRegistering={true} />
                         
                         <Button type={"submit"} color={"primary"}
                                 className={"font-extrabold mb-6 w-full lg:w-2/3 max-w-lg mx-auto"}

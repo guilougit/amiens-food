@@ -7,6 +7,7 @@ import Jimp from 'jimp';
 import {GetObjectCommand, ObjectCannedACL, PutObjectCommand, S3Client} from "@aws-sdk/client-s3";
 import {Resend} from "resend";
 import {DateTime} from "luxon";
+import {deleteFileOnAws} from "@/src/utils/aws";
 
 const s3 = new S3Client({
     region: process.env.AWS_REGION,
@@ -30,10 +31,11 @@ export async function POST(request : Request) {
         include: {StripeAccount: true}
     })
     
-    if(/*!user?.StripeAccount || !user.StripeAccount.sub_valid */ false) {
+    if(!user?.StripeAccount || (user.StripeAccount.expireAt && (user.StripeAccount.expireAt <= new Date()))) {
         return NextResponse.json({success: false, error: 'Subscription invalid'})
     }
-    
+
+
     if(user) {
         // Generate new image
         if(!params.afterPayment || (params.afterPayment && !user.card)) {
@@ -51,7 +53,7 @@ export async function POST(request : Request) {
             baseImage.print(font, 315, 493, user.surname ?? '')
             
             // Card number
-            const nb = 777977
+            const nb = user.card_number ?? 0
             baseImage.print(font, getCardNumberPosition(nb), 60, nb)
             
             // Expiration date
@@ -66,8 +68,20 @@ export async function POST(request : Request) {
             baseImage.resize(800, Jimp.AUTO);
 
             const compositedImageBuffer = await baseImage.quality(80).getBufferAsync(Jimp.MIME_PNG);
+            
+            // delete old card
+            if(user.card) {
+                try {
+                    console.log('START remove user card on aws')
+                    if (user.card) {
+                        await deleteFileOnAws(user.card)
+                    }
+                    console.log('END remove user card on aws')
+                } catch (e) {
+                    console.log('UPDATE USER: user card was not deleted')
+                }
+            }
 
-            // Upload it to S3
             console.log('start upload to s3')
             const filename = `${user.id}/card/${Date.now()}.png`
             const s3Params = {
@@ -80,6 +94,7 @@ export async function POST(request : Request) {
             const command = new PutObjectCommand(s3Params)
             await s3.send(command)
             console.log('end upload to s3')
+            
 
             // Add image to user
             const userUpdated = await prisma.user.update({
@@ -102,7 +117,6 @@ export async function POST(request : Request) {
 }
 
 const sendCardByEmail = async (path: string) => {
-    /*
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     await resend.emails.send({
@@ -114,9 +128,6 @@ const sendCardByEmail = async (path: string) => {
         text: "Voici votre carte amiens Food",
         attachments: [{filename: 'amiens_food.png', path}]
     })
-    
-     */
-
 }
 
 /**

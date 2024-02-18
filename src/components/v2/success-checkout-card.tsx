@@ -1,6 +1,5 @@
 "use client"
 
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/src/components/ui/card";
 import Image from "next/image";
 import SuccessIcon from "@/public/img/icons/success.png";
 import Link from "next/link";
