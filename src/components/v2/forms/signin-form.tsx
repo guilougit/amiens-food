@@ -51,7 +51,7 @@ export const SigninForm = () => {
             setIsSubmitting(false)
         }
         else if(!response?.error) {
-            router.push('/compte')
+            window.location.replace("/compte")
         }
         
     }

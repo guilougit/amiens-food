@@ -1,7 +1,7 @@
+import {redirect} from "next/navigation";
+
 const AdminPage = () => {
-    return (
-        <p>Page admin</p>
-    )
+    redirect('/admin/texts') // redirect if there's no dashboard
 }
 
 export default AdminPage

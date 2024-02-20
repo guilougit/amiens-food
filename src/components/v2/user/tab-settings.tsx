@@ -26,6 +26,7 @@ import {
 import {LogoutButton} from "@/src/components/ui/logout-button";
 import {signIn, useSession} from "next-auth/react";
 import {toast} from "sonner";
+import {DeleteAccountButton} from "@/src/components/v2/user/delete-account-button";
 
 
 const updateEmailFormSchema = z.object({
@@ -240,10 +241,11 @@ export const TabSettings = ({user}:{user: any}) => {
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>
-            
-            
-            <Button variant={"destructive"} className={"mt-8"}>Supprimer mon compte</Button>
-
+                
+                <div className={"mt-6"}>
+                    <DeleteAccountButton />
+                </div>
+                
             <LogoutButton size={"mobile"} />
 
         </div>

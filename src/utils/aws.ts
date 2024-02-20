@@ -1,5 +1,5 @@
 import {DeleteObjectCommand, ObjectCannedACL, PutObjectCommand, S3Client} from "@aws-sdk/client-s3";
-import {compressAndRoundImage} from "@/src/utils/compressor";
+import {compressAndRoundImage, compressImage} from "@/src/utils/compressor";
 
 const s3 = new S3Client({
     region: process.env.AWS_REGION,
@@ -29,10 +29,16 @@ export const deleteFileOnAws = (path: string): Promise<boolean> => {
     })
 }
 
-export const uploadFileOnAws = async (buffer: Buffer, filename: string) => {
+export const uploadFileOnAws = async (buffer: Buffer, filename: string, isRounded = false) => {
     if(filename === "") return
 
-    const compressedBuffer = await compressAndRoundImage(buffer)
+    let compressedBuffer: Buffer | null = null
+    if(isRounded) {
+        compressedBuffer = await compressAndRoundImage(buffer)
+    }
+    else {
+        compressedBuffer = await compressImage(buffer)
+    }
 
     const s3Params = {
         Bucket: process.env.S3_BUCKET_NAME,

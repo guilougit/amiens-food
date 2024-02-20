@@ -79,6 +79,52 @@ model VerificationRequest {
   @@unique([identifier, token])
 }
 
+// ***** PARTNERS ******* // 
+
+model Partner {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  logo        String?
+  description String  @db.Text
+  iframe      String? @db.Text
+  offers      Offer[]
+  medias      Media[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Offer {
+  id        String   @id @default(cuid())
+  text      String
+  Partner   Partner? @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+  partnerId String?
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  path      String?
+  Partner   Partner? @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+  partnerId String?
+}
+
+// ***** BLOG ******* //
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ***** PERSONNALISATION ******* // 
+model Personnalize {
+  id      String @id @default(cuid())
+  libelle String @unique
+  text    String
+}
+
 enum Plans {
   MONTHLY
   ANNUALLY

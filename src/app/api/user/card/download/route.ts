@@ -23,7 +23,7 @@ export async function GET() {
             'Content-Disposition': `attachment; filename="amiensfood_${user.lastname?.toLowerCase()}.png"`,
         };
 
-        const response = await fetch(`${process.env.AWS_S3_URL_FILE}/${user.card}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${user.card}`);
 
         return new Response(response.body, {headers});
 

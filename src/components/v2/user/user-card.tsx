@@ -32,7 +32,7 @@ export const UserCard = ({newImageUrl}: {newImageUrl?: string | null}) => {
 
     return (
         <>
-            {card ? (
+            {!!card ? (
                 <Drawer shouldScaleBackground={true} onClose={() => {
                     document.body.style.background = '';
 

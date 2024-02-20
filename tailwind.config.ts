@@ -1,4 +1,6 @@
-import type { Config } from "tailwindcss"
+import {Config} from "tailwindcss";
+
+const plugin = require('tailwindcss/plugin')
 
 const config = {
   content: [
@@ -98,9 +100,19 @@ const config = {
         wider: '0.02em',
         widest: '0.4em',
       },
+      screens: {
+        xs: '480px',
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+      require("tailwindcss-animate"),
+      plugin(({ addVariant, e }:{addVariant: any, e: any}) => {
+        addVariant('sidebar-expanded', ({ modifySelectors, separator }:{modifySelectors: any, separator: any}) => {
+          modifySelectors(({ className }: {className: string}) => `.sidebar-expanded .${e(`sidebar-expanded${separator}${className}`)}`);
+        });
+      }),
+  ],
 } satisfies Config
 
 export default config

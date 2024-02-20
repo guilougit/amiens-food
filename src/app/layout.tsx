@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './styles/globals.css'
 import localFont from 'next/font/local'
 import {SessionProvider} from "next-auth/react";
-import {Toaster} from "@/components/ui/sonner";
+import {Toaster} from "@/src/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: 'Amiens Food',

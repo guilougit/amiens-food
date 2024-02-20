@@ -12,7 +12,6 @@ export default auth((req): any => {
     
     const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
-    
     // Sign in page -> redirect the user to his account if he's connected
     if(nextUrl.pathname === "/connexion") {
         if (isLoggedIn) {
@@ -40,7 +39,7 @@ export default auth((req): any => {
     if(nextUrl.pathname.startsWith('/admin')) {
         // Check if user has role admin
         if (req?.auth?.user.role !== Roles.ADMIN) { // don't have admin role -> redirect to homepage
-            return Response.redirect(new URL('/azeeaz', nextUrl))
+            return Response.redirect(new URL('/', nextUrl))
         }
     }
     return null;    

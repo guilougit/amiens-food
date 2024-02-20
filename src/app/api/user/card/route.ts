@@ -61,7 +61,7 @@ export async function POST(request : Request) {
             
             // Add profile picture on card
             if(user.image) {                 
-                const profileImage = await Jimp.read( `${process.env.AWS_S3_URL_FILE}/${user.image}`);
+                const profileImage = await Jimp.read( `${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${user.image}`);
                 profileImage.resize(228, Jimp.AUTO);
                 baseImage.composite(profileImage, 17, 19);
             }
@@ -106,10 +106,10 @@ export async function POST(request : Request) {
             user.card = userUpdated.card
 
             // Send it to email with resend
-            await sendCardByEmail(`${process.env.AWS_S3_URL_FILE}/${user.card}`)
+            await sendCardByEmail(`${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${user.card}`)
         }
         
-        return NextResponse.json({success: true, card: `${process.env.AWS_S3_URL_FILE}/${user.card}`})
+        return NextResponse.json({success: true, card: `${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${user.card}`})
 
     }
     

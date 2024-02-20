@@ -43,7 +43,7 @@ export async function PATCH(request: Request) {
 
         filename = `${userDb.id}/picture/${Date.now()}`
         console.log('START upload user picture on aws')
-        await uploadFileOnAws(buffer, filename)
+        await uploadFileOnAws(buffer, filename, true)
         console.log('END upload user picture on aws')
     }
 
