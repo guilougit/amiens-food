@@ -8,7 +8,7 @@ import {
     DrawerTrigger
 } from "@/src/components/ui/drawer";
 import * as React from "react";
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from "@/src/components/ui/skeleton"
 
 export const UserCard = ({newImageUrl}: {newImageUrl?: string | null}) => {
     const [openFullscreen, setOpenFullscreen] = useState(false)

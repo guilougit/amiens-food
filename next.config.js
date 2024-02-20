@@ -5,6 +5,10 @@ const nextConfig = {
             {
                 protocol: "https",
                 hostname: 'devamiensfood.s3.eu-west-3.amazonaws.com'
+            },
+            {
+                protocol: "https",
+                hostname: "randomwordgenerator.com",
             }
         ]
     },

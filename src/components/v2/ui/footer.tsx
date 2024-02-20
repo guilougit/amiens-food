@@ -27,7 +27,7 @@ export default function Footer() {
                                         </a>
                                     </li>
                                     <li>
-                                        <a className="text-slate-500 underline hover:no-underline" href="#0">
+                                        <a className="text-slate-500 underline hover:no-underline" href="/actualites">
                                             Actualités
                                         </a>
                                     </li>

@@ -5,11 +5,13 @@ import {
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
+    DropdownMenuContent,
     DropdownMenuTrigger,
 } from "@/src/components/ui/dropdown-menu"
 import {Button} from "@/src/components/ui/button";
-import {useSession} from "next-auth/react";
-import {DropdownMenuContent} from "@radix-ui/react-dropdown-menu";
+import {signOut, useSession} from "next-auth/react";
+import {ChevronDown, LogOut} from "lucide-react";
+import React from "react";
 
 const ProfileButton = () => {
     const {data: session, status} = useSession()
@@ -17,14 +19,19 @@ const ProfileButton = () => {
     return (
         <>
             <DropdownMenu>
-                <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+                <DropdownMenuTrigger asChild>
+                    <Button variant="outline">
+                        {session?.user.email}
+                        <ChevronDown className="ml-2 h-4 w-4"/>
+                    </Button>
+                </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>Profile</DropdownMenuItem>
-                    <DropdownMenuItem>Billing</DropdownMenuItem>
-                    <DropdownMenuItem>Team</DropdownMenuItem>
-                    <DropdownMenuItem>Subscription</DropdownMenuItem>
+                    <DropdownMenuItem onClick={async () => {
+                        await signOut({callbackUrl: '/'})
+                    }}>
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Se déconnecter</span>
+                    </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </>
