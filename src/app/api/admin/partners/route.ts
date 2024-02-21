@@ -1,7 +1,7 @@
 import {auth} from "@/src/auth";
 import {NextResponse} from "next/server";
 import prisma from "@/src/lib/prisma";
-import {$Enums} from ".prisma/client";
+import {$Enums} from "@prisma/client";
 import Roles = $Enums.Roles;
 import {uploadFileOnAws} from "@/src/utils/aws";
 
