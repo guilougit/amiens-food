@@ -22,24 +22,24 @@ export default function Footer() {
                                 <h5 className={"font-bold"}>Liens utiles</h5>
                                 <ul className="flex flex-col gap-2">
                                     <li>
-                                        <a className="text-slate-500 underline hover:no-underline" href="#0">
+                                        <Link className="text-slate-500 underline hover:no-underline" href="/partenaires">
                                             Partenaires
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a className="text-slate-500 underline hover:no-underline" href="/actualites">
+                                        <Link className="text-slate-500 underline hover:no-underline" href="/actualites">
                                             Actualités
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a className="text-slate-500 underline hover:no-underline" href="#0">
+                                        <Link className="text-slate-500 underline hover:no-underline" href="/contact">
                                             Contact
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a className="text-slate-500 underline hover:no-underline" href="#0">
+                                        <Link className="text-slate-500 underline hover:no-underline" href="/compte">
                                             Mon compte
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -48,9 +48,16 @@ export default function Footer() {
 
                                 <ul className="flex flex-col">
                                     <li className={"mt-2"}>
-                                        <a className="text-slate-500 underline hover:no-underline" href="#0">
+                                        <Link href={"/mentions-legales"} className="text-slate-500 underline hover:no-underline">
                                             Mentions légales
-                                        </a>
+                                        </Link>
+                                        
+                                    </li>
+                                    <li className={"mt-2"}>
+                                        <Link href={"/conditions"} className="text-slate-500 underline hover:no-underline">
+                                            CGU / CGV
+                                        </Link>
+                                        
                                     </li>
                                 </ul>
                             </div>
@@ -64,7 +71,7 @@ export default function Footer() {
                         <ul className="inline-flex mb-4 md:order-1 md:ml-4 md:mb-0 space-x-2">
                             <li>
                                 <Link
-                                    className="flex justify-center items-center text-indigo-500 hover:text-indigo-400 transition duration-150 ease-in-out"
+                                    className="flex justify-center items-center text-primary  transition duration-150 ease-in-out"
                                     href="https://www.instagram.com/amiensfood/"
                                     aria-label="Instagram"
                                     target={"_blank"}

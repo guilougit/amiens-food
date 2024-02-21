@@ -93,7 +93,7 @@ export const ListPartnersLandingPage = () => {
                                 <div>
                                     <Link
                                         className="btn-sm inline-flex items-center text-white bg-[#FA8419] group shadow-sm"
-                                        href="apply.html">
+                                        href="/partenaires">
                                         Tous nos partenaires
                                         <span
                                             className="tracking-normal text-sky-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-2">

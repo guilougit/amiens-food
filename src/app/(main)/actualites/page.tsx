@@ -1,7 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import {PostItem} from "@/src/components/v2/post-item";
-import PostListPagination from "@/src/components/v2/post-list-pagination";
+import PostListPagination from "@/src/components/v2/blog/post-list-pagination";
+import type {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: 'Amiens food - Blog',
+    description: 'Retrouvez nos dernières actualités Amiens Food sur notre blog',
+}
 
 const BlogPage = () => {
     return (

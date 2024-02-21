@@ -1,7 +1,7 @@
 "use client"
 
 import {useState} from "react";
-import {PostItem} from "@/src/components/v2/post-item";
+import {PostItem} from "@/src/components/v2/blog/post-item";
 import {Button} from "@/src/components/ui/button";
 
 export const posts = [

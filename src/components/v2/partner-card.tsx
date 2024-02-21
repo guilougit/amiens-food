@@ -6,7 +6,7 @@ export const PartnerCard = ({item}:{item: {title:string, offers: string[], image
         <Card className={"h-full rounded-3xl"}>
             <CardHeader className={"relative"}>
                 <Avatar>
-                    <AvatarImage className={"absolute rounded-full -top-8 left-1/2 transform -translate-x-1/2 h-[80px]"} alt={'NOM_PARTENAIRE'} src={item.image ?? ''} width={80} height={80}/>
+                    <AvatarImage className={"absolute rounded-full -top-8 left-1/2 transform -translate-x-1/2 w-[80px] h-[80px]"} alt={'NOM_PARTENAIRE'} src={item.image ?? ''} width={80} height={80}/>
                 </Avatar>
                 <CardTitle className="text-center pt-8">{item.title}</CardTitle>
             </CardHeader>

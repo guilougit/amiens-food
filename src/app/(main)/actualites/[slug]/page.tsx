@@ -131,7 +131,7 @@ const PostDetail = ({params}:{params:{slug: string}}) => {
                             }
 
                             {/* Article content */}
-                            <p data-aos={"fade-up"} data-aos-delay={200}>contenu</p>
+                            <p>contenu</p>
 
 
                         </article>

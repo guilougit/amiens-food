@@ -54,7 +54,7 @@ export default function MobileMenu() {
               </li>
               <li>
                 <Link
-                    href="/about"
+                    href="/partenaires"
                     className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
                     onClick={() => setMobileNavOpen(false)}
                 >
@@ -63,7 +63,7 @@ export default function MobileMenu() {
               </li>
               <li>
                 <Link
-                    href="/blog"
+                    href="/actualites"
                     className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
                     onClick={() => setMobileNavOpen(false)}
                 >
@@ -81,7 +81,7 @@ export default function MobileMenu() {
               </li>
               <li className="pb-2 border-b border-gray-200 dark:border-gray-800">
                 <Link
-                    href="/testimonials"
+                    href="/contact"
                     className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
                     onClick={() => setMobileNavOpen(false)}
                 >

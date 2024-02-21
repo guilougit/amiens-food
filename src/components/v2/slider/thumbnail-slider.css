@@ -1,0 +1,25 @@
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+}
+
+
+.mySwiperThumbnail .swiper-slide {
+    width: 25%;
+    height: 100%;
+    filter: brightness(30%);
+}
+
+.mySwiperThumbnail .swiper-slide-thumb-active {
+    opacity: 1;
+    filter: brightness(100%);
+
+}
+
+.swiper-slideThumbnail img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}

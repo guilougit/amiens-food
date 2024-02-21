@@ -33,7 +33,7 @@ export default async function Header() {
                                     className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>
                             </li>
                             <li className={"text-lg text-slate-800 font-[500] group"}>
-                                <Link href={'/'}
+                                <Link href={'/partenaires'}
                                       className={"group-hover:text-[#E66E04] transition-all"}>Partenaires</Link>
                                 <div
                                     className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>
@@ -51,7 +51,7 @@ export default async function Header() {
                                     className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>
                             </li>
                             <li className={"text-lg text-slate-800 font-[500] group"}>
-                                <Link href={'/'}
+                                <Link href={'/contact'}
                                       className={"group-hover:text-[#E66E04] transition-all"}>Contact</Link>
                                 <div
                                     className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>

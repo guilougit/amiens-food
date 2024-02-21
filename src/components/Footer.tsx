@@ -158,7 +158,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href={"/"} className="text-gray-300">
+                <Link href={"/contact"} className="text-gray-300">
                   Contact
                 </Link>
               </li>
