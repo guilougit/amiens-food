@@ -19,7 +19,7 @@ export const ThumbnailSlider = ({images}:{images: []}) => {
     const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
     return (
-        <div className={"max-w-[800px]"}>
+        <div className={"max-w-[600px]"}>
             <Swiper
                 style={{
                     // @ts-ignore
@@ -33,7 +33,7 @@ export const ThumbnailSlider = ({images}:{images: []}) => {
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index} className={"swiper-slideThumbnail"}>
-                        <Image src={image} width={400} height={300} alt={`Amiens food partenaire`}/>
+                        <Image src={image} width={800} height={300} alt={`Amiens food partenaire`}/>
                     </SwiperSlide>
                 ))}
             </Swiper>
