@@ -2,7 +2,7 @@ import {auth} from "@/src/auth";
 import {NextResponse} from "next/server";
 import prisma from "@/src/lib/prisma";
 import {deleteFileOnAws, uploadFileOnAws} from "@/src/utils/aws";
-import {User} from ".prisma/client";
+import {User} from "@prisma/client";
 
 export async function PATCH(request: Request) {
     const session = await auth()
