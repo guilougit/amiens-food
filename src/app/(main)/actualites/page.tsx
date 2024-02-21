@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import PostListPagination from "@/src/components/v2/blog/post-list-pagination";
+import InstaPosts from "@/src/components/v2/instagram/instagram";
 import type {Metadata} from "next";
 
 export const metadata: Metadata = {
@@ -12,8 +13,13 @@ const BlogPage = () => {
     return (
         <div className={"grid grid-cols-1 lg:grid-cols-2 mx-6 pt-20 md:pt-40"}>
             <div>
-                INSTAGRAM
-            </div>
+                {/*  Page header */}
+                <div className="max-w-3xl pb-12 md:pb-20 text-center md:text-left">
+                    <h1 className="h1" data-aos="fade-up">Publications Instagram</h1>
+                </div>
+
+                <InstaPosts />
+            </div>            
             <section className="relative">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6">
                     <div className="pb-12 md:pb-20">
