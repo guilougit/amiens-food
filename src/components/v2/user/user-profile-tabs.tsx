@@ -7,9 +7,7 @@ import {useEffect, useState} from "react";
 import {TabCard} from "@/src/components/v2/user/tab-card";
 import {TabSubscription} from "@/src/components/v2/user/tab-subscription";
 import {TabSettings} from "@/src/components/v2/user/tab-settings";
-import {Coins, CreditCard, LogOut, Settings} from "lucide-react";
-import {Button} from "@/src/components/ui/button";
-import {signOut} from "next-auth/react";
+import {Coins, CreditCard, Settings} from "lucide-react";
 import {LogoutButton} from "@/src/components/ui/logout-button";
 
 type Tabs = "card" | "subscription" | "settings";

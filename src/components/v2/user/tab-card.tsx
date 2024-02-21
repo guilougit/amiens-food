@@ -6,12 +6,10 @@ import {
 } from "@/src/components/ui/form";
 import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
-import * as React from "react";
 import {CardInformations} from "@/src/components/v2/forms/card-informations";
 import {Button} from "@/src/components/ui/button";
 import {toast} from "sonner";
 import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle} from "@/src/components/ui/dialog";
-import {Input} from "@/src/components/ui/input";
 
 const formSchema = z.object({
     firstname: z.string({required_error: ""}).min(1),

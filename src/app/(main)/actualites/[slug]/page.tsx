@@ -103,7 +103,7 @@ const PostDetail = ({params}:{params:{slug: string}}) => {
                             <header className="mb-8">
                                 {/* Title and excerpt */}
                                 <div className="text-center md:text-left">
-                                    <h1 className="h1 mb-4" data-aos="fade-up">Titre de l'article</h1>
+                                    <h1 className="h1 mb-4" data-aos="fade-up">Titre de {"l'article"}</h1>
                                 </div>
                                 {/* Article meta */}
                                 <div className="md:flex md:items-center md:justify-between mt-3">

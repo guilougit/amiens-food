@@ -7,7 +7,6 @@ import {
     Form,
 } from "@/src/components/ui/form";
 import {Input} from "@/src/components/ui/input";
-import * as React from "react";
 import {Button} from "@/src/components/ui/button";
 import {
     Accordion,
@@ -21,7 +20,6 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from "@/src/components/ui/dialog"
 import {LogoutButton} from "@/src/components/ui/logout-button";
 import {signIn, useSession} from "next-auth/react";

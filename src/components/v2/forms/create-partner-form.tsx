@@ -144,7 +144,7 @@ export const CreatePartnerForm = () => {
                             name={"logo"}
                             render={({field: {ref, name, onBlur, onChange}}) => (
                                 <FormItem>
-                                    <FormLabel>Logo de l'entreprise</FormLabel>
+                                    <FormLabel>Logo de {"l'entreprise"}</FormLabel>
                                     <FormControl>
                                         <Input type={"file"} name={name} ref={ref} accept={"image/png, image/jpeg"}
                                                onBlur={onBlur} onChange={(e) => {
@@ -219,6 +219,7 @@ export const CreatePartnerForm = () => {
                                         </FormItem>
 
                                     )}
+                                    key={index}
                                 />
                             ))}
                         </div>

@@ -52,7 +52,7 @@ const columns: ColumnDef<any>[] = [
                 <DialogContent className={"min-w-max lg:min-w-[800px]"}>
                     <div className={"flex flex-wrap justify-center max-w-[350px] md:max-w-max gap-4"}>
                         {row.getValue("medias") ? (row.getValue("medias") as []).map((media: any) => (
-                            <Image src={`${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${media.path}`} alt={`Amiens food partenaire`} width={200} height={200}/>
+                            <Image key={media.id} src={`${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${media.path}`} alt={`Amiens food partenaire`} width={200} height={200}/>
                         )) : ''}
                     </div>
                 </DialogContent>
@@ -64,7 +64,7 @@ const columns: ColumnDef<any>[] = [
         header: "Offres",
         cell: ({row}) => (
             <ul>
-                {(row.getValue('offers') ? (row.getValue('offers') as []).map((o: any) => <li>{o.text}</li>) : '')}
+                {(row.getValue('offers') ? (row.getValue('offers') as []).map((o: any) => <li key={o.text}>{o.text}</li>) : '')}
             </ul>
         ),
     },
