@@ -1,7 +1,7 @@
 import {authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes} from "@/src/routes";
 import NextAuth from "next-auth";
 import {authConfig} from "@/src/auth";
-import {$Enums} from ".prisma/client";
+import {$Enums} from "@prisma/client";
 import Roles = $Enums.Roles;
 
 const {auth} = NextAuth(authConfig);
