@@ -22,10 +22,10 @@ const PartnerPage = () => {
                         <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left">
                             {/* Content */}
                             <h1 className="text-4xl sm:text-6xl font-bold text-slate-800 mb-6 leading-[1.6] sm:leading-[1.2] text-center"
-                                data-aos="fade-up" data-aos-delay="100">
+                                >
                                 Plus de X restaurants partenaires
                             </h1>
-                            <p className="text-lg text-slate-700 mb-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                            <p className="text-lg text-slate-700 mb-8 text-center">
                                 [Ajouter une petite phrase {"d'accroche"}]
                             </p>
                         </div>
@@ -33,7 +33,9 @@ const PartnerPage = () => {
                 </div>
             </section>
 
-            <ListPartner/>
+            <div className={"min-h-[500px]"}>
+                <ListPartner/>
+            </div>
         </>
     )
 }

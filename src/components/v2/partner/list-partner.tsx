@@ -39,7 +39,7 @@ export const ListPartner = () => {
     }
     
     return (
-        <div className={"mt-0 md:mt-8 max-w-[1800px] mx-auto px-2 xs:px-12 pb-12"} data-aos={"fade-up"} data-aos-delay={500}>
+        <div className={"mt-0 md:mt-8 max-w-[1800px] mx-auto px-2 xs:px-12 pb-12"} data-aos={"fade-up"}>
             <Input
                 type="text"
                 placeholder="Rechercher un restaurant..."
