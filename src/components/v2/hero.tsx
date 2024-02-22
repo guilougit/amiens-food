@@ -7,8 +7,9 @@ import HeroImage from '@/public/img/mockup_carte.png'
 
 import Tilt from 'react-parallax-tilt';
 import {CheckoutButton} from "@/src/components/checkout-button";
+import {TextCustom} from "@/src/utils/types";
 
-export default function Hero() {
+export default function Hero({texts}: {texts: TextCustom[]}) {
     return (
         <section className="relative">
             {/* Bg */}
@@ -37,9 +38,7 @@ export default function Hero() {
                                   <span className={"italic"}>FOOD</span>
                                 </span>
                             </h1>
-                            <p className="text-lg text-slate-700 mb-8" data-aos="fade-up" data-aos-delay="200">
-                                Profite de tes restaurants préférés à prix réduits
-                                <br className="hidden md:block" /> avec Amiens food.
+                            <p className="text-lg text-slate-700 mb-8" data-aos="fade-up" data-aos-delay="200" dangerouslySetInnerHTML={{__html: (texts.find(text => text.code === "LANDING_HERO_SUBTITLE")?.text as string)}}>
                             </p>
 
                             {/* Buttons */}

@@ -1,8 +1,9 @@
 import ShopIcon from "@/public/img/icons/panier.png"
 import RestaurantIcon from "@/public/img/icons/restaurant.png"
 import Image from "next/image";
+import {TextCustom} from "@/src/utils/types";
 
-export const ListSteps = () => {
+export const ListSteps = ({texts}: {texts: TextCustom[]}) => {
     return (
         <>
             <section>
@@ -18,9 +19,9 @@ export const ListSteps = () => {
                                 <div className="mb-3">
                                     <Image src={ShopIcon} alt={''} className={"w-[50px]"} />
                                 </div>
-                                <h4 className="text-xl font-bold mb-1">Achète ta carte</h4>
+                                <h4 className="text-xl font-bold mb-1">{texts.find(text => text.code === "LANDING_BLOC_1_TITLE")?.text}</h4>
                                 <p className="text-slate-500">
-                                    Créer ton compte et achète la carte sur une plateforme fiable et sécurisée pour la recevoir directement par mail.
+                                    {texts.find(text => text.code === "LANDING_BLOC_1_CONTENT")?.text}
                                 </p>
                             </div>
 
@@ -46,9 +47,9 @@ export const ListSteps = () => {
                                         </g>
                                     </svg>
                                 </div>
-                                <h4 className="text-xl font-bold mb-1">Enregistre ta carte</h4>
+                                <h4 className="text-xl font-bold mb-1">{texts.find(text => text.code === "LANDING_BLOC_2_TITLE")?.text}</h4>
                                 <p className="text-slate-500">
-                                    Ajoute ta carte sur le wallet de ton téléphone, ou connecte toi pour la récupérer.
+                                    {texts.find(text => text.code === "LANDING_BLOC_2_CONTENT")?.text}
                                 </p>
                             </div>
 
@@ -61,9 +62,9 @@ export const ListSteps = () => {
                                 <div className="mb-4">
                                     <Image src={RestaurantIcon} alt={''} className={"w-[50px]"} />
                                 </div>
-                                <h4 className="text-xl font-bold mb-1">Utilise ta carte</h4>
+                                <h4 className="text-xl font-bold mb-1">{texts.find(text => text.code === "LANDING_BLOC_3_TITLE")?.text}</h4>
                                 <p className="text-slate-500">
-                                    Présente-la chez nos restaurants partenaires pour profiter des réductions instantanées.
+                                    {texts.find(text => text.code === "LANDING_BLOC_3_CONTENT")?.text}
                                 </p>
                             </div>
                         </div>

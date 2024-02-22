@@ -121,6 +121,7 @@ model Post {
 // ***** PERSONNALISATION ******* // 
 model Personnalize {
   id      String @id @default(cuid())
+  code    String @unique
   libelle String @unique
   text    String
 }

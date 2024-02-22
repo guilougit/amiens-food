@@ -1,4 +1,4 @@
-import {TextsDatatable} from "@/src/components/v2/admin/texts-datatable";
+import {TextsDatatable} from "@/src/components/v2/admin/texts/texts-datatable";
 
 export default function AdminTextsPage () {
     return (

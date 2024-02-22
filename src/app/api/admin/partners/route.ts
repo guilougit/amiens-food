@@ -3,7 +3,7 @@ import {NextResponse} from "next/server";
 import prisma from "@/src/lib/prisma";
 import {$Enums} from "@prisma/client";
 import Roles = $Enums.Roles;
-import {uploadFileOnAws} from "@/src/utils/aws";
+import {uploadLogo, uploadMedias} from "@/src/utils/aws";
 
 export async function POST(request: Request) {
     const session = await auth()
@@ -76,33 +76,4 @@ export async function GET(){
     })
     
     return NextResponse.json({success: true, partners})
-}
-
-const uploadLogo = async (file: any) => {
-    console.log('start uploading logo')
-    const filename = `partners/${Date.now()}-${Math.floor(Math.random() * 1000)}`
-    const buffer= Buffer.from(await file.arrayBuffer())
-    await uploadFileOnAws(buffer, filename)
-    console.log('end uploading logo')
-
-
-    return filename
-}
-
-const uploadMedias = async (files: File[]) => {
-    console.log('start uploading medias')
-
-    let listPath = []
-    for (const file of files) {
-        const filename = `partners/${Date.now()}-${Math.floor(Math.random() * 1000)}`
-        const buffer= Buffer.from(await file.arrayBuffer())
-
-        await uploadFileOnAws(buffer, filename)
-        
-        listPath.push({path: filename})
-    }
-    
-    console.log('end uploading medias')
-    
-    return listPath
 }

@@ -13,7 +13,6 @@ export async function compressAndRoundImage(inputBuffer: Buffer): Promise<Buffer
             input: Buffer.from(`<svg><circle cx="${MAX_IMAGE_WIDTH_PROFILE / 2}" cy="${MAX_IMAGE_WIDTH_PROFILE / 2}" r="${MAX_IMAGE_WIDTH_PROFILE / 2}" /></svg>`),
             blend: 'dest-in'
         }])
-        // Convertir en JPEG
         .png({quality: QUALITY_IMAGE})
         .toBuffer();
 
@@ -27,12 +26,12 @@ export async function compressImage(inputBuffer: Buffer): Promise<Buffer> {
     if (width && width > MAX_IMAGE_WIDTH) {
         roundedBuffer = await sharp(inputBuffer)
             .resize(MAX_IMAGE_WIDTH, null, {fit: 'inside'}) 
-            .png({quality: QUALITY_IMAGE})
+            .jpeg({quality: QUALITY_IMAGE})
             .toBuffer();
     } else {
         roundedBuffer = await sharp(inputBuffer)
             .resize(300, null, {fit: 'inside'})// 300 is less than 600
-            .png({quality: QUALITY_IMAGE})
+            .jpeg({quality: QUALITY_IMAGE})
             .toBuffer();
     }
 

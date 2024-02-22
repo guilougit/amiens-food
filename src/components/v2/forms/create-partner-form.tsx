@@ -22,44 +22,68 @@ const formSchema = z.object({
     logo: z
         .custom<File>((v) => v instanceof File, {
             message: ' ',
-        }),
+        }).optional(),
     medias: z.any()
 })
 
-export const CreatePartnerForm = () => {
+export const CreatePartnerForm = ({defaultPartner, isEditing = false}:{defaultPartner?: any, isEditing?: boolean}) => {
     const router = useRouter()
-    const [slug, setSlug] = useState("")
+    const [slug, setSlug] = useState(defaultPartner ? defaultPartner.slug : '')
     const [isSubmitting, setIsSubmitting] = useState(false)
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            name: "",
-            iframe: "",
-            offers: [''],
+            name: defaultPartner ? defaultPartner.name : '',
+            iframe: defaultPartner ? defaultPartner.iframe : '',
+            slug: defaultPartner ? defaultPartner.slug : '',
+            description: defaultPartner ? defaultPartner.description : '',
+            offers: defaultPartner ? defaultPartner.offers.map((offer: any) => offer.text) : [''],
         }
     })
 
     const onSubmit = (data: any) => {
-        setIsSubmitting(true)
         const formData = new FormData();
         // Add medias
-        for (let i = 0; i < data.medias.length; i++) {
-            formData.append(`medias`, data.medias[i])
+        if(data.medias) {
+            for (let i = 0; i < data.medias.length; i++) {
+                formData.append(`medias`, data.medias[i])
+            }
         }
+        else {
+            if(!isEditing) { 
+                toast.error("Veuillez mettre des images")
+                return
+            }
+        }
+        
+        if(!data.logo && !isEditing) {
+            toast.error("Veuillez mettre un logo")
+            return
+        }
+
+        setIsSubmitting(true)
+
         formData.append("logo", data.logo)
         formData.append("partner", JSON.stringify({
+            id: isEditing && defaultPartner ? defaultPartner.id : undefined,
             name: data.name,
             slug: slug,
             description: data.description,
             offers: data.offers,
-            iframe: data.iframe
+            iframe: data.iframe,
+            isEditing: isEditing
         }))
-        fetch("/api/admin/partners", {method: 'POST', body: formData})
+        fetch(!isEditing ? "/api/admin/partners" : `/api/admin/partners/${defaultPartner.slug}`, {method: !isEditing ? 'POST' : 'PATCH', body: formData})
             .then(res => res.json())
             .then(res => {
-                if(res.success) {
-                    toast.success("Le partenaire a bien été ajouté")
+                if (res.success) {
+                    if(isEditing) {
+                        toast.success("Le partenaire a bien été modifié")
+                    }
+                    else {
+                        toast.success("Le partenaire a bien été ajouté")
+                    }
                     router.replace("/admin/partners")
                 }
             })
@@ -151,6 +175,7 @@ export const CreatePartnerForm = () => {
                                             onChange(e.target.files?.[0]);
                                         }}/>
                                     </FormControl>
+                                    {isEditing && <FormDescription>Laisser vide si pas de modification</FormDescription>}
                                     <FormMessage/>
                                 </FormItem>
                             )}
@@ -167,12 +192,12 @@ export const CreatePartnerForm = () => {
                                                accept={"image/png, image/jpeg"}
                                                onBlur={onBlur} onChange={(e) => {
                                             onChange(e.target.files?.[e.target.files.length ?? 0]);
-                                            if(e.target.files) {
+                                            if (e.target.files) {
                                                 form.setValue("medias", e.target.files)
                                             }
-                                            console.log(e.target.files)
                                         }}/>
                                     </FormControl>
+                                    {isEditing && <FormDescription>Laisser vide si pas de modification</FormDescription>}
                                     <FormMessage/>
                                 </FormItem>
                             )}

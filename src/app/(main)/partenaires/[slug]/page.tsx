@@ -3,7 +3,7 @@ import {ThumbnailSlider} from "@/src/components/v2/slider/thumbnail-slider";
 import {Card, CardContent} from "@/src/components/ui/card";
 
 export async function generateMetadata({ params }:{params: {slug: string}}) {
-    const partner = await fetch(`http://localhost:3000/api/partners/${params.slug}`).then(res => res.json())
+    const partner = await fetch(`${process.env.APP_URL}/api/partners/${params.slug}`).then(res => res.json())
 
     let title = "Partenaires amiens food"
 
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }:{params: {slug: string}}) {
 }
 
 const PartnerDetail = async ({params}:{params: {slug: string}}) => {
-    const partnerFetch = await fetch(`http://localhost:3000/api/partners/${params.slug}`).then(res => res.json())
+    const partnerFetch = await fetch(`${process.env.APP_URL}/api/partners/${params.slug}`).then(res => res.json())
 
     if(!partnerFetch.success || !partnerFetch.partner) return notFound()
 

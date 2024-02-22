@@ -1,0 +1,5 @@
+export interface TextCustom {
+    id: string,
+    code: "LANDING_HERO_SUBTITLE" | 'LANDING_BLOC_1_TITLE' | 'LANDING_BLOC_1_CONTENT' | 'LANDING_BLOC_2_TITLE' | 'LANDING_BLOC_2_CONTENT' | 'LANDING_BLOC_3_TITLE' | 'LANDING_BLOC_3_CONTENT',
+    text: string
+}
