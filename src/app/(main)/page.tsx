@@ -11,6 +11,7 @@ export default async function LandingPage()  {
         <>
             <Hero texts={texts} />
             <ListSteps texts={texts} />
+            <p>;ENV : {process.env.APP_URL}</p>
             <ListPartnersLandingPage />
         </>
     )
