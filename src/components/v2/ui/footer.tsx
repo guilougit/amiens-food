@@ -22,12 +22,20 @@ export default function Footer() {
                                 <h5 className={"font-bold"}>Liens utiles</h5>
                                 <ul className="flex flex-col gap-2">
                                     <li>
-                                        <Link className="text-slate-500 underline hover:no-underline" href="/partenaires">
+                                        <Link className="text-slate-500 underline hover:no-underline"
+                                              href="/a-propos">
+                                            Qui sommes-nous ?
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link className="text-slate-500 underline hover:no-underline"
+                                              href="/partenaires">
                                             Partenaires
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link className="text-slate-500 underline hover:no-underline" href="/actualites">
+                                        <Link className="text-slate-500 underline hover:no-underline"
+                                              href="/actualites">
                                             Actualités
                                         </Link>
                                     </li>

@@ -14,7 +14,6 @@ export default async function InstagramPosts() {
             type: item.media_type,
             link: item.permalink
         }));
-
     }
     
     return (

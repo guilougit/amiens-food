@@ -102,3 +102,7 @@
 .swiper-slide {
   height: auto !important;
 }
+
+.swiper-pagination-bullet-active {
+  background-color: #FA8419 !important;
+}
