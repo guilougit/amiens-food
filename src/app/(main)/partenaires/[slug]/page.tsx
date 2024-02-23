@@ -17,17 +17,13 @@ export async function generateMetadata({ params }:{params: {slug: string}}) {
 }
 
 const PartnerDetail = async ({params}:{params: {slug: string}}) => {
-    /*
     const partnerFetch = await fetch(`${process.env.APP_URL}/api/partners/${params.slug}`).then(res => res.json())
 
     if(!partnerFetch.success || !partnerFetch.partner) return notFound()
 
     const mediaPaths = partnerFetch.partner.medias.map((media: any) => `${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${media.path}`);
-    
-     */
 
-    const partnerFetch: any = undefined
-    const mediaPaths: any = undefined
+
     return (
         <div className={"pt-24 md:pt-32 pb-20 mx-8 md:mx-24"} data-aos={"fade-up"}>
             <h1 className={"h3 text-[#FA8419]"}>{partnerFetch.partner.name}</h1>

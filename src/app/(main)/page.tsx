@@ -4,13 +4,8 @@ import {ListPartnersLandingPage} from "@/src/components/v2/list-partners";
 
 export default async function LandingPage()  {
     
-    /*
     // Get customizable text
     const texts = await fetch(`${process.env.APP_URL}/api/texts`).then(res => res.json())
-    
-     */
-    
-    const texts: any = []
     
     return (
         <>
