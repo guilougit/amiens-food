@@ -17,7 +17,7 @@ export async function generateMetadata({ params }:{params: {slug: string}}) {
 }
 
 const PartnerDetail = async ({params}:{params: {slug: string}}) => {
-    const partnerFetch = await fetch(`${process.env.APP_URL}/api/partners/${params.slug}`).then(res => res.json())
+    const partnerFetch = await fetch(`${process.env.APP_URL}/api/partners/${params.slug}`, { cache: 'no-store' }).then(res => res.json())
 
     if(!partnerFetch.success || !partnerFetch.partner) return notFound()
 
