@@ -4,10 +4,15 @@ import Link from "next/link";
 import {ArrowLeft} from "lucide-react";
 
 const EditPartner = async ({params}: { params: { slug: string } }) => {
-
+    /*
     const partnerFetch = await fetch(`${process.env.APP_URL}/api/partners/${params.slug}`).then(res => res.json())
 
     if(!partnerFetch.success || !partnerFetch.partner) return notFound()
+    
+     */
+
+    const partnerFetch: any = undefined
+    const mediaPaths: any = undefined
 
     return (
         <div className={"px-4 sm:px-6 lg:px-8 py-8 w-full max-w-[96rem] mx-auto"}>
