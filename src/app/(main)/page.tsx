@@ -10,7 +10,7 @@ export default async function LandingPage()  {
     
      */
     
-    const texts: any = undefined
+    const texts: any = []
     
     return (
         <>
