@@ -115,7 +115,7 @@ export const PartnersDatatable = () => {
         {
             accessorKey: "createdAt",
             header: "Ajouté le",
-            cell: ({row}) => <div>{DateTime.fromISO(row.getValue("createdAt")).toFormat("dd/mm/yyyy")}</div>,
+            cell: ({row}) => <div>{DateTime.fromISO(row.getValue("createdAt")).toFormat("dd/MM/yyyy")}</div>,
         },
         {
             id: "actions",
