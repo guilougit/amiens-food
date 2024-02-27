@@ -14,16 +14,15 @@ export const PostItem = ({ ...props }) => {
                     </Link>
                 <h3 className="h4 mb-1">
                     <Link href={`/actualites/${props.slug}`}
-                          className="hover:text-gray-100 transition duration-150 ease-in-out">{props.title}</Link>
+                          className="transition duration-150 ease-in-out">{props.title}</Link>
                 </h3>
             </header>
-            <p className="text-lg text-gray-400 grow">sommaire</p>
             <footer className="flex items-center mt-2">
                 <div className="font-medium">
                     <Link href="#"
-                          className="text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">Amiens food</Link>
-                    <span className="text-gray-700"> - </span>
-                    <span className="text-gray-500">13/02/2023</span>
+                          className="text-primary transition duration-150 ease-in-out text-sm">Amiens food</Link>
+                    <span className="text-gray-700 text-sm"> - </span>
+                    <span className="text-gray-500 text-sm">13/02/2023</span>
                 </div>
             </footer>
         </article>

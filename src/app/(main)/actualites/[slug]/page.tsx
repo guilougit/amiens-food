@@ -112,7 +112,7 @@ const PostDetail = ({params}:{params:{slug: string}}) => {
                                          data-aos-delay="200">
                                         <div>
                                             <Link href="#"
-                                                  className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">Amiens
+                                                  className="font-medium text-primary transition duration-150 ease-in-out">Amiens
                                                 food</Link>
                                             <span className="text-gray-700"> - </span>
                                             <span className="text-gray-500">10/02/2024</span>

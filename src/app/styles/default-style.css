@@ -107,3 +107,8 @@ input[type="search"]::-webkit-search-results-decoration {
 .tab_active {
     @apply bg-primary text-white font-semibold
 }
+
+/* FONTS */
+h1,h2,h3,h4,h5,h6 {
+    @apply font-bitter;
+}

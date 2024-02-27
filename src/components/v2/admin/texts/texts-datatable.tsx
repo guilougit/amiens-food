@@ -116,9 +116,6 @@ export const TextsDatatable = () => {
         <>
             <CrudTable props={{columns, data: texts, search: {active: false}}} />
             <Dialog open={openModal} onOpenChange={open => setOpenModal(open)}>
-                <DialogTrigger className={"w-full text-left"}>
-                    Éditer
-                </DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>{textToEdit?.libelle}</DialogTitle>

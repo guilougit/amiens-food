@@ -84,15 +84,14 @@ const BlogPage = () => {
                                         <header>
                                             <h3 className="h3 text-2xl lg:text-3xl mb-1">
                                                 <Link href={`/blog/1`}
-                                                      className="hover:text-gray-100 transition duration-150 ease-in-out">Titre
+                                                      className="transition duration-150 ease-in-out">Titre
                                                     du post</Link>
                                             </h3>
                                         </header>
-                                        <p className="text-lg text-gray-400 grow">Sommaire</p>
                                         <footer className="flex items-center mt-2">
                                             <div>
                                                 <Link href="#"
-                                                      className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out">Amiens
+                                                      className="font-medium text-primary transition duration-150 ease-in-out">Amiens
                                                     food</Link>
                                                 <span className="text-gray-700"> - </span>
                                                 <span className="text-gray-500">12/08/2023</span>

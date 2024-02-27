@@ -79,6 +79,9 @@ const config = {
       },
       fontFamily: {
         aspekta: ['var(--font-aspekta)', 'sans-serif'],
+        bitter: ['var(--font-bitter)', 'sans-serif'],
+        rubik: ['var(--font-rubik)', 'sans-serif'],
+        opensans: ['var(--font-opensans)', 'sans-serif'],
       },
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1.5' }],

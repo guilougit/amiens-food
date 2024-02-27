@@ -49,7 +49,7 @@ const ContactPage = () => {
             </section>
             
             <div className={"mt-0 md:mt-12 max-w-4xl mx-auto px-12 pb-12"} data-aos="fade-up">
-                <h2 className={"h3 mb-8 flex items-center gap-1.5"}>Ou envoyez-nous un message <CornerRightDown size={30} className={"mt-3"} /></h2>
+                <h2 className={"h3 mb-8 flex items-center gap-1.5"}>Envoyez-nous un message <CornerRightDown size={30} className={"mt-3"} /></h2>
                 <ContactForm />
             </div>
         </>

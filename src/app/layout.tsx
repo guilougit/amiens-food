@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './styles/globals.css'
 import localFont from 'next/font/local'
+import {Rubik, Bitter, Open_Sans} from 'next/font/google'
 import {SessionProvider} from "next-auth/react";
 import {Toaster} from "@/src/components/ui/sonner";
 
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
   description: 'Site Internet d\'Amiens Food',
 }
 
-const aspekta = localFont({
+/*
+const font = localFont({
     src: [
         {
             path: '../../public/fonts/Aspekta-350.woff2',
@@ -40,6 +42,14 @@ const aspekta = localFont({
     display: 'swap',
 })
 
+ */
+
+const font = Rubik({subsets: ['latin'], variable: '--font-rubik'})
+
+//const font = Bitter({subsets: ['latin'], variable: '--font-bitter'})
+
+const font2 = Open_Sans({subsets: ['latin'], variable: '--font-opensans'})
+
 export default function RootLayout({
   children,
 }: {
@@ -47,7 +57,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-        <body className={`${aspekta.variable} font-aspekta antialiased bg-white text-slate-800 font-[350]`}>
+        <body className={`${font.variable} ${font2.variable} font-rubik antialiased bg-white text-slate-800 font-[350]`}>
             <div vaul-drawer-wrapper={""}>
                 <div className="flex flex-col min-h-screen overflow-hidden">
                     <SessionProvider>

@@ -50,7 +50,7 @@ const SuccessCheckoutCard = () => {
                         <Image src={card} alt={""} width={400} className={"mx-auto rounded-2xl"} height={200}/>
                         <div className={"text-sm flex justify-center mt-2 gap-1 flex-wrap"}>
                             <p className={"text-gray-500"}>Les informations sont incorrects ?</p>
-                            <Link href={"/"} className={"hover:underline"}>Je modifie mes informations</Link>
+                            <Link href={"/compte"} className={"hover:underline"}>Je modifie mes informations</Link>
                         </div>
 
                         <div className={"mt-8 flex justify-center"}>
