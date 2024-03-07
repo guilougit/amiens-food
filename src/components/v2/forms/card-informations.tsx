@@ -8,34 +8,36 @@ export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean
     
     return (
         <>
-            <div className={"flex gap-6"}>
-                <FormField
-                    control={form.control}
-                    name={"firstname"}
-                    render={({field}) => (
-                        <FormItem className={"w-1/2"}>
-                            <FormLabel>Prénom</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Matthieu" {...field} maxLength={25}/>
-                            </FormControl>
-                        </FormItem>
-                    )}
-                />
+            {isRegistering && (
+                <div className={"flex gap-6"}>
+                    <FormField
+                        control={form.control}
+                        name={"firstname"}
+                        render={({field}) => (
+                            <FormItem className={"w-1/2"}>
+                                <FormLabel>Prénom</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Matthieu" {...field} maxLength={25}/>
+                                </FormControl>
+                            </FormItem>
+                        )}
+                    />
 
-                <FormField
-                    control={form.control}
-                    name={"lastname"}
-                    render={({field}) => (
-                        <FormItem className={"w-1/2"}>
-                            <FormLabel>Nom</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Dumont" {...field} maxLength={25}/>
-                            </FormControl>
-                        </FormItem>
-                    )}
-                />
-            </div>
-
+                    <FormField
+                        control={form.control}
+                        name={"lastname"}
+                        render={({field}) => (
+                            <FormItem className={"w-1/2"}>
+                                <FormLabel>Nom</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Dumont" {...field} maxLength={25}/>
+                                </FormControl>
+                            </FormItem>
+                        )}
+                    />
+                </div>
+            )}
+            
             <FormField
                 control={form.control}
                 name={"surname"}
@@ -78,33 +80,32 @@ export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean
                             </FormItem>
                         )}
                     />
+
+                    <FormField
+                        control={form.control}
+                        name={"picture"}
+                        render={({field: {ref, name, onBlur, onChange}}) => (
+                            <FormItem>
+                                <FormLabel>Photo {"d'identité"}</FormLabel>
+                                <FormControl>
+                                    <Input type={"file"} name={name} ref={ref} accept={"image/png, image/jpeg"}
+                                           onBlur={onBlur} onChange={(e) => {
+                                        onChange(e.target.files?.[0]);
+                                    }}/>
+                                </FormControl>
+                                {isRegistering && (
+                                    <FormDescription>
+                                        Elle est seulement utilisée pour la génération de la
+                                        carte.
+                                    </FormDescription>
+                                )}
+
+                                <FormMessage/>
+                            </FormItem>
+                        )}
+                    />
                 </>
             )}
-
-
-            <FormField
-                control={form.control}
-                name={"picture"}
-                render={({field: {ref, name, onBlur, onChange}}) => (
-                    <FormItem>
-                        <FormLabel>Photo {"d'identité"}</FormLabel>
-                        <FormControl>
-                            <Input type={"file"} name={name} ref={ref} accept={"image/png, image/jpeg"}
-                                   onBlur={onBlur} onChange={(e) => {
-                                onChange(e.target.files?.[0]);
-                            }}/>
-                        </FormControl>
-                        {isRegistering && (
-                            <FormDescription>
-                                Elle est seulement utilisée pour la génération de la
-                                carte.
-                            </FormDescription>
-                        )}
-
-                        <FormMessage/>
-                    </FormItem>
-                )}
-            />
         </>
     )
 

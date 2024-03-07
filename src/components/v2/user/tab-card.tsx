@@ -56,8 +56,7 @@ export const TabCard = ({user}: { user: any }) => {
         const data = form.getValues()
 
         const formData = new FormData();
-        formData.append('file', data.picture as any);
-        formData.append('user', JSON.stringify({firstname: data.firstname,lastname: data.lastname, surname: data.surname}));
+        formData.append('user', JSON.stringify({surname: data.surname}));
         fetch("/api/user", {
             method: 'PATCH',
             body: formData

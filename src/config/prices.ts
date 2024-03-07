@@ -4,7 +4,7 @@ export const prices = {
         stripe_id: "price_1OawxDIATEq1uUKpiHmjxlPf"
     },
     annually: {
-        amount: 220,
+        amount: 9.99,
         stripe_id: "price_1OawxDIATEq1uUKpB0lFn0pF"
     }
 }

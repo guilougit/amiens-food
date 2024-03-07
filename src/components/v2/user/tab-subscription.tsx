@@ -29,7 +29,7 @@ export const TabSubscription = ({user}: { user: any }) => {
             <Card>
                 <CardHeader className={"flex flex-row justify-between"}>
                     <div>
-                        <h3 className={"text-lg md:text-xl"}>Abonnement annuel</h3>
+                        <h3 className={"text-lg md:text-xl text-sm"}>Abonnement annuel</h3>
                         {user?.StripeAccount.sub_valid ? (
                             <Badge variant={"success"}
                                    className={"mt-2"}>Actif</Badge>
@@ -40,7 +40,7 @@ export const TabSubscription = ({user}: { user: any }) => {
                     </div>
 
                     <div>
-                        <p>
+                        <p className={"text-sm"}>
                             <strong>${prices.annually.amount} €</strong>par an
                         </p>
                         <p className={"text-muted-foreground italic text-xs"}>

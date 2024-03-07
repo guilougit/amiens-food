@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {PartnerCard} from "@/src/components/v2/partner-card";
 
 const partners = [
@@ -40,6 +40,17 @@ import {Pagination} from 'swiper/modules';
 import Link from "next/link";
 
 export const ListPartnersLandingPage = () => {
+    
+    const [partners, setPartners] = useState([])
+
+    useEffect(() => {
+        fetch("/api/partners")
+            .then(res => res.json())
+            .then(res => {
+                setPartners(res.partners)
+            })
+    }, []);
+    
     return (
         <section className="" data-aos-id-4>
             <div className="relative max-w-7xl mx-auto">
@@ -84,7 +95,7 @@ export const ListPartnersLandingPage = () => {
                             >
                                 {partners.map((partner, index: number) => (
                                     <SwiperSlide key={index} className={"h-auto"}>
-                                        <PartnerCard item={partner}/>
+                                        {<PartnerCard item={partner}/>}
                                     </SwiperSlide>
                                 ))}
                             </Swiper>

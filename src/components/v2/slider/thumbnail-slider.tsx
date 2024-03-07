@@ -17,6 +17,7 @@ import Image from "next/image";
 
 export const ThumbnailSlider = ({images}:{images: []}) => {
     const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+    []
 
     return (
         <div className={"max-w-[600px]"}>
