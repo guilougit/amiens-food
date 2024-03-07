@@ -34,7 +34,7 @@ import "froala-editor/js/plugins/table.min.js";
 import "froala-editor/js/plugins/link.min.js";
 
 import "froala-editor/js/languages/fr.js";
-
+/*
 import FroalaEditorComponent from "react-froala-wysiwyg";
 
 const formSchema = z.object({
@@ -244,3 +244,5 @@ export const CreateBlogForm = ({
     </Form>
   );
 };
+
+ */
