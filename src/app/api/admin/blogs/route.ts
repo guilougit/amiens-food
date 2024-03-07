@@ -4,7 +4,7 @@ import prisma from "@/src/lib/prisma";
 import {$Enums} from "@prisma/client";
 import Roles = $Enums.Roles;
 import {uploadLogo, uploadMedias} from "@/src/utils/aws";
-
+/*
 export async function POST(request: Request) {
     const session = await auth()
     
@@ -59,4 +59,4 @@ export async function GET(){
     })
     
     return NextResponse.json({success: true, blog})
-}
+}*/

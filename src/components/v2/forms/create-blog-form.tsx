@@ -16,14 +16,7 @@ import {
 } from "@/src/components/ui/form";
 import { Input } from "@/src/components/ui/input";
 import * as React from "react";
-import {
-  BadgeInfo,
-  Plus,
-  PlusCircle,
-  PlusSquare,
-  Trash,
-  Trash2,
-} from "lucide-react";
+
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
