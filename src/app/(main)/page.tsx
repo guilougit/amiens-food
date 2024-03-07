@@ -10,8 +10,17 @@ export default async function LandingPage()  {
     return (
         <>
             <Hero texts={texts} />
-            <ListSteps texts={texts} />
-            <ListPartnersLandingPage />
+
+
+            <section className="relative">
+                {/* Bg */}
+                <div
+                    aria-hidden="true"
+                />
+                <ListSteps texts={texts} />
+                <ListPartnersLandingPage />
+            </section>
+
         </>
     )
 }

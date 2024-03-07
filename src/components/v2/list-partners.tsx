@@ -100,10 +100,10 @@ export const ListPartnersLandingPage = () => {
                                 ))}
                             </Swiper>
                             {/* Button */}
-                            <div className="max-w-xs mx-auto sm:max-w-none mt-8 ml-2">
+                            <div className="max-w-xs mx-auto sm:max-w-none mt-8 ml-2 bg-white">
                                 <div>
                                     <Link
-                                        className="btn-sm inline-flex items-center text-white bg-[#FA8419] group shadow-sm"
+                                        className="btn-sm inline-flex items-center text-white bg-[#FA8419] group shadow-2xl text-xl"
                                         href="/partenaires">
                                         Tous nos partenaires
                                         <span

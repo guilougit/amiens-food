@@ -29,8 +29,8 @@ export default function MobileMenu() {
     <div className="inline-flex md:hidden">
 
       {/* Hamburger button */}
-      <Button variant={"default"} size={"icon"} ref={trigger} onClick={() => setMobileNavOpen(!mobileNavOpen)}>
-        <HiMenuAlt3 size={35} color={"#fff"} />
+      <Button variant={"default"} size={"icon"} className={"bg-white text-b hover:bg-slate-200"} ref={trigger} onClick={() => setMobileNavOpen(!mobileNavOpen)}>
+        <HiMenuAlt3 size={35} color={"black"} />
       </Button>
 
       {/* Mobile navigation */}

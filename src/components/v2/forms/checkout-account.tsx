@@ -86,7 +86,7 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
             <Form {...form}>
                 <div className={"grid grid-cols-1 md:grid-cols-2"}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className={"flex flex-col text-left gap-2.5"}>
-                        <h3 className={"text-xl bold"}>1. Remplie tes informations</h3>
+                        <h3 className={"text-xl font-semibold"}>1. Remplis tes informations</h3>
                         
                         <CardInformations isRegistering={true} />
                         
@@ -102,7 +102,7 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
                     <div className={"flex ml-0 gap-0 md:gap-6 md:ml-6"}>
                         <Separator orientation={"vertical"} className={"hidden md:block"}/>
                         <div className={"w-full"}>
-                            <h3 className={"text-xl mb-0 md:mb-4 bold text-left"}>2. Un aperçu de ta carte </h3>
+                            <h3 className={"text-xl mb-0 md:mb-4 bold text-left font-semibold"}>2. Un aperçu de ta carte </h3>
 
                             <CheckoutCardPreview/>
                         </div>

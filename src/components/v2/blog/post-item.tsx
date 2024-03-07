@@ -20,7 +20,7 @@ export const PostItem = ({ ...props }) => {
             <footer className="flex items-center mt-2">
                 <div className="font-medium">
                     <Link href="#"
-                          className="text-primary transition duration-150 ease-in-out text-sm">Amiens food</Link>
+                          className="transition duration-150 ease-in-out text-sm">Amiens food</Link>
                     <span className="text-gray-700 text-sm"> - </span>
                     <span className="text-gray-500 text-sm">13/02/2023</span>
                 </div>

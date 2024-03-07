@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Logo from '@/public/img/logo/logo-text.png'
 import {Instagram} from "lucide-react";
+import {CheckoutButton} from "@/src/components/checkout-button";
 
 export default function Footer() {
     return (
@@ -22,9 +23,15 @@ export default function Footer() {
                                 <h5 className={"font-bold"}>Liens utiles</h5>
                                 <ul className="flex flex-col gap-2">
                                     <li>
+                                        <span className="text-slate-500 underline hover:no-underline">
+                                            <CheckoutButton variant={"footer"} />
+                                        </span>
+         
+                                    </li>
+                                    <li>
                                         <Link className="text-slate-500 underline hover:no-underline"
                                               href="/a-propos">
-                                            Qui sommes-nous ?
+                                            Qui suis-je ?
                                         </Link>
                                     </li>
                                     <li>

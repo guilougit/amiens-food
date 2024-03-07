@@ -27,7 +27,7 @@ const PartnerDetail = async ({params}:{params: {slug: string}}) => {
     return (
         <>
             {/* WITH BG ORANGE*/}
-            
+            {/*
             <section className="relative">
                 <div
                     className="absolute inset-0 rounded-bl-[100px] bg-gradient-to-r from-[#FB943C] via-[#FBBF26] to-[#FB943C] pointer-events-none -z-10"
@@ -88,10 +88,11 @@ const PartnerDetail = async ({params}:{params: {slug: string}}) => {
 
                 </div>
             )}
+            */}
             
             
             {/* WITHOUT BG WHITE CARD ORANGE*/}
-            {/*
+            
             <div className={"pt-24 md:pt-32 pb-20 mx-8 md:mx-24"} data-aos={"fade-up"}>
                 <h1 className={"h3 text-[#FA8419]"}>{partnerFetch.partner.name}</h1>
 
@@ -104,14 +105,14 @@ const PartnerDetail = async ({params}:{params: {slug: string}}) => {
                         <div>
                             <h3 className={"text-xl mt-3 font-semibold "}>Profitez des offres de ce restaurant</h3>
     
-                            <div className={"grid grid-cols-1 lg:grid-cols-2 gap-4 mt-8"}>
+                            <div className={"grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8"}>
                                 {partnerFetch.partner.offers.map((offer: any) => (
                                     <div
                                         key={offer.id}
-                                        className={"shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] hover:-translate-y-1.5 transition duration-300 rounded-xl"}>
+                                        className={"shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] shadow-slate-300 hover:-translate-y-1.5 transition duration-300 rounded-xl"}>
                                         <Card className={" border-none min-h-[120px] flex justify-center items-center bg-primary"}>
                                             <CardContent className={"p-0"}>
-                                                <p className={"font-extrabold text-xl text-white"}>
+                                                <p className={"font-extrabold text-2xl text-white"}>
                                                     {offer.text}
                                                 </p>
     
@@ -144,7 +145,7 @@ const PartnerDetail = async ({params}:{params: {slug: string}}) => {
                     </div>
                 )}
             </div>  
-            */}
+            
             
             
         </>

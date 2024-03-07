@@ -23,7 +23,7 @@ const AboutPage = () => {
                             {/* Content */}
                             <h1 className="text-4xl sm:text-6xl font-bold text-slate-800 mb-6 leading-[1.6] sm:leading-[1.2] text-center"
                             >
-                                Qui sommes-nous ?
+                                Qui suis-je ?
                             </h1>
                         </div>
                     </div>

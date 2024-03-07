@@ -15,10 +15,11 @@ import {Button} from "@/src/components/ui/button";
 import {CheckoutForm, CheckoutFormRef} from "@/src/components/v2/forms/checkout-form";
 import {useEffect, useRef, useState} from "react";
 import {useSession} from "next-auth/react";
+import {MoveRight} from "lucide-react";
 
-type Variant = "solid" | "default" | "link";
+type Variant = "solid" | "default" | "link" | "footer";
 
-export const CheckoutButton = ({variant = "default"}: { variant?: Variant }) => {
+export const CheckoutButton = ({variant = "default", size = "normal"}: { variant?: Variant , size?: "normal" | "large"}) => {
     const {data: session, status} = useSession()
 
     const [currentStep, setCurrentStep] = useState(0)
@@ -50,27 +51,22 @@ export const CheckoutButton = ({variant = "default"}: { variant?: Variant }) => 
                         <>
                             {variant === "default" ? (
                                 <div
-                                    className="btn-sm inline-flex items-center text-slate-800 bg-gray-50 hover:bg-gray-100 group shadow-sm"
+                                    className={`btn-sm inline-flex items-center text-slate-800 bg-gray-50 hover:bg-gray-100 group ${size === "large" ? 'p-4 text-xl md:px-4 md:py-2 md:text-base' : '' } shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] shadow-black`}
                                 >
                                     {"J'achète ma carte"}
-                                    <span
-                                        className="tracking-normal text-sky-400 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-2">
-                                        <svg className="fill-primary" width="12" height="10"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                          <path
-                                              d="M1 6.002h7.586L6.293 8.295a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.416l-4-4a1 1 0 0 0-1.414 1.416l2.293 2.293H1a1 1 0 1 0 0 2Z"/>
-                                        </svg>
-                                    </span>
+                                    <MoveRight className={`tracking-normal text-primary group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-2 ${size === 'large' ? 'w-[30px] h-[30px] md:w-[22px] md:h-[22px] text-4xl md:text-base' : ''}`} />
                                 </div>
                             ) : variant === "solid" ? (
 
                                 <Button color={"primary"} className={"font-bold"} asChild>
                                     <span>{"J'achète ma carte"}</span>
                                 </Button>
-                            ) : (
+                            ) : variant === "link" ? (
                                 <>
                                     <span className={"underline"}>Clique ici</span>
                                 </>
+                            ) : (
+                                <span className={"underline"}>{"J'achète"} ma carte</span>
                             )}
                         </>
                     )}
@@ -79,7 +75,7 @@ export const CheckoutButton = ({variant = "default"}: { variant?: Variant }) => 
                     <div className={"overflow-auto"}>
                         <DrawerHeader className={"mx-auto"}>
                             <DrawerTitle>
-                                <p className={"h4 text-center"}>Achète ta carte Amiens food</p>
+                                <p className={"h4 text-center text-3xl"}>Génère ta carte en <br/> 60 secondes chrono</p>
                             </DrawerTitle>
                             <DrawerDescription>
                             <span className={"text-gray-500 text-center block"}>

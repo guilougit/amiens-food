@@ -32,10 +32,9 @@ export const CheckoutChoicePrice = forwardRef<CheckoutPriceRef>((props: any, ref
                         /{price === Price.Monthly ? "mois" : "an"}
 
                     </h4>
-                    {price === Price.Annually && <p className={"text-muted-foreground italic text-xs"}>Soit {(prices.annually.amount / 12).toFixed(2)} € par mois</p>}
                 </CardHeader>
                 <CardDescription className={"text-left pl-6 pr-2"}>
-                    Profite de réductions instantanées sur {"l'ensemble"} de nos restaurants partenaires
+                    Profite de réductions instantanées sur {"l'ensemble"} de nos commerces partenaires
                 </CardDescription>
                 
                 <CardContent className={"flex flex-col gap-2 mt-6"}>

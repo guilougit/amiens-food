@@ -12,16 +12,17 @@ export const metadata: Metadata = {
 
 const BlogPage = () => {
     return (
-        <>
+        <div className={"relative"}>
+            {/* Bg */}
+            <div
+                className="absolute inset-0  mb-12 md:mb-0 bg-gradient-to-r from-[#FB943C] via-[#FBBF26] to-[#FB943C] pointer-events-none -z-10"
+                aria-hidden="true"
+            />
             {/* HERO BANNER */}
-            <section className="relative">
-                {/* Bg */}
-                <div
-                    className="absolute inset-0 rounded-bl-[100px] mb-12 md:mb-0 bg-gradient-to-r from-[#FB943C] via-[#FBBF26] to-[#FB943C] pointer-events-none -z-10"
-                    aria-hidden="true"
-                />
-                <div className="max-w-6xl mx-auto px-4 sm:px-6" >
-                    <div className="pt-24 md:pt-40 pb-16">
+            <section className="relative bg-white pb-8 md:pb-24 rounded-bl-[100px]">
+  
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 bg-white rounded-b-[100px]">
+                    <div className="pt-24 md:pt-40">
                         {/* Hero content */}
                         <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left">
                             {/* Content */}
@@ -35,16 +36,16 @@ const BlogPage = () => {
 
             </section>
 
-            <div className={"grid grid-cols-1 lg:grid-cols-2 mx-6 mt-8 gap-24"} data-aos={"fade-up"}>
+            <div className={"grid grid-cols-1 lg:grid-cols-2 mx-0 mt-8 gap-24"} data-aos={"fade-up"}>
                 <div>
                     {/*  Page header */}
-                    <div className="max-w-3xl pb-8 text-center md:text-left">
+                    <div className="max-w-3xl pb-8 text-center md:text-left mt-6">
                         <h1 className="h3">Notre compte instagram</h1>
 
                         <div className={"flex justify-center mt-6 gap-3"}>
 
                             <Link href={"https://www.instagram.com/amiensfood"} target={"_blank"}
-                                  className={"flex gap-3 border px-3 py-2 rounded-lg cursor-pointer"}><Instagram/> @amiensfood</Link>
+                                  className={"flex gap-3 border px-3 py-2 rounded-lg cursor-pointer bg-white"}><Instagram/> @amiensfood</Link>
                         </div>
 
                     </div>
@@ -59,7 +60,7 @@ const BlogPage = () => {
 
                             {/*  Page header */}
                             <div className="max-w-3xl pb-12 md:pb-20 text-center md:text-left">
-                                <h1 className="h3" data-aos="fade-up">Blog</h1>
+                                <h1 className="h3" data-aos="fade-up">Actualité</h1>
                             </div>
 
                             {/*  Featured article */}
@@ -91,7 +92,7 @@ const BlogPage = () => {
                                         <footer className="flex items-center mt-2">
                                             <div>
                                                 <Link href="#"
-                                                      className="font-medium text-primary transition duration-150 ease-in-out">Amiens
+                                                      className="font-medium transition duration-150 ease-in-out">Amiens
                                                     food</Link>
                                                 <span className="text-gray-700"> - </span>
                                                 <span className="text-gray-500">12/08/2023</span>
@@ -116,7 +117,7 @@ const BlogPage = () => {
                     </div>
                 </section>
             </div>
-        </>
+        </div>
     )
 }
 
