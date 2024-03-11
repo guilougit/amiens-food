@@ -42,13 +42,13 @@ export async function POST(request : Request) {
         if(!params.afterPayment || (params.afterPayment && !user.card)) {
             // Create the picture
             const workDirPath = process.cwd()
-            const pathImage = "public/img/card/front.png"
-            const pathFont = "public/fonts/fnt/open-sans-32-black.fnt"
+            const pathImage = "front.png"
+            const pathFont = "open-sans-32-black.fnt"
             
-            const baseImageBuffer = await fs.readFile('https://devamiensfood.s3.eu-west-3.amazonaws.com/files/front.png');
+            const baseImageBuffer = await fs.readFile(path.join(workDirPath, pathImage));
             const baseImage = await Jimp.read(baseImageBuffer);
 
-            const font = await Jimp.loadFont('https://devamiensfood.s3.eu-west-3.amazonaws.com/files/open-sans-32-black.fnt');
+            const font = await Jimp.loadFont(path.join(workDirPath, pathFont));
             
             const expiredDate = user.StripeAccount?.expireAt ? DateTime.fromISO(user.StripeAccount?.expireAt.toISOString()).toFormat('dd/MM/yyyy') : ''
             
