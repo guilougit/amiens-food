@@ -46,14 +46,16 @@ export default function Hero({ texts }: { texts: TextCustom[] }) {
                     }}
                 ></p>
 
+                {!texts.find(text => text.code === "LANDING_HERO_SUBTITLE")?.text && (
+                 <p className={"md:mt-24"}></p>   
+                )}
+
                 {/* Buttons */}
                 <div className={"relative"}>
                   <div
-                      className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4 mb-12 md:mb-0 absolute left-1/2 top-36 transform -translate-x-1/2 z-10"
+                      className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4 mb-12 md:mb-0 absolute left-1/2 top-36 sm:top-0 sm:left-0 transform -translate-x-1/2 sm:translate-x-0 z-10"
                   >
-                    <div>
                       <CheckoutButton variant={"default"} size={"large"}/>
-                    </div>
                   </div>
                 </div>
 

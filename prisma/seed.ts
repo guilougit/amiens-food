@@ -7,7 +7,7 @@ async function main() {
         create: {
             code: 'LANDING_HERO_SUBTITLE',
             libelle: "Description bannière page d'accueil",
-            text: "Profite de tes restaurants préférés à prix réduits <br className='hidden md:block' /> avec Amiens food."
+            text: ""
         }
     })
 

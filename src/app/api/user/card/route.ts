@@ -8,6 +8,7 @@ import {GetObjectCommand, ObjectCannedACL, PutObjectCommand, S3Client} from "@aw
 import {Resend} from "resend";
 import {DateTime} from "luxon";
 import {deleteFileOnAws} from "@/src/utils/aws";
+import path from "node:path";
 
 const s3 = new S3Client({
     region: process.env.AWS_REGION,
@@ -40,10 +41,14 @@ export async function POST(request : Request) {
         // Generate new image
         if(!params.afterPayment || (params.afterPayment && !user.card)) {
             // Create the picture
-            const baseImageBuffer = await fs.readFile('public/img/card/front.png');
+            const workDirPath = process.cwd()
+            const pathImage = "public/img/card/front.png"
+            const pathFont = "public/fonts/fnt/open-sans-32-black.fnt"
+            
+            const baseImageBuffer = await fs.readFile(path.join(workDirPath, pathImage));
             const baseImage = await Jimp.read(baseImageBuffer);
 
-            const font = await Jimp.loadFont('public/fonts/fnt/open-sans-32-black.fnt');
+            const font = await Jimp.loadFont(path.join(workDirPath, pathFont));
             
             const expiredDate = user.StripeAccount?.expireAt ? DateTime.fromISO(user.StripeAccount?.expireAt.toISOString()).toFormat('dd/MM/yyyy') : ''
             
