@@ -9,6 +9,8 @@ import {Resend} from "resend";
 import {DateTime} from "luxon";
 import {deleteFileOnAws} from "@/src/utils/aws";
 import path from "node:path";
+import sharp from "sharp";
+import TextToSVG from 'text-to-svg';
 
 const s3 = new S3Client({
     region: process.env.AWS_REGION,
@@ -41,7 +43,7 @@ export async function POST(request : Request) {
         // Generate new image
         if(!params.afterPayment || (params.afterPayment && !user.card)) {
             // Create the picture
-            
+            /*
             const baseImageBuffer = await fs.readFile(path.join(process.cwd(), 'public', 'front.png'));
             const baseImage = await Jimp.read(baseImageBuffer);
 
@@ -72,6 +74,70 @@ export async function POST(request : Request) {
             baseImage.resize(800, Jimp.AUTO);
 
             const compositedImageBuffer = await baseImage.quality(80).getBufferAsync(Jimp.MIME_PNG);
+            
+             */
+            const baseImageBuffer = await fs.readFile(path.join(process.cwd(), 'public', 'front.png'));
+
+            // Créer une instance sharp avec l'image de base
+            let baseImage = sharp(baseImageBuffer);
+
+            // Récupérer les données utilisateur de la requête
+
+            // Formater la date d'expiration si elle existe
+            const expiredDate = user.StripeAccount?.expireAt ? DateTime.fromISO(user.StripeAccount?.expireAt.toISOString()).toFormat('dd/MM/yyyy') : '';
+
+            const createTextSvg = (text: string) => {
+                const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50">
+                            <text x="5" y="25" font-size="28" fill="black" font-family="Open sans">${text}</text>
+                        </svg>`;
+                return Buffer.from(svg);
+
+            }
+            
+            // Ajouter du texte sur l'image
+            const overlays = [];
+
+            overlays.push({ input: createTextSvg(user.firstname ?? ''), top: 248, left: 255 });
+            overlays.push({ input: createTextSvg(user.lastname ?? ''), top: 315, left: 220 });
+            overlays.push({ input: createTextSvg(user.surname ?? ''), top: 385, left: 245 });
+            const nb = user.card_number ?? 0;
+            overlays.push({ input: createTextSvg(nb.toString()), top: 45, left: getCardNumberPosition(nb) });
+            overlays.push({ input: createTextSvg(expiredDate ? expiredDate : ''), top: 450, left: 330 });
+
+            // Ajouter une image de profil sur l'image si elle existe
+            if (user.card) {
+                try {
+                    // Définition des paramètres de la commande pour obtenir l'objet depuis S3
+                    const params = {
+                        Bucket: process.env.S3_BUCKET_NAME,
+                        Key: user.image as string,
+                    }
+                    const command = new GetObjectCommand(params);
+                    const response = await s3.send(command);
+
+                    if(response.Body) {
+                        const profileImageBuffer = await response.Body.transformToByteArray()
+
+                        // Ajout de l'image récupérée dans le tableau overlays
+                        const resizedImage = await sharp(profileImageBuffer)
+                            .resize({ width: 180, height: 180, fit: 'cover' })
+                            .toBuffer()
+                        
+                        overlays.push({ input: resizedImage, top: 14, left: 13 });
+                    }
+
+                } catch (error) {
+                    console.error("Error retrieving object from S3:", error);
+                    // Gestion de l'erreur
+                }
+            }
+            baseImage = baseImage.composite(overlays);
+
+            // Redimensionner l'image
+            baseImage = baseImage.resize(800);
+
+            // Convertir l'image en buffer
+            const compositedImageBuffer = await baseImage.png().toBuffer();
             
             // delete old card
             if(user.card) {
@@ -141,18 +207,18 @@ const sendCardByEmail = async (path: string) => {
 const getCardNumberPosition = (card_number: number) => {
     switch (card_number.toString().length) {
         case 1:
-            return 950;
+            return 745  ;
         case 2:
-            return 940;
+            return 735;
         case 3:
-            return 930;
+            return 725;
         case 4:
-            return 920;
+            return 715;
         case 5:
-            return 910;
+            return 705;
         case 6:
-            return 902;
+            return 700;
         default:
-            return 902;
+            return 700;
     }
 }
