@@ -35,7 +35,7 @@ export const TabSubscription = ({user}: { user: any }) => {
                                    className={"mt-2"}>Actif</Badge>
 
                         ) : (
-                            <Badge variant={"destructive"} className={"mt-2"}>Abonnement annulé</Badge>
+                            <Badge variant={"destructive"} className={"mt-2"}>Abonnement inactif</Badge>
                         )}
                     </div>
 
