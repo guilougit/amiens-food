@@ -41,14 +41,11 @@ export async function POST(request : Request) {
         // Generate new image
         if(!params.afterPayment || (params.afterPayment && !user.card)) {
             // Create the picture
-            const workDirPath = process.cwd()
-            const pathImage = "front.png"
-            const pathFont = "open-sans-32-black.fnt"
             
-            const baseImageBuffer = await fs.readFile(path.join(workDirPath, pathImage));
+            const baseImageBuffer = await fs.readFile(path.join(process.cwd(), 'public', 'front.png'));
             const baseImage = await Jimp.read(baseImageBuffer);
 
-            const font = await Jimp.loadFont(path.join(workDirPath, pathFont));
+            const font = await Jimp.loadFont(path.join(process.cwd(), 'public', 'open-sans-32-black.fnt'));
             
             const expiredDate = user.StripeAccount?.expireAt ? DateTime.fromISO(user.StripeAccount?.expireAt.toISOString()).toFormat('dd/MM/yyyy') : ''
             
