@@ -43,9 +43,6 @@ export const TabSubscription = ({user}: { user: any }) => {
                         <p className={"text-sm"}>
                             <strong>${prices.annually.amount} €</strong>par an
                         </p>
-                        <p className={"text-muted-foreground italic text-xs"}>
-                            Soit {(prices.annually.amount / 12).toFixed(2)} € par mois
-                        </p>
                     </div>
 
                 </CardHeader>
