@@ -36,7 +36,7 @@ const BlogPage = () => {
 
             </section>
 
-            <div className={"grid grid-cols-1 lg:grid-cols-2 mx-0 mt-8 gap-24"} data-aos={"fade-up"}>
+            <div className={"grid grid-cols-1 lg:grid-cols-2 mx-8 mt-8 gap-24"} data-aos={"fade-up"}>
                 <div>
                     {/*  Page header */}
                     <div className="max-w-3xl pb-8 text-center md:text-left mt-6">
