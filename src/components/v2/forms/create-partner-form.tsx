@@ -12,6 +12,7 @@ import * as React from "react";
 import {BadgeInfo, Plus, PlusCircle, PlusSquare, Trash, Trash2} from "lucide-react";
 import {toast} from "sonner";
 import {useRouter} from "next/navigation";
+import {Textarea} from "@/src/components/ui/textarea";
 
 const formSchema = z.object({
     name: z.string({required_error: ""}).min(1),
@@ -129,7 +130,7 @@ export const CreatePartnerForm = ({defaultPartner, isEditing = false}:{defaultPa
                                 <FormItem>
                                     <FormLabel>Slug</FormLabel>
                                     <FormControl>
-                                        <Input {...field} maxLength={25} value={slug}/>
+                                        <Input {...field} value={slug}/>
                                     </FormControl>
                                 </FormItem>
                             )}
@@ -141,7 +142,7 @@ export const CreatePartnerForm = ({defaultPartner, isEditing = false}:{defaultPa
                                 <FormItem>
                                     <FormLabel>Description</FormLabel>
                                     <FormControl>
-                                        <Input type={"text"} {...field} maxLength={25}/>
+                                        <Textarea {...field}/>
                                     </FormControl>
                                 </FormItem>
                             )}
