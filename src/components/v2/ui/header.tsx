@@ -5,13 +5,13 @@ import Logo from '@/public/img/logo/logo-no-text.png'
 import MobileMenu from "@/src/components/v2/ui/mobile-menu";
 import {CheckoutButton} from "@/src/components/checkout-button";
 import {auth} from "@/src/auth";
-import {$Enums} from ".prisma/client";
+import {$Enums} from "@prisma/client";
 import Roles = $Enums.Roles;
 
 export default async function Header() {
-    
+
     const user = await auth()
-    
+
     return (
         <header className="absolute w-full z-30">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">

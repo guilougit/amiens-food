@@ -8,7 +8,7 @@ import {Button} from "@/src/components/ui/button";
 import {CheckoutButton} from "@/src/components/checkout-button";
 import {HiMenuAlt3} from "react-icons/hi";
 import {useSession} from "next-auth/react";
-import {$Enums} from ".prisma/client";
+import {$Enums} from "@prisma/client";
 import Roles = $Enums.Roles;
 
 export default function MobileMenu() {
