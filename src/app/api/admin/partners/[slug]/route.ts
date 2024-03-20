@@ -77,6 +77,12 @@ export async function PATCH(request: Request, params: {params: {slug: string}}) 
         }
 
         // ******** DATA ********
+        
+        // delete previous offers
+        await prisma.offer.deleteMany({
+            where: {partnerId: partner.id}
+        })
+        
         await prisma.partner.update({
             where: {id: partner.id},
             data: {
@@ -84,6 +90,11 @@ export async function PATCH(request: Request, params: {params: {slug: string}}) 
                 slug: partner.slug,
                 description: partner.description,
                 iframe: partner.iframe,
+                offers: {
+                    createMany: {
+                        data: partner.offers.map((text: string) => ({ text }))
+                    }
+                }
             }
         })
         
