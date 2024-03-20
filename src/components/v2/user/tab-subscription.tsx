@@ -30,7 +30,7 @@ export const TabSubscription = ({user}: { user: any }) => {
                 <CardHeader className={"flex flex-row justify-between"}>
                     <div>
                         <h3 className={"text-lg md:text-xl text-sm"}>Abonnement annuel</h3>
-                        {user?.StripeAccount.sub_valid ? (
+                        {user?.StripeAccount?.sub_valid ? (
                             <Badge variant={"success"}
                                    className={"mt-2"}>Actif</Badge>
 
@@ -47,7 +47,7 @@ export const TabSubscription = ({user}: { user: any }) => {
 
                 </CardHeader>
                 <CardContent>
-                    {user?.StripeAccount.sub_valid && (
+                    {user?.StripeAccount?.sub_valid && (
                         <>
                             <div className={"flex items-center gap-1.5"}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"

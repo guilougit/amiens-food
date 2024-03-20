@@ -7,8 +7,13 @@ import Image from "next/image";
 import {Button} from "@/src/components/ui/button";
 import {CheckoutButton} from "@/src/components/checkout-button";
 import {HiMenuAlt3} from "react-icons/hi";
+import {useSession} from "next-auth/react";
+import {$Enums} from ".prisma/client";
+import Roles = $Enums.Roles;
 
 export default function MobileMenu() {
+  const {data: session, status} = useSession()
+
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
 
   const trigger = useRef<HTMLButtonElement>(null)
@@ -79,6 +84,17 @@ export default function MobileMenu() {
                   Mon compte
                 </Link>
               </li>
+              {(session?.user && session.user.role === Roles.ADMIN) && (
+                  <li>
+                    <Link
+                        href="/admin"
+                        className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
+                        onClick={() => setMobileNavOpen(false)}
+                    >
+                      Administration
+                    </Link>
+                  </li>
+              )}
               <li className="pb-2 border-b border-gray-200 dark:border-gray-800">
                 <Link
                     href="/contact"

@@ -4,8 +4,13 @@ import Image from "next/image";
 import Logo from '@/public/img/logo/logo-no-text.png'
 import MobileMenu from "@/src/components/v2/ui/mobile-menu";
 import {CheckoutButton} from "@/src/components/checkout-button";
+import {auth} from "@/src/auth";
+import {$Enums} from ".prisma/client";
+import Roles = $Enums.Roles;
 
 export default async function Header() {
+    
+    const user = await auth()
     
     return (
         <header className="absolute w-full z-30">
@@ -56,6 +61,14 @@ export default async function Header() {
                                 <div
                                     className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>
                             </li>
+                            {(user?.user && user.user.role === Roles.ADMIN) && (
+                                <li className={"text-lg text-slate-800 font-[500] group"}>
+                                    <Link href={'/admin'}
+                                          className={"group-hover:text-[#E66E04] transition-all"}>Administration</Link>
+                                    <div
+                                        className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>
+                                </li>
+                            )}
                         </ul>
                     </div>
 
