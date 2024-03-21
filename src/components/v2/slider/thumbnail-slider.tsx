@@ -20,7 +20,7 @@ export const ThumbnailSlider = ({images}:{images: []}) => {
     []
 
     return (
-        <div className={"max-w-[600px]"}>
+        <div className={"max-w-[500px]"}>
             <Swiper
                 style={{
                     // @ts-ignore

@@ -13,6 +13,7 @@ import {BadgeInfo, Plus, PlusCircle, PlusSquare, Trash, Trash2} from "lucide-rea
 import {toast} from "sonner";
 import {useRouter} from "next/navigation";
 import {Textarea} from "@/src/components/ui/textarea";
+import {HelpMapEmbedDialog} from "@/src/components/help-map-embed-dialog";
 
 const formSchema = z.object({
     name: z.string({required_error: ""}).min(1),
@@ -155,7 +156,7 @@ export const CreatePartnerForm = ({defaultPartner, isEditing = false}:{defaultPa
                                 <FormItem>
                                     <FormLabel className={"flex items-center gap-1"}>
                                         Lien carte
-                                        <BadgeInfo size={20}/>
+                                        <HelpMapEmbedDialog />
                                     </FormLabel>
                                     <FormControl>
                                         <Input type={"url"} {...field}/>
