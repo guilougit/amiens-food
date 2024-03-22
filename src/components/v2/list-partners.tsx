@@ -93,9 +93,11 @@ export const ListPartnersLandingPage = () => {
 
                                 }}
                             >
-                                {partners.map((partner, index: number) => (
+                                {partners.map((partner: any, index: number) => (
                                     <SwiperSlide key={index} className={"h-auto"}>
-                                        {<PartnerCard item={partner}/>}
+                                        <Link href={`/partenaires/${partner.slug}`}>
+                                            {<PartnerCard item={partner}/>}
+                                        </Link>
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
