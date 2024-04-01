@@ -1,6 +1,17 @@
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
-async function main() {
+async function main() { 
+    //region PAGE D'ACCUEIL
+    await prisma.personnalize.upsert({
+        where: {libelle: "Titre page d'accueil"},
+        update: {},
+        create: {
+            code: 'LANDING_HERO_TITLE',
+            libelle: "Titre page d'accueil",
+            text: "Ta carte amiénoise pour tes sorties"
+        }
+    })
+
     await prisma.personnalize.upsert({
         where: {libelle: "Description bannière page d'accueil"},
         update: {},
@@ -67,7 +78,49 @@ async function main() {
             text: "Présente-la chez nos restaurants partenaires pour profiter des réductions instantanées."
         }
     })
+    //endregion
+
+    //region PAGE PARTENAIRE
+    await prisma.personnalize.upsert({
+        where: {libelle: "Titre liste des partenaires"},
+        update: {},
+        create: {
+            code: 'PARTNER_LIST_TITLE',
+            libelle: "Titre liste des partenaires",
+            text: "Plus de X restaurants partenaires"
+        }
+    })
+    await prisma.personnalize.upsert({
+        where: {libelle: "Sous-titre liste des partenaires"},
+        update: {},
+        create: {
+            code: 'PARTNER_LIST_SUBTITLE',
+            libelle: "Sous-titre liste des partenaires",
+            text: "[Ajouter une petite phrase d'accroche]"
+        }
+    })
+    //endregion
     
+    //region PAGE CONTACT
+    await prisma.personnalize.upsert({
+        where: {libelle: "Titre page contact"},
+        update: {},
+        create: {
+            code: 'CONTACT_TITLE',
+            libelle: "Titre page contact",
+            text: "Contactez-nous"
+        }
+    })
+    await prisma.personnalize.upsert({
+        where: {libelle: "Titre formulaire page contact"},
+        update: {},
+        create: {
+            code: 'CONTACT_FORM_TITLE',
+            libelle: "Titre formulaire page contact",
+            text: "Envoyez-nous un message"
+        }
+    })
+    //endregion
     
 }
 main()

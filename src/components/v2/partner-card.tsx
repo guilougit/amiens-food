@@ -7,7 +7,7 @@ export const PartnerCard = ({item}:{item: {title:string, offers: {id: string, te
             <CardHeader className={"relative"}>
                 <Avatar>
                     <AvatarImage
-                        className={"absolute rounded-full -top-8 left-1/2 transform -translate-x-1/2 w-[90px] h-[90px]"}
+                        className={"absolute rounded-full -top-8 left-1/2 transform -translate-x-1/2 w-[90px] h-[90px] border-2"}
                         alt={item.title}
                         src={`${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${item.logo}`}
                         width={100}

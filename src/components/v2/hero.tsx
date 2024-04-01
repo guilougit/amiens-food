@@ -30,10 +30,12 @@ export default function Hero({ texts }: { texts: TextCustom[] }) {
                     className="text-4xl sm:text-6xl font-bold text-slate-800 mb-6 leading-[1.6] sm:leading-[1.2] uppercase"
                     data-aos="fade-up"
                     data-aos-delay="100"
+                    dangerouslySetInnerHTML={{
+                      __html: texts.find(
+                          (text) => text.code === "LANDING_HERO_TITLE"
+                      )?.text as string,
+                    }}
                 >
-                  Ta carte  <br/>
-                  amiénoise pour tes sorties <br/>{" "}
-
                 </h1>
                 <p
                     className="text-lg text-slate-700 mb-8"

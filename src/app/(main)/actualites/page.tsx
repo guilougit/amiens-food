@@ -4,13 +4,19 @@ import PostListPagination from "@/src/components/v2/blog/post-list-pagination";
 import InstaPosts from "@/src/components/v2/instagram/instagram";
 import type {Metadata} from "next";
 import {Instagram, Mail} from "lucide-react";
+import {TextCustom} from "@/src/utils/types";
+import {Suspense} from "react";
+import LoadingInstagram from "@/src/components/v2/instagram/loading-insta";
 
 export const metadata: Metadata = {
     title: 'Amiens food - Blog',
     description: 'Retrouvez nos dernières actualités Amiens Food sur notre blog',
 }
 
-const BlogPage = () => {
+const BlogPage = async () => {
+
+    //const posts = await fetch(`${process.env.APP_URL}/api/posts`, {cache: 'no-store'}).then(res => res.json())
+    
     return (
         <div className={"relative"}>
             {/* Bg */}
@@ -20,7 +26,7 @@ const BlogPage = () => {
             />
             {/* HERO BANNER */}
             <section className="relative bg-white pb-8 md:pb-24 rounded-bl-[100px]">
-  
+
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 bg-white rounded-b-[100px]">
                     <div className="pt-24 md:pt-40">
                         {/* Hero content */}
@@ -36,8 +42,8 @@ const BlogPage = () => {
 
             </section>
 
-            <div className={"grid grid-cols-1 lg:grid-cols-2 mx-8 mt-8 gap-24"} data-aos={"fade-up"}>
-                <div>
+            <div className={"grid grid-cols-1 lg:grid-cols-1 mx-8 mt-8 gap-24"}>
+                <div className={"max-w-3xl md:mx-auto pb-12"}>
                     {/*  Page header */}
                     <div className="max-w-3xl pb-8 text-center md:text-left mt-6">
                         <h1 className="h3">Notre compte instagram</h1>
@@ -51,10 +57,12 @@ const BlogPage = () => {
                     </div>
 
                     <div>
-                        <InstaPosts/>
+                        <Suspense fallback={<LoadingInstagram/>}>
+                            <InstaPosts/>
+                        </Suspense>
                     </div>
                 </div>
-                <section className="relative">
+                <section className="relative hidden">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6">
                         <div className="pb-12 md:pb-20">
 

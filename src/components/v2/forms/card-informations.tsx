@@ -2,6 +2,7 @@ import {useFormContext} from "react-hook-form";
 import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/src/components/ui/form";
 import {Input} from "@/src/components/ui/input";
 import * as React from "react";
+import {Asterisk} from "lucide-react";
 
 export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean}) => {
     const form = useFormContext();
@@ -15,7 +16,10 @@ export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean
                         name={"firstname"}
                         render={({field}) => (
                             <FormItem className={"w-1/2"}>
-                                <FormLabel>Prénom</FormLabel>
+                                <FormLabel className={"flex"}>
+                                    Prénom
+                                    <sup><Asterisk size={12} color={"red"}  /></sup>
+                                </FormLabel>
                                 <FormControl>
                                     <Input placeholder="Matthieu" {...field} maxLength={25}/>
                                 </FormControl>
@@ -28,7 +32,10 @@ export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean
                         name={"lastname"}
                         render={({field}) => (
                             <FormItem className={"w-1/2"}>
-                                <FormLabel>Nom</FormLabel>
+                                <FormLabel className={"flex"}>
+                                    Nom
+                                    <sup><Asterisk size={12} color={"red"}/></sup>
+                                </FormLabel>
                                 <FormControl>
                                     <Input placeholder="Dumont" {...field} maxLength={25}/>
                                 </FormControl>
@@ -47,6 +54,7 @@ export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean
                         <FormControl>
                             <Input placeholder="Mat" {...field} maxLength={32}/>
                         </FormControl>
+                        <FormMessage />
                     </FormItem>
                 )}
             />
@@ -58,7 +66,10 @@ export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean
                         name={"email"}
                         render={({field}) => (
                             <FormItem>
-                                <FormLabel>Adresse email</FormLabel>
+                                <FormLabel className={"flex"}>
+                                    Adresse email
+                                    <sup><Asterisk size={12} color={"red"}/></sup>
+                                </FormLabel>
                                 <FormControl>
                                     <Input type={"email"} placeholder="matthieu.dumont@gmail.com" {...field} />
                                 </FormControl>
@@ -72,7 +83,10 @@ export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean
                         name={"password"}
                         render={({field}) => (
                             <FormItem>
-                                <FormLabel>Mot de passe</FormLabel>
+                                <FormLabel className={"flex"}>
+                                    Mot de passe
+                                    <sup><Asterisk size={12} color={"red"}/></sup>
+                                </FormLabel>
                                 <FormControl>
                                     <Input type={"password"} {...field} />
                                 </FormControl>
@@ -86,7 +100,10 @@ export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean
                         name={"picture"}
                         render={({field: {ref, name, onBlur, onChange}}) => (
                             <FormItem>
-                                <FormLabel>Photo {"d'identité"}</FormLabel>
+                                <FormLabel className={"flex"}>
+                                    Photo {"d'identité"}
+                                    <sup><Asterisk size={12} color={"red"}/></sup>
+                                </FormLabel>
                                 <FormControl>
                                     <Input type={"file"} name={name} ref={ref} accept={"image/png, image/jpeg"}
                                            onBlur={onBlur} onChange={(e) => {

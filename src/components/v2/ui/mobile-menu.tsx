@@ -51,7 +51,7 @@ export default function MobileMenu() {
               <li>
                 <Link
                     href="/"
-                    className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
+                    className="flex text-gray-600 hover:text-gray-900 py-2 text-xl"
                     onClick={() => setMobileNavOpen(false)}
                 >
                   Accueil
@@ -60,7 +60,7 @@ export default function MobileMenu() {
               <li>
                 <Link
                     href="/partenaires"
-                    className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
+                    className="flex text-gray-600 hover:text-gray-900 py-2 text-xl"
                     onClick={() => setMobileNavOpen(false)}
                 >
                   Nos partenaires
@@ -69,7 +69,7 @@ export default function MobileMenu() {
               <li>
                 <Link
                     href="/actualites"
-                    className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
+                    className="flex text-gray-600 hover:text-gray-900 py-2 text-xl"
                     onClick={() => setMobileNavOpen(false)}
                 >
                   Actualités
@@ -78,7 +78,7 @@ export default function MobileMenu() {
               <li>
                 <Link
                     href="/compte"
-                    className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
+                    className="flex text-gray-600 hover:text-gray-900 py-2 text-xl"
                     onClick={() => setMobileNavOpen(false)}
                 >
                   Mon compte
@@ -88,17 +88,17 @@ export default function MobileMenu() {
                   <li>
                     <Link
                         href="/admin"
-                        className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
+                        className="flex text-gray-600 hover:text-gray-900 py-2 text-xl"
                         onClick={() => setMobileNavOpen(false)}
                     >
                       Administration
                     </Link>
                   </li>
               )}
-              <li className="pb-2 border-b border-gray-200 dark:border-gray-800">
+              <li className="pb-2 border-b border-gray-200">
                 <Link
                     href="/contact"
-                    className="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2 text-xl"
+                    className="flex text-gray-600 hover:text-gray-900 py-2 text-xl"
                     onClick={() => setMobileNavOpen(false)}
                 >
                   Contact

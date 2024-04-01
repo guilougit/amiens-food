@@ -34,9 +34,12 @@ export const TabSubscription = ({user}: { user: any }) => {
                             <Badge variant={"success"}
                                    className={"mt-2"}>Actif</Badge>
 
+                        ) : user?.StripeAccount.start ? (
+                            <Badge variant={"destructive"} className={"mt-2"}>Abonnement annulé</Badge>
                         ) : (
                             <Badge variant={"destructive"} className={"mt-2"}>Abonnement inactif</Badge>
-                        )}
+                        )
+                        }
                     </div>
 
                     <div>

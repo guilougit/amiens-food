@@ -40,15 +40,15 @@ export const CheckoutChoicePrice = forwardRef<CheckoutPriceRef>((props: any, ref
                 <CardContent className={"flex flex-col gap-2 mt-6"}>
                     <div className="flex gap-2">
                         <CheckCircle2 size={18} className="my-auto text-green-400" />
-                        <p className="pt-0.5 text-zinc-700 dark:text-zinc-300 text-sm">Carte dématérialisée</p>
+                        <p className="pt-0.5 text-zinc-700 text-sm">Carte dématérialisée</p>
                     </div>
                     <div className="flex gap-2">
                         <CheckCircle2 size={18} className="my-auto text-green-400" />
-                        <p className="pt-0.5 text-zinc-700 dark:text-zinc-300 text-sm">Toutes nos réductions disponibles</p>
+                        <p className="pt-0.5 text-zinc-700 text-sm">Toutes nos réductions disponibles</p>
                     </div>
                     <div className="flex gap-2">
                         <CheckCircle2 size={18} className="my-auto text-green-400" />
-                        <p className="pt-0.5 text-zinc-700 dark:text-zinc-300 text-sm">Assistance</p>
+                        <p className="pt-0.5 text-zinc-700 text-sm">Assistance</p>
                     </div>
                 </CardContent>
             </Card>

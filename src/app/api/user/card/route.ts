@@ -34,7 +34,7 @@ export async function POST(request : Request) {
         include: {StripeAccount: true}
     })
     
-    if(!user?.StripeAccount || (user.StripeAccount.expireAt && (user.StripeAccount.expireAt <= new Date()))) {
+    if(!user?.StripeAccount || (user.StripeAccount.expireAt && (user.StripeAccount.expireAt <= new Date())) || !user?.StripeAccount.start) {
         return NextResponse.json({success: false, error: 'Subscription invalid'})
     }
 
@@ -43,45 +43,12 @@ export async function POST(request : Request) {
         // Generate new image
         if(!params.afterPayment || (params.afterPayment && !user.card)) {
             // Create the picture
-            /*
-            const baseImageBuffer = await fs.readFile(path.join(process.cwd(), 'public', 'front.png'));
-            const baseImage = await Jimp.read(baseImageBuffer);
 
-            const path2 = path.join(process.cwd(), 'public/', 'open-sans-32-black.fnt')
-            console.log(path2)
-            const font = await Jimp.loadFont(path.join(process.cwd(), 'public/', 'open-sans-32-black.fnt'));
-            
-            const expiredDate = user.StripeAccount?.expireAt ? DateTime.fromISO(user.StripeAccount?.expireAt.toISOString()).toFormat('dd/MM/yyyy') : ''
-            
-            // Add text on card
-            baseImage.print(font, 330, 315, user.firstname ?? '');
-            baseImage.print(font, 285, 401, user.lastname ?? '');
-            baseImage.print(font, 315, 493, user.surname ?? '')
-            
-            // Card number
-            const nb = user.card_number ?? 0
-            baseImage.print(font, getCardNumberPosition(nb), 60, nb)
-            
-            // Expiration date
-            baseImage.print(font, 420, 585, expiredDate ? expiredDate : '')    
-            
-            // Add profile picture on card
-            if(user.image) {                 
-                const profileImage = await Jimp.read( `${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${user.image}`);
-                profileImage.resize(228, Jimp.AUTO);
-                baseImage.composite(profileImage, 17, 19);
-            }
-            baseImage.resize(800, Jimp.AUTO);
-
-            const compositedImageBuffer = await baseImage.quality(80).getBufferAsync(Jimp.MIME_PNG);
-            
-             */
             const baseImageBuffer = await fs.readFile(path.join(process.cwd(), 'public', 'front.png'));
 
             // Créer une instance sharp avec l'image de base
             let baseImage = sharp(baseImageBuffer);
-
-            // Récupérer les données utilisateur de la requête
+            
 
             // Formater la date d'expiration si elle existe
             const expiredDate = user.StripeAccount?.expireAt ? DateTime.fromISO(user.StripeAccount?.expireAt.toISOString()).toFormat('dd/MM/yyyy') : '';
@@ -105,7 +72,7 @@ export async function POST(request : Request) {
             overlays.push({ input: createTextSvg(expiredDate ? expiredDate : ''), top: 450, left: 330 });
 
             // Ajouter une image de profil sur l'image si elle existe
-            if (user.card) {
+            if (user.image) {
                 try {
                     // Définition des paramètres de la commande pour obtenir l'objet depuis S3
                     const params = {

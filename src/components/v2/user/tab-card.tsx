@@ -14,7 +14,7 @@ import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle} from "@/
 const formSchema = z.object({
     firstname: z.string({required_error: ""}).min(1),
     lastname: z.string({required_error: ""}).min(1),
-    surname: z.string({required_error: ""}).min(1),
+    surname: z.string({required_error: ""}).optional(),
     picture: z
         .custom<File>((v) => v instanceof File, {
             message: ' ',

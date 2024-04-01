@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     // Upload the image to S3
     const buffer = Buffer.from(await file.arrayBuffer())
     
-    // If account exist but no suscription -> override account data
+    // If account exists but no suscription -> override account data
     if(existingUser) {
         filename = `${existingUser.id}/picture/${Date.now()}`
         if(existingUser.StripeAccount && !!existingUser.StripeAccount.start) {

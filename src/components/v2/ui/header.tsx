@@ -19,13 +19,19 @@ export default async function Header() {
                     {/* Site branding */}
                     <div className="shrink-0 mr-4">
                         {/* Logo */}
-                        <Link className="flex items-center gap-x-2" href="/">
+                        <Link className="flex items-center gap-x-2 relative" href="/">
                             <Image
                                 src={Logo}
                                 width={80}
                                 alt="Logo Amiens food"
                                 aria-hidden="true"
+                                className={"z-10"}
                             />
+
+                            {/*
+                            <img src={"/img/stain.svg"} className={"absolute z-0 -left-3.5 -top-3.5 max-w-none"} width={100}  alt={""}/>
+                            */}
+                            <div className={"w-[200px] h-[250px] md:w-[180px] md:h-[250px] bg-white absolute rounded-full -left-24 -top-40 md:-top-44 md:-left-[52px]"}></div>
                         </Link>
                     </div>
 
