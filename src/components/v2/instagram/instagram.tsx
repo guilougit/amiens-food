@@ -1,6 +1,5 @@
 import {GridSlider} from "@/src/components/v2/slider/grid-slider";
 
-export const revalidate = 0;
 
 export default async function InstagramPosts() {
     
