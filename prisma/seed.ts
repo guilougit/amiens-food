@@ -8,7 +8,7 @@ async function main() {
         create: {
             code: 'LANDING_HERO_TITLE',
             libelle: "Titre page d'accueil",
-            text: "Ta carte amiénoise pour tes sorties"
+            text: "Ta carte <br> amiénoise pour tes sorties <br>"
         }
     })
 
