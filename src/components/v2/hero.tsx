@@ -22,12 +22,12 @@ export default function Hero({ texts }: { texts: TextCustom[] }) {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="pt-20 md:pt-40 md:pb-20">
             {/* Hero content */}
-            <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left">
+            <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left min-h-[300px] pt-3">
               {/* Content */}
               <div className="md:w-[600px]">
                 {/* Copy */}
                 <h1
-                    className="text-4xl sm:text-6xl font-bold text-slate-800 mb-6 leading-[1.6] sm:leading-[1.2] uppercase"
+                    className="text-4xl sm:text-6xl font-bold text-slate-800 mb-6 leading-[40px] md:leading-[60px] uppercase font-rubik "
                     data-aos="fade-up"
                     data-aos-delay="100"
                     dangerouslySetInnerHTML={{
