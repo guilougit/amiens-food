@@ -21,7 +21,7 @@ const LegalPage = () => {
             <div>
                 <h3 className={"h4 my-2"}>Développeurs du site</h3>
 
-                <p>Ce site a été réalisé par <strong>Rémy CASTRO</strong> et <strong>Guilhem DECLERCQ</strong></p>
+                <p className={"text-sm"}>Ce site a été réalisé par Rémy CASTRO et Guilhem DECLERCQ</p>
             </div>
 
             <div>
