@@ -24,11 +24,11 @@ const PartnerPage = async () => {
                         {/* Hero content */}
                         <div className="relative max-w-xl mx-auto md:max-w-none text-center md:text-left">
                             {/* Content */}
-                            <h1 className="text-4xl sm:text-6xl font-bold text-slate-800 mb-6 leading-[1.6] sm:leading-[1.2] text-center"
+                            <h1 className="text-4xl sm:text-6xl font-bold text-slate-800 mb-2 leading-[1.6] sm:leading-[1.2] text-center"
                             >
                                 {texts.find(text => text.code === "PARTNER_LIST_TITLE")?.text}
                             </h1>
-                            <p className="text-lg text-slate-700 mb-8 text-center">
+                            <p className="text-lg text-slate-700 mb-2 text-center">
                                 {texts.find(text => text.code === "PARTNER_LIST_SUBTITLE")?.text}
                             </p>
                         </div>
