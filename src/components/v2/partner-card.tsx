@@ -15,13 +15,13 @@ export const PartnerCard = ({item}:{item: {title:string, offers: {id: string, te
                 </Avatar>
                 <CardTitle className="text-center pt-8">{item.title}</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className={"p-2"}>
                 <ul className={"list-disc mx-6"}>
                     {item.offers.map((offer, index) => (
                         <li key={index}>
                             {offer.text}
                         </li>
-                    ))}
+                     ))}
                 </ul>
 
             </CardContent>

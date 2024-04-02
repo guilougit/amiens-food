@@ -26,18 +26,14 @@ export default function Hero({ texts }: { texts: TextCustom[] }) {
               {/* Content */}
               <div className="md:w-[600px]">
                 {/* Copy */}
-                <h1
+                <div
                     className="text-4xl sm:text-6xl font-bold text-slate-800 mb-6 leading-[40px] md:leading-[60px] uppercase font-rubik "
-                    data-aos="fade-up"
-                    data-aos-delay="100"
                     dangerouslySetInnerHTML={{
-                      __html: texts.find(
-                          (text) => text.code === "LANDING_HERO_TITLE"
-                      )?.text as string,
+                      __html: texts.find((text) => text.code === "LANDING_HERO_TITLE")?.text as string
                     }}
                 >
-                </h1>
-                <p
+                </div>
+                <div
                     className="text-lg text-slate-700 mb-8"
                     data-aos="fade-up"
                     data-aos-delay="200"
@@ -46,7 +42,7 @@ export default function Hero({ texts }: { texts: TextCustom[] }) {
                           (text) => text.code === "LANDING_HERO_SUBTITLE"
                       )?.text as string,
                     }}
-                ></p>
+                ></div>
 
                 {!texts.find(text => text.code === "LANDING_HERO_SUBTITLE")?.text && (
                  <p className={"md:mt-24"}></p>   

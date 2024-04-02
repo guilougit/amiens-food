@@ -2,6 +2,7 @@ import {forwardRef, useImperativeHandle, useState} from "react";
 import {Card, CardContent, CardDescription, CardHeader} from "@/src/components/ui/card";
 import {prices} from "@/src/config/prices";
 import {CheckCircle2} from "lucide-react";
+import {TextCustom} from "@/src/utils/types";
 
 export enum Price {
     Monthly = "monthly",
@@ -9,7 +10,8 @@ export enum Price {
 }
 
 export interface CheckoutPriceRef {
-    price: Price
+    price: Price,
+    texts: TextCustom[]
 }
 
 export const CheckoutChoicePrice = forwardRef<CheckoutPriceRef>((props: any, ref) => {
@@ -17,7 +19,8 @@ export const CheckoutChoicePrice = forwardRef<CheckoutPriceRef>((props: any, ref
     const [price, setPrice] = useState<Price>(Price.Annually)
 
     useImperativeHandle(ref, () => ({
-        price: price
+        price: price,
+        texts: []
     }));
     
     return (
@@ -26,7 +29,7 @@ export const CheckoutChoicePrice = forwardRef<CheckoutPriceRef>((props: any, ref
                 <CardHeader className={"flex flex-col pb-2 items-start space-y-0.5"}>
                     <h4 className={"text-left"}>
                         <span className={"font-extrabold text-2xl"}>
-                            {price === Price.Monthly ? prices.monthly.amount : prices.annually.amount}
+                            {price === Price.Monthly ? prices.monthly.amount : '9.90'}
                             €
                         </span>
                         /{price === Price.Monthly ? "mois" : "an"}
@@ -34,7 +37,7 @@ export const CheckoutChoicePrice = forwardRef<CheckoutPriceRef>((props: any, ref
                     </h4>
                 </CardHeader>
                 <CardDescription className={"text-left pl-6 pr-2"}>
-                    Profite de réductions instantanées sur {"l'ensemble"} de nos commerces partenaires
+                    {props.texts.find((text: TextCustom) => text.code === "PAYMENT_PRICE_SUBTITLE")?.text as string}
                 </CardDescription>
                 
                 <CardContent className={"flex flex-col gap-2 mt-6"}>

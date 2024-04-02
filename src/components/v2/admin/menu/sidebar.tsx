@@ -61,7 +61,6 @@ export default function AdminSidebar() {
                     <button
                         className="lg:hidden text-slate-500 hover:text-slate-400"
                         onClick={() => {
-                            console.log('ok')
                             setSidebarOpen(!sidebarOpen)
                         }}
                         aria-controls="sidebar"

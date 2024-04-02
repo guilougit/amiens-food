@@ -50,12 +50,6 @@ export default async function Header() {
                                     className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>
                             </li>
                             <li className={"text-lg text-slate-800 font-[500] group"}>
-                                <Link href={'/actualites'}
-                                      className={"group-hover:text-[#E66E04] transition-all"}>Actualités</Link>
-                                <div
-                                    className="w-0 transition-all duration-300 group-hover:w-full h-1 border-b-2 border-transparent group-hover:border-[#E66E04]"></div>
-                            </li>
-                            <li className={"text-lg text-slate-800 font-[500] group"}>
                                 <Link href={'/compte'}
                                       className={"group-hover:text-[#E66E04] transition-all"}>Mon compte</Link>
                                 <div

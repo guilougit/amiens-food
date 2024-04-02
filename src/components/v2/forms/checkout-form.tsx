@@ -1,11 +1,12 @@
 import {forwardRef, useEffect, useImperativeHandle, useRef, useState} from "react";
 import {CheckoutChoicePrice, CheckoutPriceRef, Price} from "@/src/components/v2/forms/checkout-choice-price";
 import {CheckoutAccount} from "@/src/components/v2/forms/checkout-account";
-import {z} from "zod";
+import {TextCustom} from "@/src/utils/types";
 
 export interface CheckoutFormRef {
     updateStep: (newStep: number) => void;
-    step: number
+    step: number,
+    texts: TextCustom[]
 }
 
 export const CheckoutForm = forwardRef<CheckoutFormRef>((props: any, ref) => {
@@ -16,13 +17,15 @@ export const CheckoutForm = forwardRef<CheckoutFormRef>((props: any, ref) => {
 
     useImperativeHandle(ref, () => ({
         updateStep: (newStep) => setStep(newStep),
-        step: step
+        step: step,
+        texts: []
     }));
     
     return (
         <>
-            {step === 0 && <CheckoutChoicePrice ref={checkoutChoicePriceRef}/>}
-            {step === 1 && <CheckoutAccount price={(checkoutChoicePriceRef.current && checkoutChoicePriceRef.current.price) ?? Price.Monthly} />}
+            {/*@ts-ignore*/}
+            {step === 0 && <CheckoutChoicePrice ref={checkoutChoicePriceRef} texts={props.texts} />}
+            {step === 1 && <CheckoutAccount price={(checkoutChoicePriceRef.current && checkoutChoicePriceRef.current.price) ?? Price.Monthly} texts={props.texts} />}
         </>
     )
     

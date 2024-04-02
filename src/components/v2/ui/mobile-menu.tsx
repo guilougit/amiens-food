@@ -68,15 +68,6 @@ export default function MobileMenu() {
               </li>
               <li>
                 <Link
-                    href="/actualites"
-                    className="flex text-gray-600 hover:text-gray-900 py-2 text-xl"
-                    onClick={() => setMobileNavOpen(false)}
-                >
-                  Actualités
-                </Link>
-              </li>
-              <li>
-                <Link
                     href="/compte"
                     className="flex text-gray-600 hover:text-gray-900 py-2 text-xl"
                     onClick={() => setMobileNavOpen(false)}

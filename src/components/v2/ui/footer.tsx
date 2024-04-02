@@ -41,12 +41,6 @@ export default function Footer() {
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link className="text-slate-500 underline hover:no-underline"
-                                              href="/actualites">
-                                            Actualités
-                                        </Link>
-                                    </li>
-                                    <li>
                                         <Link className="text-slate-500 underline hover:no-underline" href="/contact">
                                             Contact
                                         </Link>

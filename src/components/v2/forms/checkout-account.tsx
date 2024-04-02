@@ -14,6 +14,7 @@ import {CheckoutCardPreview} from "@/src/components/v2/forms/checkout-card-previ
 import {Separator} from "@/src/components/ui/separator";
 import {CardInformations} from "@/src/components/v2/forms/card-informations";
 import {toast} from "sonner";
+import {TextCustom} from "@/src/utils/types";
 
 const formSchema = z.object({
     firstname: z.string({required_error: ""}).min(1),
@@ -31,7 +32,7 @@ const formSchema = z.object({
         })
 })
 
-export const CheckoutAccount = ({price}:{price: Price}) => {
+export const CheckoutAccount = ({price, texts}:{price: Price, texts: TextCustom[]}) => {
     
     const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -95,8 +96,8 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
         <>
             <Form {...form}>
                 <div className={"grid grid-cols-1 md:grid-cols-2 h-full"}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className={"flex flex-col text-left gap-2.5 space-y-3"}>
-                        <h3 className={"text-xl font-semibold"}>1. Remplis tes informations</h3>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className={"flex flex-col text-left gap-2.5 space-y-3 md:pb-6"}>
+                        <h3 className={"text-xl font-semibold"}>{texts.find(text => text.code === "PAYMENT_FORM_INF")?.text}</h3>
                         
                         <CardInformations isRegistering={true} />
                         
@@ -112,7 +113,7 @@ export const CheckoutAccount = ({price}:{price: Price}) => {
                     <div className={"flex ml-0 gap-0 md:gap-6 md:ml-6 pb-10 mt-3 md:mt-0"}>
                         <Separator orientation={"vertical"} className={"hidden md:block"}/>
                         <div className={"w-full"}>
-                            <h3 className={"text-xl mb-0 md:mb-4 bold text-left font-semibold"}>2. Un aperçu de ta carte </h3>
+                            <h3 className={"text-xl mb-0 md:mb-4 bold text-left font-semibold"}>{texts.find(text => text.code === "PAYMENT_FORM_PREVIEW")?.text}</h3>
 
                             <CheckoutCardPreview/>
                         </div>

@@ -99,6 +99,15 @@ async function main() {
             text: "[Ajouter une petite phrase d'accroche]"
         }
     })
+    await prisma.personnalize.upsert({
+        where: {libelle: "Titre présentation des offres d'un partenaire"},
+        update: {},
+        create: {
+            code: 'PARTNER_OFFERS_DETAIL_TITLE',
+            libelle: "Titre présentation des offres d'un partenaire",
+            text: "Profitez des offres de ce restaurant"
+        }
+    })
     //endregion
     
     //region PAGE CONTACT
@@ -122,6 +131,76 @@ async function main() {
     })
     //endregion
     
+    //region PAIEMENT
+    await prisma.personnalize.upsert({
+        where: {libelle: "Titre page paiement"},
+        update: {},
+        create: {
+            code: 'PAYMENT_TITLE',
+            libelle: "Titre page paiement",
+            text: "Génère ta carte en <br> 60 secondes chrono"
+        }
+    })
+    await prisma.personnalize.upsert({
+        where: {libelle: "Sous-titre page paiement"},
+        update: {},
+        create: {
+            code: 'PAYMENT_SUBTITLE',
+            libelle: "Sous-titre page paiement",
+            text: "Une fois l'achat effectué, tu recevras ta carte sur ton adresse mail."
+        }
+    })
+    await prisma.personnalize.upsert({
+        where: {libelle: "Sous-titre étape 2 page paiement"},
+        update: {},
+        create: {
+            code: 'PAYMENT_SUBTITLE_2',
+            libelle: "Sous-titre étape 2 page paiement",
+            text: "On a besoin de quelques informations pour générer ta carte."
+        }
+    })
+    await prisma.personnalize.upsert({
+        where: {libelle: "Sous-titre prix page paiement"},
+        update: {},
+        create: {
+            code: 'PAYMENT_PRICE_SUBTITLE',
+            libelle: "Sous-titre prix page paiement",
+            text: "Profite de réductions instantanées sur l'ensemble de nos commerces partenaires."
+        }
+    })
+    await prisma.personnalize.upsert({
+        where: {libelle: "Page paiement : titre saisie des informations"},
+        update: {},
+        create: {
+            code: 'PAYMENT_FORM_INF',
+            libelle: "Page paiement : titre saisie des informations",
+            text: "1. Remplis tes informations"
+        }
+    })
+    await prisma.personnalize.upsert({
+        where: {libelle: "Page paiement : titre aperçu de la carte"},
+        update: {},
+        create: {
+            code: 'PAYMENT_FORM_PREVIEW',
+            libelle: "Page paiement : titre aperçu de la carte",
+            text: "2. Un aperçu de ta carte"
+        }
+    })
+    
+    //endregion
+
+    //region QUI SUIS-JE
+    await prisma.personnalize.upsert({
+        where: {libelle: "Page qui suis-je"},
+        update: {},
+        create: {
+            code: 'ABOUT_PAGE',
+            libelle: "Page qui suis-je",
+            text: ""
+        }
+    })
+
+    //endregion
 }
 main()
     .then(async () => {

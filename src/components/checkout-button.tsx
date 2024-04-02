@@ -16,6 +16,7 @@ import {CheckoutForm, CheckoutFormRef} from "@/src/components/v2/forms/checkout-
 import {useEffect, useRef, useState} from "react";
 import {useSession} from "next-auth/react";
 import {MoveRight} from "lucide-react";
+import {TextCustom} from "@/src/utils/types";
 
 type Variant = "solid" | "default" | "link" | "footer";
 
@@ -24,6 +25,7 @@ export const CheckoutButton = ({variant = "default", size = "normal", forceVisib
     size?: "normal" | "large",
     forceVisible?: boolean
 }) => {
+    const [texts, setTexts] = useState<TextCustom[]>([])
     const {data: session, status} = useSession()
 
     const [currentStep, setCurrentStep] = useState(0)
@@ -32,6 +34,14 @@ export const CheckoutButton = ({variant = "default", size = "normal", forceVisib
     const checkoutFormRef = useRef<CheckoutFormRef>(null);
 
     const [hideButton, setHideButton] = useState(false)
+
+    useEffect(() => {
+        fetch("/api/texts")
+            .then(res => res.json())
+            .then(res => {
+                setTexts(res)
+            })
+    }, []);
 
     const handleButtonClick = () => {
         if (checkoutFormRef.current) {
@@ -77,24 +87,27 @@ export const CheckoutButton = ({variant = "default", size = "normal", forceVisib
                     )}
                 </DrawerTrigger>
                 <DrawerContent>
-                    <DrawerHeader className={"mx-auto block h-[150px]"}>
+                    <DrawerHeader className={"mx-auto block h-[150px] md:pb-0"}>
                         <div>
                             <DrawerTitle>
-                                <p className={"h4 text-center text-3xl"}>Génère ta carte en <br/> 60 secondes chrono</p>
+                                <p className={"h4 text-center text-3xl"}
+                                    dangerouslySetInnerHTML={{__html: texts.find(text => text.code === "PAYMENT_TITLE")?.text as string}}
+                                />
                             </DrawerTitle>
                             <DrawerDescription>
                                 <span className={"text-gray-500 text-center block"}>
-                                    {currentStep === 0 ? "Une fois l'achat effectué, tu recevras ta carte sur ton adresse mail."
-                                        : "On a besoin de quelques informations pour générer ta carte."
+                                    {currentStep === 0 ? texts.find(text => text.code === "PAYMENT_SUBTITLE")?.text as string
+                                        : texts.find(text => text.code === "PAYMENT_SUBTITLE_2")?.text as string
                                     }
                                 </span>
                             </DrawerDescription>
                         </div>
                     </DrawerHeader>
-                    <div className={`p-4 ${currentStep === 1 && 'h-full pb-40'}`}>
+                    <div className={`p-4 md:pt-0 ${currentStep === 1 && 'h-full pb-40'}`}>
                         {/* Form */}
-                        <div className={"mt-2 mx-auto max-w-6xl w-full h-full overflow-auto p-1"}>
-                            <CheckoutForm ref={checkoutFormRef}/>
+                        <div className={"mt-2 md:mt-0 mx-auto max-w-6xl w-full h-full overflow-auto no-scrollbar p-1"}>
+                            {/*@ts-ignore*/}
+                            <CheckoutForm  ref={checkoutFormRef} texts={texts}/>
                         </div>
                     </div>
 

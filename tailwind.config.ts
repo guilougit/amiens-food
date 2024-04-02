@@ -82,6 +82,7 @@ const config = {
         bitter: ['var(--font-bitter)', 'sans-serif'],
         rubik: ['var(--font-rubik)', 'sans-serif'],
         opensans: ['var(--font-opensans)', 'sans-serif'],
+        ubuntu: ['var(--font-ubuntu)', 'sans-serif'],
       },
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1.5' }],

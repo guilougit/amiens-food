@@ -7,6 +7,7 @@ import {Instagram, Mail} from "lucide-react";
 import {TextCustom} from "@/src/utils/types";
 import {Suspense} from "react";
 import LoadingInstagram from "@/src/components/v2/instagram/loading-insta";
+import {redirect} from "next/navigation";
 
 export const metadata: Metadata = {
     title: 'Amiens food - Blog',
@@ -16,6 +17,8 @@ export const metadata: Metadata = {
 const BlogPage = async () => {
 
     //const posts = await fetch(`${process.env.APP_URL}/api/posts`, {cache: 'no-store'}).then(res => res.json())
+    
+    redirect('/')
     
     return (
         <div className={"relative"}>
