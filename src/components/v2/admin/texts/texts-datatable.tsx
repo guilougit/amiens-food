@@ -19,6 +19,7 @@ import {toast} from "sonner";
 import {TextCustom} from "@/src/utils/types";
 
 export const TextsDatatable = () => {
+    const [isLoading, setIsLoading] = useState(true)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [texts, setTexts] = useState<any[]>([])
     const textAreaRef = useRef<HTMLTextAreaElement>(null)
@@ -31,6 +32,7 @@ export const TextsDatatable = () => {
             .then(res => res.json())
             .then(res => {
                 setTexts(res)
+                setIsLoading(false)
             })
     }, []);
     
@@ -114,7 +116,7 @@ export const TextsDatatable = () => {
 
     return (
         <>
-            <CrudTable props={{columns, data: texts, search: {active: false}}} />
+            <CrudTable props={{columns, data: texts, search: {active: false}, isLoading: isLoading}} />
             <Dialog open={openModal} onOpenChange={open => setOpenModal(open)}>
                 <DialogContent>
                     <DialogHeader>
