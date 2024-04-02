@@ -18,6 +18,7 @@ import {DeletePartnerModal} from "@/src/components/v2/delete-partner-modal";
 
 
 export const PartnersDatatable = () => {
+    const [isLoading, setIsLoading] = useState(true)
     const [partners, setPartners] = useState([])
     
     const handleDelete = (slug: string) => {
@@ -25,11 +26,14 @@ export const PartnersDatatable = () => {
     };
 
     useEffect(() => {
+        setIsLoading(true)
         fetch("/api/admin/partners")
             .then(res => res.json())
             .then(res => {
                 if (res.success) {
                     setPartners(res.partners)
+                    
+                    setIsLoading(false)
                 }
             })
     }, []);
@@ -148,6 +152,6 @@ export const PartnersDatatable = () => {
     ]
     
     return (
-        <CrudTable props={{columns, data: partners, search: {active: true, byField: 'name'}}}/>
+        <CrudTable props={{columns, data: partners, search: {active: true, byField: 'name'}, isLoading: isLoading}}/>
     )
 }

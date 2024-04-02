@@ -28,7 +28,8 @@ interface crudTableProps {
   search: {
     active: boolean,
     byField?: string,
-  }
+  },
+  isLoading?: boolean
 }
 
 export const CrudTable = ({props}: {props: crudTableProps}) => {
@@ -129,32 +130,51 @@ export const CrudTable = ({props}: {props: crudTableProps}) => {
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
+            {props.isLoading ? (
+                <TableRow>
+                  <TableCell
+                      colSpan={props.columns.length}
+                      className="h-24 text-center"
+                  >
+                    <div className='flex space-x-2 justify-center items-center bg-white max-h-max'>
+                      <span className='sr-only'>Loading...</span>
+                      <div className='h-2 w-2 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+                      <div className='h-2 w-2 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+                      <div className='h-2 w-2 bg-slate-400 rounded-full animate-bounce'></div>
+                    </div>
+                  </TableCell>
                 </TableRow>
-              ))
             ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={props.columns.length}
-                  className="h-24 text-center"
-                >
-                  Aucun résultat.
-                </TableCell>
-              </TableRow>
+                <>
+                  {table.getRowModel().rows?.length ? (
+                      table.getRowModel().rows.map((row) => (
+                          <TableRow
+                              key={row.id}
+                              data-state={row.getIsSelected() && "selected"}
+                          >
+                          {row.getVisibleCells().map((cell) => (
+                                <TableCell key={cell.id}>
+                                  {flexRender(
+                                      cell.column.columnDef.cell,
+                                      cell.getContext()
+                                  )}
+                                </TableCell>
+                            ))}
+                          </TableRow>
+                      ))
+                  ) : (
+                      <TableRow>
+                        <TableCell
+                            colSpan={props.columns.length}
+                            className="h-24 text-center"
+                        >
+                          Aucun résultat.
+                        </TableCell>
+                      </TableRow>
+                  )}
+                </>
             )}
+
           </TableBody>
         </Table>
       </div>
