@@ -86,6 +86,7 @@ export const ListPartnersLandingPage = () => {
                                             rows: 2,
                                             fill: 'row'
                                         },
+                                        spaceBetween: 10
                                     },
                                     576: {
                                         slidesPerView: 2,

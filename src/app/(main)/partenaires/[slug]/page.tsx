@@ -34,7 +34,7 @@ const PartnerDetail = async ({params}:{params: {slug: string}}) => {
                         <ThumbnailSlider images={mediaPaths}/>
                         <div className={"block md:hidden"}>
                             <h3 className={"text-lg font-semibold"}>À propos de {partnerFetch.partner.name}</h3>
-                            <p className={"mt-3 text-xs"}>{partnerFetch.partner.description}</p>
+                            <p className={"mt-3 text-xs text-justify"}>{partnerFetch.partner.description}</p>
 
                             {/*
                             <div className={"space-y-2 mt-2"}>
@@ -101,7 +101,7 @@ const PartnerDetail = async ({params}:{params: {slug: string}}) => {
                                 <h3 className={"text-2xl mt-8 font-semibold"}>À propos
                                     de {partnerFetch.partner.name}</h3>
 
-                                <p className={"mt-3"}>{partnerFetch.partner.description}</p>
+                                <p className={"mt-3 text-justify"}>{partnerFetch.partner.description}</p>
                             </div>
                         )}
                     </div>

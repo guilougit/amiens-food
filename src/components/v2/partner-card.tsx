@@ -4,7 +4,7 @@ import {Avatar, AvatarFallback, AvatarImage} from "@radix-ui/react-avatar";
 export const PartnerCard = ({item}:{item: {title:string, offers: {id: string, text: string}[], logo: string}}) => {
     return (
         <Card className={"h-full rounded-3xl"}>
-            <CardHeader className={"relative"}>
+            <CardHeader className={"relative p-4 pb-2 md:-6"}>
                 <Avatar>
                     <AvatarImage
                         className={"absolute rounded-full -top-8 left-1/2 transform -translate-x-1/2 w-[90px] h-[90px] border-2"}
