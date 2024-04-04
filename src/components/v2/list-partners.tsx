@@ -3,6 +3,8 @@
 import React, {useEffect, useState} from "react";
 import {PartnerCard} from "@/src/components/v2/partner-card";
 
+import 'swiper/css/grid';
+
 const partners = [
     {
         title: "Les Offres",
@@ -36,7 +38,7 @@ const partners = [
 import 'swiper/css';
 import 'swiper/css/pagination';
 import {Swiper, SwiperSlide} from 'swiper/react';
-import {Pagination} from 'swiper/modules';
+import {Grid, Pagination} from 'swiper/modules';
 import Link from "next/link";
 
 export const ListPartnersLandingPage = () => {
@@ -70,16 +72,27 @@ export const ListPartnersLandingPage = () => {
 
                             {/* Lists */}
                             <Swiper
-                                slidesPerView={1}
+                                slidesPerView={3}
                                 spaceBetween={30}
                                 pagination={{
                                     clickable: true,
                                 }}
-                                modules={[Pagination]}
-                                className="swipper-padding"
+                                modules={[Pagination, Grid]}
+                                className="swiper-grid-partner swipper-padding"
                                 breakpoints={{
+                                    0: {
+                                        slidesPerView: 2,
+                                        grid: {
+                                            rows: 2,
+                                            fill: 'row'
+                                        },
+                                    },
                                     576: {
-                                        slidesPerView: 2
+                                        slidesPerView: 2,
+                                        grid: {
+                                            rows: 1,
+                                            fill: 'row'
+                                        }
                                     },
                                     768: {
                                         slidesPerView: 2
@@ -102,22 +115,20 @@ export const ListPartnersLandingPage = () => {
                                 ))}
                             </Swiper>
                             {/* Button */}
-                            <div className="max-w-xs mx-auto sm:max-w-none mt-8 ml-2 bg-white">
-                                <div>
-                                    <Link
-                                        className="btn-sm inline-flex items-center text-white bg-[#FA8419] group shadow-2xl text-xl"
-                                        href="/partenaires">
-                                        Tous nos partenaires
-                                        <span
-                                            className="tracking-normal text-sky-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-2">
-                                                <svg className="fill-white" width="12" height="10"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                  <path
-                                                      d="M1 6.002h7.586L6.293 8.295a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.416l-4-4a1 1 0 0 0-1.414 1.416l2.293 2.293H1a1 1 0 1 0 0 2Z"/>
-                                                </svg>
-                                              </span>
-                                    </Link>
-                                </div>
+                            <div className="max-w-max mt-8 ml-2 bg-white">
+                                <Link
+                                    className="btn-sm inline-flex items-center text-white bg-[#FA8419] group shadow-2xl text-xl max-w-max"
+                                    href="/partenaires">
+                                    Tous nos partenaires
+                                    <span
+                                        className="tracking-normal text-sky-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-2">
+                                            <svg className="fill-white" width="12" height="10"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                              <path
+                                                  d="M1 6.002h7.586L6.293 8.295a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.416l-4-4a1 1 0 0 0-1.414 1.416l2.293 2.293H1a1 1 0 1 0 0 2Z"/>
+                                            </svg>
+                                          </span>
+                                </Link>
                             </div>
                         </div>
                     </div>

@@ -227,7 +227,7 @@ export const CreatePartnerForm = ({defaultPartner, isEditing = false}:{defaultPa
                                             <FormLabel> </FormLabel>
                                             <div className={"flex items-center gap-1"}>
                                                 <FormControl>
-                                                    <Input type={"text"} {...field} maxLength={25}
+                                                    <Input type={"text"} {...field}
                                                            placeholder={"Offre"}/>
                                                 </FormControl>
                                                 {form.getValues("offers").length > 1 && (

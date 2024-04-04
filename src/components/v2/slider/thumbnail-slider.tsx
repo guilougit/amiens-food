@@ -20,7 +20,7 @@ export const ThumbnailSlider = ({images}:{images: []}) => {
     []
 
     return (
-        <div className={"max-w-[500px]"}>
+        <div className={"max-w-[150px] md:max-w-[500px]"}>
             <Swiper
                 style={{
                     // @ts-ignore
@@ -31,12 +31,14 @@ export const ThumbnailSlider = ({images}:{images: []}) => {
                 navigation={true}
                 thumbs={{ swiper: thumbsSwiper }}
                 modules={[FreeMode, Navigation, Thumbs]}
+                className={"swiper-no-nav-mobile"}
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index} className={"swiper-slideThumbnail"}>
-                        <Image src={image} width={800} height={300} alt={`Amiens food partenaire`}/>
+                        <Image src={image} width={800} height={600} alt={`Amiens food partenaire`} className={"max-h-[420px]"} />
                     </SwiperSlide>
                 ))}
+                
             </Swiper>
             <Swiper
                 spaceBetween={10}

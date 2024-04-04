@@ -23,3 +23,13 @@
     object-fit: cover;
     border-radius: 20px;
 }
+
+.swiper-no-nav-mobile .swiper-button-next, .swiper-no-nav-mobile .swiper-button-prev {
+ display: none;   
+}
+
+@media screen and (min-width: 600px) {
+    .swiper-no-nav-mobile .swiper-button-next, .swiper-no-nav-mobile .swiper-button-prev {
+        display: block;
+    }
+}
