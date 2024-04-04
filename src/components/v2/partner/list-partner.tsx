@@ -57,7 +57,7 @@ export const ListPartner = () => {
                         </div>
                     ) : (
                         <div className={"block flex justify-center items-center mt-12 "}>
-                            Aucun restaurant trouvé
+                            Aucun établissement trouvé
                         </div>
                     )}
                 </>
