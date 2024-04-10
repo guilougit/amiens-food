@@ -143,7 +143,7 @@ export async function POST(request : Request) {
             user.card = userUpdated.card
 
             // Send it to email with resend
-            await sendCardByEmail(`${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${user.card}`)
+            await sendCardByEmail(`${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${user.card}`, user.email)
         }
         
         return NextResponse.json({success: true, card: `${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${user.card}`})
@@ -153,13 +153,12 @@ export async function POST(request : Request) {
     return NextResponse.json({success: true, message: 'No generation'})
 }
 
-const sendCardByEmail = async (path: string) => {
+const sendCardByEmail = async (path: string, mail: string) => {
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     await resend.emails.send({
-        from: 'Test Amiens food <noreply@resend.dev>',
-        //to: userDB.email,
-        to: 'remycastro27@icloud.com',
+        from: 'Amiens food <noreply@amiensfood.com>',
+        to: mail,
         subject: 'Voici ta carte Amiens food',
         html: "<h1>Voici votre carte Amiens Food</h1>",
         text: "Voici votre carte amiens Food",
