@@ -27,7 +27,7 @@ export const ModalNoSubscription = () => {
                     setUser(res.user)
                     
                     console.log(res.user)
-                    if(!res.user.StripeAccount.start) {
+                    if(!res.user.StripeAccount?.start) {
                         setIsModalOpen(true)
                     }
                 }

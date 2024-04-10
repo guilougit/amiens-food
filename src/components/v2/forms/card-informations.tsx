@@ -3,6 +3,8 @@ import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessag
 import {Input} from "@/src/components/ui/input";
 import * as React from "react";
 import {Asterisk} from "lucide-react";
+import { Checkbox } from "../../ui/checkbox";
+import Link from "next/link";
 
 export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean}) => {
     const form = useFormContext();
@@ -118,6 +120,28 @@ export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean
                                 )}
 
                                 <FormMessage/>
+                            </FormItem>
+                        )}
+                    />
+                    
+                    <FormField
+                        control={form.control}
+                        name={"terms"}
+                        
+                        render={({field}) => (
+                            <FormItem>
+                                <div className="flex items-center space-x-2">
+                                    <Checkbox id="terms" {...field} onCheckedChange={checked => {
+                                        form.setValue("terms", checked)
+                                    }}/>
+                                    <label
+                                        htmlFor="terms"
+                                        className="text-xs font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    >
+                                        {"J'accepte les"} <Link href={"/conditions"} target={"_blank"} className={"underline text-blue-700"}>conditions générales {"d'utilisation"}</Link>
+                                    </label>
+                                </div>
+                                <FormMessage className={"text-xs"} />
                             </FormItem>
                         )}
                     />

@@ -4,7 +4,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: 'devamiensfood.s3.eu-west-3.amazonaws.com'
+                hostname: 'amiensfood.s3.eu-west-3.amazonaws.com'
             },
             {
                 protocol: "https",

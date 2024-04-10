@@ -1,7 +1,7 @@
 export const prices = {
     monthly: {
         amount: 19.99,
-        stripe_id: "price_1OawxDIATEq1uUKpiHmjxlPf"
+        stripe_id: ""
     },
     annually: {
         amount: 9.90,
