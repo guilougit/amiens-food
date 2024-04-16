@@ -51,7 +51,7 @@ export const ThumbnailSlider = ({images}:{images: []}) => {
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index} className={"swiper-slideThumbnail"}>
-                        <Image src={image} width={400} height={300} alt={`Amiens food partenaire`}/>
+                        <Image src={image} width={400} height={300} alt={`Amiens food partenaire`} className={"h-full"}/>
                     </SwiperSlide>
                 ))}
             </Swiper>
