@@ -28,6 +28,14 @@ const formSchema = z.object({
     medias: z.any()
 })
 
+import imageCompression from "browser-image-compression";
+const defaultOptions = {
+    maxSizeMB: 0.8,
+};
+export function compressFile(imageFile: any, options = defaultOptions) {
+    return imageCompression(imageFile, options);
+}
+
 export const CreatePartnerForm = ({defaultPartner, isEditing = false}:{defaultPartner?: any, isEditing?: boolean}) => {
     const router = useRouter()
     const [slug, setSlug] = useState(defaultPartner ? defaultPartner.slug : '')
@@ -44,22 +52,23 @@ export const CreatePartnerForm = ({defaultPartner, isEditing = false}:{defaultPa
         }
     })
 
-    const onSubmit = (data: any) => {
+    const onSubmit = async (data: any) => {
         const formData = new FormData();
         // Add medias
-        if(data.medias) {
+        if (data.medias) {
+            setIsSubmitting(true)
             for (let i = 0; i < data.medias.length; i++) {
-                formData.append(`medias`, data.medias[i])
+                const imageCompressed = await compressFile(data.medias[i])
+                formData.append(`medias`, imageCompressed)
             }
-        }
-        else {
-            if(!isEditing) { 
+        } else {
+            if (!isEditing) {
                 toast.error("Veuillez mettre des images")
                 return
             }
         }
-        
-        if(!data.logo && !isEditing) {
+
+        if (!data.logo && !isEditing) {
             toast.error("Veuillez mettre un logo")
             return
         }
@@ -76,14 +85,16 @@ export const CreatePartnerForm = ({defaultPartner, isEditing = false}:{defaultPa
             iframe: data.iframe,
             isEditing: isEditing
         }))
-        fetch(!isEditing ? "/api/admin/partners" : `/api/admin/partners/${defaultPartner.slug}`, {method: !isEditing ? 'POST' : 'PATCH', body: formData})
+        fetch(!isEditing ? "/api/admin/partners" : `/api/admin/partners/${defaultPartner.slug}`, {
+            method: !isEditing ? 'POST' : 'PATCH',
+            body: formData
+        })
             .then(res => res.json())
             .then(res => {
                 if (res.success) {
-                    if(isEditing) {
+                    if (isEditing) {
                         toast.success("Le partenaire a bien été modifié")
-                    }
-                    else {
+                    } else {
                         toast.success("Le partenaire a bien été ajouté")
                     }
                     router.replace("/admin/partners")
