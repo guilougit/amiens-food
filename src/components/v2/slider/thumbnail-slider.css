@@ -10,9 +10,6 @@
     filter: brightness(30%);
 }
 
-.mySwiperThumbnail .swiper-wrapper {
-    justify-content: center;
-}
 
 .mySwiperThumbnail .swiper-slide-thumb-active {
     opacity: 1;

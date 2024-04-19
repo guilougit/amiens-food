@@ -78,7 +78,7 @@ const PartnerDetail = async ({params}:{params: {slug: string}}) => {
                 </div>
                 {partnerFetch.partner.iframe && (
                     <div>
-                        <h3 className={"text-2xl mt-8 font-semibold"}>Où trouver cet établissement ?</h3>
+                        <h3 className={"text-2xl mt-4 font-semibold"}>Où trouver cet établissement ?</h3>
 
                         <iframe
                             src={partnerFetch.partner.iframe} width={"100%"}
