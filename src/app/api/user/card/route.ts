@@ -10,7 +10,9 @@ import {DateTime} from "luxon";
 import {deleteFileOnAws} from "@/src/utils/aws";
 import path from "node:path";
 import sharp from "sharp";
-import TextToSVG from 'text-to-svg';
+
+export const revalidate = 0;
+
 
 const s3 = new S3Client({
     region: process.env.AWS_REGION,
