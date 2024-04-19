@@ -44,7 +44,7 @@ const AboutPage = async () => {
                 />
                 
                 <p
-                    className={"mt-12 text-justify mx-12"}
+                    className={"mt-12 text-center mx-12"}
                     dangerouslySetInnerHTML={{
                         __html: texts.find((text) => text.code === "ABOUT_PAGE")?.text as string
                     }}

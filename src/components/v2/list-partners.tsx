@@ -62,7 +62,7 @@ export const ListPartnersLandingPage = () => {
                     aria-hidden="true"
                 />
 
-                <div className="mx-8 px-4 sm:px-6" data-aos="fade-up" data-aos-anchor="[data-aos-id-4]">
+                <div className="mx-0 md:mx-6 px-4 sm:px-6" data-aos="fade-up" data-aos-anchor="[data-aos-id-4]">
                     <div className="py-12 md:pb-20">
                         {/* Content */}
                         <div className="w-full shrink-0">
@@ -83,7 +83,7 @@ export const ListPartnersLandingPage = () => {
                                     0: {
                                         slidesPerView: 2,
                                         grid: {
-                                            rows: 2,
+                                            rows: 1,
                                             fill: 'row'
                                         },
                                         spaceBetween: 10
