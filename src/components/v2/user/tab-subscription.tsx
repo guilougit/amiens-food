@@ -44,7 +44,9 @@ export const TabSubscription = ({user}: { user: any }) => {
 
                     <div>
                         <p className={"text-sm"}>
-                            <strong>${prices.annually.amount} €</strong>par an
+                            <strong>9.90 € </strong>par an
+                            <br/>
+                            <span className={"text-muted-foreground text-xs"}>Soit 0.83€ par mois</span>
                         </p>
                     </div>
 

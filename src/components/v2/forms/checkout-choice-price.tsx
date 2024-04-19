@@ -35,8 +35,9 @@ export const CheckoutChoicePrice = forwardRef<CheckoutPriceRef>((props: any, ref
                         /{price === Price.Monthly ? "mois" : "an"}
 
                     </h4>
+                    <span className={"text-muted-foreground text-xs"}>Soit 0.83€ par mois</span>
                 </CardHeader>
-                <CardDescription className={"text-left pl-6 pr-2"}>
+                <CardDescription className={"text-left pl-6 pr-2 mt-2"}>
                     {props.texts.find((text: TextCustom) => text.code === "PAYMENT_PRICE_SUBTITLE")?.text as string}
                 </CardDescription>
                 
