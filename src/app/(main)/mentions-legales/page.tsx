@@ -12,7 +12,7 @@ const LegalPage = () => {
                 <ul>
                     <li>Adresse postale : [Adresse amiens food]</li>
                     <li>Téléphone : [Numéro téléphone]</li>
-                    <li>Email : contact@amiens-food.fr</li>
+                    <li>Email : contact@amiens-food.com</li>
 
                     <li className={"mt-4"}>Numéro {"d'identification"} : [Numéro de siret]</li>
                 </ul>
@@ -55,7 +55,7 @@ const LegalPage = () => {
                     loi {"\"Informatique et Libertés\""} du 6 janvier 1978, vous disposez {"d'un droit d'accès"}, de
                     rectification
                     et de suppression des données vous concernant. Pour exercer ce droit, veuillez nous contacter à
-                    {"l'adresse email"} contact@amiens-food.fr.
+                    {"l'adresse email"} contact@amiens-food.com.
                 </p>
             </div>
 

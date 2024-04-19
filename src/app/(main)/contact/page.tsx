@@ -40,11 +40,11 @@ const ContactPage = async () => {
                                     </div>
                                 </Link>
 
-                                <Link href={"mailto:contact@amiens-food.fr"}
+                                <Link href={"mailto:contact@amiens-food.com"}
                                       className={"flex gap-1 bg-white rounded-2xl p-2 items-center max-w-max mx-auto md:max-w-full md:mx-0"}>
                                     <Mail className="w-[30px] text-[#FA8419] "/>
                                     <div className="flex-1 text-left">
-                                        <p className={"text-[#FA8419] font-extrabold"}>contact@amiens-food.fr</p>
+                                        <p className={"text-[#FA8419] font-extrabold"}>contact@amiens-food.com</p>
                                     </div>
                                 </Link>
                             </div>
