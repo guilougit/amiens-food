@@ -81,9 +81,9 @@ export const ListPartnersLandingPage = () => {
                                 className="swiper-grid-partner swipper-padding"
                                 breakpoints={{
                                     0: {
-                                        slidesPerView: 2,
+                                        slidesPerView: 1,
                                         grid: {
-                                            rows: 1,
+                                            rows: 2,
                                             fill: 'row'
                                         },
                                         spaceBetween: 10

@@ -20,7 +20,7 @@ export const ThumbnailSlider = ({images}:{images: []}) => {
     []
 
     return (
-        <div className={"max-w-[200px] md:max-w-[500px]"}>
+        <div className={"max-w-[260px] md:max-w-[500px]"}>
             <Swiper
                 style={{
                     // @ts-ignore
@@ -35,7 +35,7 @@ export const ThumbnailSlider = ({images}:{images: []}) => {
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index} className={"swiper-slideThumbnail"}>
-                        <Image src={image} width={800} height={600} alt={`Amiens food partenaire`} className={"h-[150px] md:h-auto max-h-[420px]"} />
+                        <Image src={image} width={800} height={600} alt={`Amiens food partenaire`} className={"h-[200px] md:h-auto max-h-[420px]"} />
                     </SwiperSlide>
                 ))}
                 
