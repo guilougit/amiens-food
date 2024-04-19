@@ -1,13 +1,15 @@
-import type { Metadata } from 'next'
+import type {Metadata} from 'next'
 import './styles/globals.css'
 import localFont from 'next/font/local'
 import {Rubik, Bitter, Open_Sans, Roboto, Ubuntu} from 'next/font/google'
 import {SessionProvider} from "next-auth/react";
 import {Toaster} from "@/src/components/ui/sonner";
+import Head from "next/head";
 
 export const metadata: Metadata = {
-  title: 'Amiens Food',
-  description: 'Site Internet d\'Amiens Food',
+    title: 'Amiens Food',
+    description: 'Site Internet d\'Amiens Food',
+    keywords: ['Amiens', 'Food', 'Amiens food', 'reduction', 'réduction', 'promo', 'promotion', 'carte', 'dématérialisé']
 }
 
 /*
@@ -49,22 +51,25 @@ const font = Rubik({subsets: ['latin'], variable: '--font-rubik'})
 //const font2 = Ubuntu({subsets: ['latin'], weight: "300", variable: '--font-ubuntu'})
 
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
+                                       children,
+                                   }: {
+    children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
+    return (
+        <html lang="en">
+        <Head>
+            <link rel="icon" href="/favicon.ico" sizes="any"/>
+        </Head>
         <body className={`${font.variable} font-rubik antialiased bg-white text-slate-800 font-[350]`}>
-            <div vaul-drawer-wrapper={""}>
-                <div className="flex flex-col min-h-screen overflow-hidden">
-                    <SessionProvider>
-                        {children}
-                    </SessionProvider>
-                </div>
+        <div vaul-drawer-wrapper={""}>
+            <div className="flex flex-col min-h-screen overflow-hidden">
+                <SessionProvider>
+                    {children}
+                </SessionProvider>
             </div>
-            <Toaster position={"top-right"} />
+        </div>
+        <Toaster position={"top-right"}/>
         </body>
-    </html>
-  )
+        </html>
+    )
 }
