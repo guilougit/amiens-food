@@ -3,6 +3,7 @@ import {NextResponse} from "next/server";
 import {headers} from "next/headers";
 import prisma from "@/src/lib/prisma";
 import {DateTime} from "luxon";
+import {sendCardByEmail} from "@/src/app/api/user/card/route";
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
@@ -23,7 +24,7 @@ async function handleStripeWebhook(body: any) {
     const customer = body.data?.object.customer
     const startAt = body.data?.object.period_start
     const expireAt = body.data?.object.period_end
-    const subId = body.data?.object.sub_1OkxQgIATEq1uUKp0eLAbEH4
+    const subId = body.data?.object.subscription
     
     // Switch on the event type.
     switch (body.type) {
@@ -43,6 +44,15 @@ async function handleStripeWebhook(body: any) {
             catch (error) {
                 console.log('error while updating user subscription')
             }
+            
+            // Create card and send by mail
+            fetch(`${process.env.APP_URL}/api/user/card`, {method: 'POST', body: JSON.stringify({afterPayment: true, fromWebhook: true, email: body.data?.object.customer_email})})
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res)
+                    // Send it to email with resend
+                    sendCardByEmail(`${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${res.card}`, body.data?.object.customer_email)
+                })
 
             return NextResponse.json({ success: true, message: "Customer payment succeeded!" })
         case "customer.subscription.created":

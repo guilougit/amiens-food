@@ -141,7 +141,7 @@ export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean
                                         {"J'accepte les"} <Link href={"/conditions"} target={"_blank"} className={"underline text-blue-700"}>conditions générales {"d'utilisation"}</Link>
                                     </label>
                                 </div>
-                                <FormMessage className={"text-xs"} />
+                                {form.formState.errors.terms && <p className={"text-xs text-red-500 font-bold"}>Veuillez accepter les CGU</p>}
                             </FormItem>
                         )}
                     />

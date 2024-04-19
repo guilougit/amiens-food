@@ -53,19 +53,30 @@ export async function POST(request : Request) {
                 customerId = user.StripeAccount.customer_id
             }
 
-            // Create the stripe checkout session
-            const checkout_session = await stripe.checkout.sessions.create({
-                customer: customerId,
-                currency: 'eur',
-                mode: 'subscription',
-                locale: 'fr',
-                line_items: [{price: priceId, quantity: 1}],
-                success_url: `http://${baseUrl}/payment/success`,
-                cancel_url: `http://${baseUrl}/`
-            })
+            try {
+                // Create the stripe checkout session
+                const checkout_session = await stripe.checkout.sessions.create({
+                    customer: customerId,
+                    currency: 'eur',
+                    mode: 'subscription',
+                    locale: 'fr',
+                    line_items: [{price: priceId, quantity: 1}],
+                    success_url: `http://${baseUrl}/payment/success`,
+                    cancel_url: `http://${baseUrl}/`
+                })
+
+                return NextResponse.json({success: true, url: checkout_session.url})
+
+
+            }
+            catch (e) {
+                
+            }
+
+            
 
             // Return the link
-            return NextResponse.json({success: true, url: checkout_session.url})
+            return NextResponse.json({success: true, url: process.env.APP_URL})
         }
 
         return NextResponse.json({success: false, error: 'Missing data'})

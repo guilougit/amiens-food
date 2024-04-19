@@ -30,7 +30,7 @@ const formSchema = z.object({
         .custom<File>((v) => v instanceof File, {
             message: ' ',
         }),
-    terms: z.boolean()
+    terms: z.literal(true)
 })
 
 export const CheckoutAccount = ({price, texts}:{price: Price, texts: TextCustom[]}) => {
@@ -46,7 +46,7 @@ export const CheckoutAccount = ({price, texts}:{price: Price, texts: TextCustom[
             password: "",
             email: "",
             picture: undefined,
-            terms: false
+            terms: undefined
         }
     })
     

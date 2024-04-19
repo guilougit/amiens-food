@@ -25,12 +25,12 @@ export async function POST(request : Request) {
 
     const session = await auth()
 
-    if(!session) {
+    if(!session && !params?.fromWebhook) {
         return NextResponse.json({success: false, error: 'User must be connected'})
     }
     
     let user = await prisma.user.findUnique({
-        where: {email: session.user.email},
+        where: {email: session ? session.user.email : params.email},
         include: {StripeAccount: true}
     })
     
@@ -54,9 +54,15 @@ export async function POST(request : Request) {
             const expiredDate = user.StripeAccount?.expireAt ? DateTime.fromISO(user.StripeAccount?.expireAt.toISOString()).toFormat('dd/MM/yyyy') : '';
 
             const createTextSvg = (text: string) => {
-                const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50">
-                            <text x="5" y="25" font-size="28" fill="black" font-family="Open sans">${text}</text>
-                        </svg>`;
+                const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="350" height="50">
+                                        <defs>
+                                            <style type="text/css">
+                                            text {font-family: 'Palatino'}
+                                            </style>
+
+                                        </defs>
+                                        <text x="5" y="25" font-size="28" fill="black" font-family="Times New Roman">${text}</text>
+                                    </svg>`;
                 return Buffer.from(svg);
 
             }
@@ -143,7 +149,7 @@ export async function POST(request : Request) {
             user.card = userUpdated.card
 
             // Send it to email with resend
-            await sendCardByEmail(`${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${user.card}`, user.email)
+            //await sendCardByEmail(`${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${user.card}`, user.email)
         }
         
         return NextResponse.json({success: true, card: `${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${user.card}`})
@@ -153,7 +159,7 @@ export async function POST(request : Request) {
     return NextResponse.json({success: true, message: 'No generation'})
 }
 
-const sendCardByEmail = async (path: string, mail: string) => {
+export const sendCardByEmail = async (path: string, mail: string) => {
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     await resend.emails.send({
