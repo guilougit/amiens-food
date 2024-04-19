@@ -1,7 +1,7 @@
 import sharp from 'sharp';
 
 export const MAX_IMAGE_WIDTH_PROFILE = 400
-export const MAX_IMAGE_WIDTH = 1000
+export const MAX_IMAGE_WIDTH = 800
 export const QUALITY_IMAGE = 85
 
 export async function compressAndRoundImage(inputBuffer: Buffer): Promise<Buffer> {
