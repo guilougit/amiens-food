@@ -3,7 +3,7 @@ import {NextResponse} from "next/server";
 import {headers} from "next/headers";
 import prisma from "@/src/lib/prisma";
 import {DateTime} from "luxon";
-import {sendCardByEmail} from "@/src/app/api/user/card/route";
+import {sendCardByEmail} from "@/src/utils/mail";
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
