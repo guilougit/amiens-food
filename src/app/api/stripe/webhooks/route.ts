@@ -52,7 +52,7 @@ async function handleStripeWebhook(body: any) {
             
             const emailResponse = await sendCardByEmail(response.card, body.data?.object.customer_email)
 
-            return NextResponse.json({ success: true, message: "Customer payment succeeded!", mail: JSON.stringify(emailResponse) })
+            return { success: true, message: "Customer payment succeeded!", mail: JSON.stringify(emailResponse) }
         case "customer.subscription.created":
             try {
                 await prisma.stripeAccount.update({
