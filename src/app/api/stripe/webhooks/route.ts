@@ -135,7 +135,7 @@ export async function POST(request: Request) {
 
         const webhookResponse = await handleStripeWebhook(event);
 
-        return NextResponse.json(webhookResponse?.body)
+        return NextResponse.json({success: true, response: webhookResponse?.body})
     }
     catch (error) {
         console.error("Error in Stripe webhook handler:", error);
