@@ -42,6 +42,7 @@ async function handleStripeWebhook(body: any) {
                 })
             }
             catch (error) {
+                return NextResponse.json({ success: false })
                 console.log('error while updating user subscription')
             }
             
