@@ -15,6 +15,7 @@ import {Separator} from "@/src/components/ui/separator";
 import {CardInformations} from "@/src/components/v2/forms/card-informations";
 import {toast} from "sonner";
 import {TextCustom} from "@/src/utils/types";
+import imageCompression from "browser-image-compression";
 
 const formSchema = z.object({
     firstname: z.string({required_error: ""}).min(1),
@@ -33,6 +34,13 @@ const formSchema = z.object({
     terms: z.literal(true)
 })
 
+const defaultOptions = {
+    maxSizeMB: 2,
+};
+function compressFile(imageFile: any, options = defaultOptions) {
+    return imageCompression(imageFile, options);
+}
+
 export const CheckoutAccount = ({price, texts}:{price: Price, texts: TextCustom[]}) => {
     
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -50,16 +58,25 @@ export const CheckoutAccount = ({price, texts}:{price: Price, texts: TextCustom[
         }
     })
     
-    const onSubmit = (data: any) => {
+    const onSubmit = async (data: any) => {
         setIsSubmitting(true)
         const formData = new FormData();
-        formData.append('file', data.picture);
-        formData.append('user', JSON.stringify({email:data.email,firstname:data.firstname,lastname:data.lastname,surname: data.surname, password:data.password}));
-        
-        fetch("/api/auth/register",{method: 'POST', body: formData})
+
+        const imageCompressed = await compressFile(data.picture)
+
+        formData.append('file', imageCompressed);
+        formData.append('user', JSON.stringify({
+            email: data.email,
+            firstname: data.firstname,
+            lastname: data.lastname,
+            surname: data.surname,
+            password: data.password
+        }));
+
+        fetch("/api/auth/register", {method: 'POST', body: formData})
             .then(res => res.json())
             .then(async (res: any) => {
-                if(!res.success) {
+                if (!res.success) {
                     setIsSubmitting(false)
                     switch (res.code) {
                         case 'EMAIL_ALREADY_TAKEN':
@@ -77,7 +94,7 @@ export const CheckoutAccount = ({price, texts}:{price: Price, texts: TextCustom[
                         email: data.email,
                         password: data.password
                     })
-                    
+
                     const priceId = price === Price.Monthly ? prices.monthly.stripe_id : prices.annually.stripe_id
 
                     fetch("/api/payment/checkout_sessions", {
@@ -87,11 +104,11 @@ export const CheckoutAccount = ({price, texts}:{price: Price, texts: TextCustom[
                         .then(res => res.json())
                         .then(res => {
                             // redirect the user to the checkout page
-                           window.location.assign(res.url)
+                            window.location.assign(res.url)
                         })
                 }
 
-            })         
+            })
     }
     
     return (
