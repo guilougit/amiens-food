@@ -47,7 +47,7 @@ async function handleStripeWebhook(body: any) {
             }
             
             // Create card and send by mail
-            const response = await fetch(`https://amiensfood.com/api/user/card`, {method: 'POST', body: JSON.stringify({afterPayment: true, fromWebhook: true, email: body.data?.object.customer_email})})
+            const response = await fetch(`${process.env.APP_URL}/api/user/card`, {method: 'POST', body: JSON.stringify({afterPayment: true, fromWebhook: true, email: body.data?.object.customer_email})})
                 .then(res => res.json())
             
             const emailResponse = await sendCardByEmail(response.card, body.data?.object.customer_email)
