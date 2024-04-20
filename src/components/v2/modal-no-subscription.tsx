@@ -48,15 +48,15 @@ export const ModalNoSubscription = () => {
     
     return (
         <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-            <DialogContent className={"min-w-max lg:min-w-[800px]"}>
+            <DialogContent className={"lg:min-w-[800px]"}>
                 <DialogHeader>
-                    <div className={"flex items-center gap-1"}>
+                    <div className={"flex items-center gap-1 flex-col md:flex-row"}>
                         <AlertCircle className={"text-orange-500"} size={32} strokeWidth={3} />
                         <h1 className={"text-3xl font-semibold"}>{"Ton compte ne possède pas d'abonnement"}</h1>
                     </div>
 
                 </DialogHeader>
-                <p className={"text-lg"}>Veux-tu souscrire à Amiens Food ?</p>
+                <p className={"text-lg text-center"}>Veux-tu souscrire à Amiens Food ?</p>
 
                 <Button onClick={onSubmit} color={"primary"}
                         className={"max-w-max mx-auto"}
