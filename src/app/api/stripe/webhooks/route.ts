@@ -47,14 +47,12 @@ async function handleStripeWebhook(body: any) {
             }
             
             // Create card and send by mail
-            fetch(`https://amiensfood.com/api/user/card`, {method: 'POST', body: JSON.stringify({afterPayment: true, fromWebhook: true, email: body.data?.object.customer_email})})
+            const response = await fetch(`https://amiensfood.com/api/user/card`, {method: 'POST', body: JSON.stringify({afterPayment: true, fromWebhook: true, email: body.data?.object.customer_email})})
                 .then(res => res.json())
-                .then(async res => {
-                    // Send it to email with resend
-                    await sendCardByEmail(res.card, body.data?.object.customer_email)
-                })
+            
+            const emailResponse = await sendCardByEmail(response.card, body.data?.object.customer_email)
 
-            return NextResponse.json({ success: true, message: "Customer payment succeeded!" })
+            return NextResponse.json({ success: true, message: "Customer payment succeeded!", mail: JSON.stringify(emailResponse) })
         case "customer.subscription.created":
             try {
                 await prisma.stripeAccount.update({
