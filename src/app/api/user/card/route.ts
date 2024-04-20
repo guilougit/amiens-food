@@ -55,6 +55,12 @@ export async function POST(request : Request) {
 
             const createTextSvg = (text: string) => {
                 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="350" height="50">
+                                        <defs>
+                                            <style type="text/css">
+                                            text {font-family: 'Palatino'}
+                                            </style>
+
+                                        </defs>
                                         <text x="5" y="25" font-size="28" fill="black">${text}</text>
                                     </svg>`;
                 return Buffer.from(svg);
