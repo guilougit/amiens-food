@@ -48,9 +48,9 @@ async function handleStripeWebhook(body: any) {
             // Create card and send by mail
             fetch(`${process.env.APP_URL}/api/user/card`, {method: 'POST', body: JSON.stringify({afterPayment: true, fromWebhook: true, email: body.data?.object.customer_email})})
                 .then(res => res.json())
-                .then(res => {
+                .then(async res => {
                     // Send it to email with resend
-                    sendCardByEmail(res.card, body.data?.object.customer_email)
+                    await sendCardByEmail(res.card, body.data?.object.customer_email)
                 })
 
             return NextResponse.json({ success: true, message: "Customer payment succeeded!" })
