@@ -73,7 +73,37 @@ const PartnerDetail = async ({params}:{params: {slug: string}}) => {
                 <div className={"grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12"}>
                     <div className={"mt-5 flex md:block gap-4 md:gap-0 justify-center"}>
                         <ThumbnailSlider images={mediaPaths}/>
+                    </div>
+                    <div className=' hidden md:flex flex-col'>
+                        <div>
+                            <h3 className={"text-xl mt-3 font-semibold "}>Profitez des offres de ce restaurant</h3>
 
+                            <div className={"grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8"}>
+                                {partnerFetch.partner.offers.map((offer: any) => (
+                                    <div
+                                        key={offer.id}
+                                        className={"shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] shadow-slate-300 hover:-translate-y-1.5 transition duration-300 rounded-xl"}>
+                                        <Card
+                                            className={" border-none min-h-[120px] flex justify-center items-center bg-primary"}>
+                                            <CardContent className={"p-0"}>
+                                                <p className={"font-extrabold text-2xl text-white text-center"}>
+                                                    {offer.text}
+                                                </p>
+
+                                            </CardContent>
+                                        </Card>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        {partnerFetch.partner.description && (
+                            <div>
+                                <h3 className={"text-2xl mt-8 font-semibold"}>À propos
+                                    de {partnerFetch.partner.name}</h3>
+
+                                <p className={"mt-3 text-justify"}>{partnerFetch.partner.description}</p>
+                            </div>
+                        )}
                     </div>
                 </div>
                 {partnerFetch.partner.iframe && (
