@@ -52,8 +52,8 @@ const ConditionsPage = () => {
                     En utilisant notre site et nos services, vous acceptez pleinement ces conditions {"d'utilisation"}.
 
                     Pour toute question concernant ces conditions {"d'utilisation"}, veuillez nous contacter
-                    à {"l'adresse"}
-                    suivante : contact@amiens-food.com
+                    à {"l'adresse "}
+                    suivante : contact@amiensfood.com
                 </p>
             </div>
 

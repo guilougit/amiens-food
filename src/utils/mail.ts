@@ -19,7 +19,7 @@ export const sendCardByEmail = async (path: string, mail: string, appleWalletLin
             <hr/>
             
             <div style="margin: 30px">       
-                <h2>Récupère ta carte en food en pièce jointe</h2>
+                <h2>Récupère ta carte en pièce jointe</h2>
                 
                 <p>Tu peux aussi te connecter à ton compte pour accéder à tes informations et aussi à ta carte !</p>
                 

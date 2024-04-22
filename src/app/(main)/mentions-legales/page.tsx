@@ -10,11 +10,10 @@ const LegalPage = () => {
                 <p>Ce site est édité par Amies food.</p>
 
                 <ul>
-                    <li>Adresse postale : [Adresse amiens food]</li>
-                    <li>Téléphone : [Numéro téléphone]</li>
-                    <li>Email : contact@amiens-food.com</li>
+                    <li>Adresse postale : 974 R RUE DE SACY 60680 GRANDFRESNOY</li>
+                    <li>Email : contact@amiensfood.com</li>
 
-                    <li className={"mt-4"}>Numéro {"d'identification"} : [Numéro de siret]</li>
+                    <li className={"mt-4"}>Numéro {"d'identification"} : 92221398800012</li>
                 </ul>
             </div>
 
@@ -55,7 +54,7 @@ const LegalPage = () => {
                     loi {"\"Informatique et Libertés\""} du 6 janvier 1978, vous disposez {"d'un droit d'accès"}, de
                     rectification
                     et de suppression des données vous concernant. Pour exercer ce droit, veuillez nous contacter à
-                    {"l'adresse email"} contact@amiens-food.com.
+                    {"l'adresse email"} contact@amiensfood.com.
                 </p>
             </div>
 
