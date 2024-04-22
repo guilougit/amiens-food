@@ -7,7 +7,7 @@ const LegalPage = () => {
             <div>
                 <h3 className={"h4 my-2"}>Éditeur du site</h3>
 
-                <p>Ce site est édité par Amies food.</p>
+                <p>Ce site est édité par Amiens food.</p>
 
                 <ul>
                     <li>Adresse postale : 974 R RUE DE SACY 60680 GRANDFRESNOY</li>
