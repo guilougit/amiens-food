@@ -111,12 +111,11 @@ const PartnerDetail = async ({params}:{params: {slug: string}}) => {
                         <h3 className={"text-2xl mt-4 font-semibold"}>Où trouver cet établissement ?</h3>
 
                         <iframe
-                            src={partnerFetch.partner.iframe} width={"100%"}
+                            src={partnerFetch.partner.iframe.replaceAll('&#39;', '%27')} width={"100%"}
                             height="200" allowFullScreen={true} loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
                             className={"mt-4 rounded-3xl"}
                         ></iframe>
-
                     </div>
                 )}
             </div>

@@ -89,7 +89,7 @@ export async function PATCH(request: Request, params: {params: {slug: string}}) 
                 name: partner.name,
                 slug: partner.slug,
                 description: partner.description,
-                iframe: partner.iframe,
+                iframe: partner.iframe.replaceAll('&#39;', '%27'),
                 offers: {
                     createMany: {
                         data: partner.offers.map((text: string) => ({ text }))

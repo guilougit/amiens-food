@@ -23,9 +23,11 @@ export const PartnerCard = ({props}:{props: PartnerCardProps }) => {
                     <div className={"mt-4"}>
                         <p className={"text-center text-primary font-extrabold"}>{props.name}</p>
 
-                        <ul className={"text-center mt-2"}>
+                        <ul className={"list-disc text-center list-inside mt-2 mx-auto"}>
                             {props.offers && props.offers.map((offer, index) => (
-                                <li key={index}>{offer.text}</li>
+                                <li key={index}>
+                                    {offer.text}
+                                </li>
                             ))}
                         </ul>
                     </div>
