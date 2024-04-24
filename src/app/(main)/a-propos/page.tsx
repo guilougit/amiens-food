@@ -2,6 +2,11 @@ import type {Metadata} from "next";
 import Image from "next/image";
 import {TextCustom} from "@/src/utils/types";
 
+
+import ProfileImage from "@/public/img/baptiste_picture_2.jpeg"
+import Decoration2 from "@/public/img/3.png"
+
+
 export const metadata: Metadata = {
     title: "À propos d'amiens food",
     description: 'Site Internet d\'Amiens Food',
@@ -35,13 +40,21 @@ const AboutPage = async () => {
             </section>
             
             <div className={"max-w-6xl mx-auto my-16"}>
-                <Image
-                    className={"rounded-lg block mx-auto"}
-                    src={"/img/baptiste-picture.jpeg"}
-                    alt={"Baptiste Arias - Amiens food"}
-                    width={200}
-                    height={100}
-                />
+                <div className={"relative"}>
+                    <Image
+                        className={"rounded-lg block mx-auto relative"}
+                        src={ProfileImage}
+                        alt={"Baptiste Arias - Amiens food"}
+                        width={200}
+                        height={100}
+                    />
+                    <Image
+                        src={Decoration2}
+                        alt={""}
+                        className={"absolute z-0 w-[300px] md:w-[350px] top-[30%] left-[48%] transform -translate-x-1/2 -translate-y-1/2 opacity-30"}
+                    />
+                </div>
+
                 
                 <p
                     className={"mt-12 text-center mx-12"}
