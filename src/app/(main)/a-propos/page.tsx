@@ -42,7 +42,7 @@ const AboutPage = async () => {
             <div className={"max-w-6xl mx-auto my-16"}>
                 <div className={"relative"}>
                     <Image
-                        className={"rounded-lg block mx-auto relative"}
+                        className={"rounded-lg block mx-auto relative z-30"}
                         src={ProfileImage}
                         alt={"Baptiste Arias - Amiens food"}
                         width={200}
