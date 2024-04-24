@@ -51,7 +51,7 @@ const AboutPage = async () => {
                     <Image
                         src={Decoration2}
                         alt={""}
-                        className={"absolute z-0 w-[300px] md:w-[350px] top-[30%] left-[48%] transform -translate-x-1/2 -translate-y-1/2 opacity-30"}
+                        className={"absolute z-0 w-[300px] md:w-[350px] top-[30%] md:top-[50%] left-[48%] transform -translate-x-1/2 -translate-y-1/2 opacity-30"}
                     />
                 </div>
 
