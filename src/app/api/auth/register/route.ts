@@ -61,20 +61,11 @@ export async function POST(request: Request) {
     }
     else { // Create new account
         try {
-            // Get card number : 
-            const latestUser = await prisma.user.findFirst({
-                orderBy: {
-                    card_number: 'desc'
-                }
-            });
-            const lastCardNumber = latestUser ? latestUser.card_number || 0 : 0;
-
             newUser = await prisma.user.create({
                 data: {
                     firstname: user.firstname,
                     lastname: user.lastname,
                     surname: user.surname,
-                    card_number: lastCardNumber + 1,
                     email: user.email,
                     image: filename,
                     password: hashedPassword,

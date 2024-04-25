@@ -54,7 +54,7 @@ const LegalPage = () => {
                     loi {"\"Informatique et Libertés\""} du 6 janvier 1978, vous disposez {"d'un droit d'accès"}, de
                     rectification
                     et de suppression des données vous concernant. Pour exercer ce droit, veuillez nous contacter à
-                    {"l'adresse email"} contact@amiensfood.com.
+                    {" l'adresse email"} contact@amiensfood.com.
                 </p>
             </div>
 

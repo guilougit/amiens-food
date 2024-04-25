@@ -44,6 +44,24 @@ export async function POST(request : Request) {
     if(user) {
         // Generate new image
         if(!params.afterPayment || (params.afterPayment && !user.card)) {
+            // If first card -> generate number
+            if(!user.card_number) {
+                const latestUser = await prisma.user.findFirst({
+                    orderBy: {
+                        card_number: 'desc'
+                    }
+                });
+                const lastCardNumber = latestUser ? latestUser.card_number || 0 : 0;
+
+                user = await prisma.user.update({
+                    where: {id: user.id},
+                    data: {
+                        card_number: lastCardNumber + 1
+                    },
+                    include: {StripeAccount: true}
+                })
+            }
+
             // Create the picture
 
             const baseImageBuffer = await fs.readFile(path.join(process.cwd(), 'public', 'front.png'));
@@ -140,7 +158,7 @@ export async function POST(request : Request) {
             await s3.send(command)
             console.log('end upload to s3')
             
-
+            
             // Add image to user
             const userUpdated = await prisma.user.update({
                 where: {id: user.id},

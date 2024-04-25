@@ -95,7 +95,7 @@ const ConditionsPage = () => {
                     <p>{"L'abonnement"} annuel est valable pour une durée de 12 mois à compter de la date de
                         souscription.
                         Il est renouvelable automatiquement pour une période {"d'un"} an, sauf résiliation par
-                        {"l'utilisateur"}.</p>
+                        {" l'utilisateur"}.</p>
                 </div>
 
             </div>
