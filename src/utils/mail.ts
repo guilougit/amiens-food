@@ -25,7 +25,7 @@ export const sendCardByEmail = async (path: string, mail: string, appleWalletLin
                 
                 <a href="https://amiensfood.com/compte" style="background-color: #FA8419; text-decoration: none; padding: 8px 20px;color:white;border-radius: 10px;font-size:18px;margin: 0 auto;display: block;width: max-content">Mon compte</a>
                 
-                 <!--
+                 
                 <p style="margin-top: 60px">Tu peux aussi ajouter ta carte sur le wallet de ton téléphone ! </p>
                 
                
@@ -37,7 +37,7 @@ export const sendCardByEmail = async (path: string, mail: string, appleWalletLin
                         <img src="https://amiensfood.com/img/add_to_google_wallet.png" width="150">               
                     </a>
                 </div>
-                -->
+                
                 
                 <p style="color: gray; font-style: italic;text-align: center;margin-top: 20px;">
                     Si tu as un problème avec ta carte ou ton compte, contacte nous via notre site <a href="https://amiensfood.com/contact">en cliquant ici</a>

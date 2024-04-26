@@ -60,6 +60,33 @@ export async function POST(request : Request) {
                     },
                     include: {StripeAccount: true}
                 })
+                
+                // Generate the pass
+                const formData = new FormData()
+                formData.append('num', (lastCardNumber + 1).toString());
+                formData.append('firstname', user.firstname as string);
+                formData.append('lastname', user.lastname as string);
+                formData.append('expiration', user.StripeAccount?.expireAt ? user.StripeAccount.expireAt.toLocaleDateString("fr") : '');
+                formData.append('image', `${process.env.NEXT_PUBLIC_AWS_S3_URL_FILE}/${user.image}`)
+                
+                if(!!user.surname) formData.append('surname', user.surname);
+                
+                await fetch("https://amiensfood-pass.rcastro.fr/pass/examples/example.php?action=create", {
+                    method: "POST",
+                    body: formData
+                })
+                    .then(res => res.json())
+                    .then(async res => {
+                        if (res.pass_url) {
+                            await prisma.user.update({
+                                where: {id: user?.id},
+                                data: {
+                                    passUrl: res.pass_url
+                                }
+                            })
+                        }
+                    })
+                
             }
 
             // Create the picture

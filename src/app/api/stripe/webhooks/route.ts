@@ -50,7 +50,14 @@ async function handleStripeWebhook(body: any) {
             const response = await fetch(`${process.env.APP_URL}/api/user/card`, {method: 'POST', body: JSON.stringify({afterPayment: true, fromWebhook: true, email: body.data?.object.customer_email})})
                 .then(res => res.json())
             
-            const emailResponse = await sendCardByEmail(response.card, body.data?.object.customer_email)
+            // Get user : 
+            let passUrl: any = undefined
+            const user = await prisma.user.findUnique({where: {email: body.data?.object.customer_email }})
+            if(user) {
+                passUrl = user.passUrl
+            }
+            
+            const emailResponse = await sendCardByEmail(response.card, body.data?.object.customer_email, passUrl, passUrl)
 
             return { success: true, message: "Customer payment succeeded!", mail: JSON.stringify(emailResponse) }
         case "customer.subscription.created":

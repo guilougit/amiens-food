@@ -54,6 +54,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   StripeAccount StripeAccount?
+  passUrl       String?
 }
 
 model StripeAccount {
