@@ -239,10 +239,12 @@ export const TabSettings = ({user}:{user: any}) => {
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>
-                
+
+                {/*
                 <div className={"mt-6"}>
                     <DeleteAccountButton />
                 </div>
+                */}
                 
             <LogoutButton size={"mobile"} />
 
