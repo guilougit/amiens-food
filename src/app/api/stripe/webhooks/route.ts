@@ -27,14 +27,17 @@ async function handleStripeWebhook(body: any) {
     const subId = body.data?.object.subscription
     
     // Switch on the event type.
+    if(!subId || subId === "") return;
     switch (body.type) {
         case "invoice.payment_succeeded":
+            if(body.data?.object.status !== "paid") return;
             try {
                 await prisma.stripeAccount.update({
                     where: {
                         customer_id: customer
                     },
                     data: {
+                        start: DateTime.now().toISO(),
                         expireAt: DateTime.now().plus({years: 1}).toISO(), // +1 year
                         sub_valid: true,
                         subscription: subId,
@@ -60,22 +63,7 @@ async function handleStripeWebhook(body: any) {
             const emailResponse = await sendCardByEmail(response.card, body.data?.object.customer_email, passUrl, passUrl)
 
             return { success: true, message: "Customer payment succeeded!", mail: JSON.stringify(emailResponse) }
-        case "customer.subscription.created":
-            try {
-                await prisma.stripeAccount.update({
-                    where: {
-                        customer_id: customer
-                    },
-                    data: {
-                        start: DateTime.now().toISO()
-                    }
-                })
-            }
-            catch (error) {
-                console.log('error while updating user subscription')
-            }
-            return NextResponse.json({ success: true, message: "Customer subscription created!" })
-
+        case "customer.subscription.created": break;
         case "customer.subscription.updated":
             if(body.data?.object.cancel_at) { // cancel
                 await prisma.stripeAccount.update({
@@ -88,14 +76,16 @@ async function handleStripeWebhook(body: any) {
                 })
             }
             else { // active
-                await prisma.stripeAccount.update({
-                    where: {
-                        customer_id: customer
-                    },
-                    data: {
-                        sub_valid: true
-                    }
-                })
+                if(body.data?.object.status === "active") {
+                    await prisma.stripeAccount.update({
+                        where: {
+                            customer_id: customer
+                        },
+                        data: {
+                            sub_valid: true
+                        }
+                    })
+                }
             }
             return NextResponse.json({ success: true, message: "Customer subscription updated!" })
         case "customer.subscription.deleted":
