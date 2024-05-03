@@ -48,7 +48,12 @@ const SuccessCheckoutCard = () => {
                 ) : (
                     <>
                         <Image src={card} alt={""} width={400} className={"mx-auto rounded-2xl"} height={200}/>
-                        
+
+                        <p className={"mt-4 text-sm text-gray-500 text-center"}>Tu vas la recevoir par mail {"d’ici"} quelques minutes et en attendant, elle est disponible dans
+                            ton {' '}
+                            <Link className={"underline"} href={"/compte"}>espace compte.</Link>
+                        </p>
+
                         <div className={"mt-8 flex justify-center"}>
                             <Button variant={"secondary"} asChild>
                                 <Link href={"/api/user/card/download"}>

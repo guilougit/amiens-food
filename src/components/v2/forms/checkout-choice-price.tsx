@@ -54,6 +54,10 @@ export const CheckoutChoicePrice = forwardRef<CheckoutPriceRef>((props: any, ref
                         <CheckCircle2 size={18} className="my-auto text-green-400" />
                         <p className="pt-0.5 text-zinc-700 text-sm">Assistance</p>
                     </div>
+                    <div className="flex gap-2">
+                        <CheckCircle2 size={18} className="my-auto text-green-400"/>
+                        <p className="pt-0.5 text-zinc-700 text-sm">Abonnement résiliable à tout moment</p>
+                    </div>
                 </CardContent>
             </Card>
         </>

@@ -26,11 +26,11 @@ async function handleStripeWebhook(body: any) {
     const expireAt = body.data?.object.period_end
     const subId = body.data?.object.subscription
     
-    // Switch on the event type.
-    if(!subId || subId === "") return;
     switch (body.type) {
         case "invoice.payment_succeeded":
             if(body.data?.object.status !== "paid") return;
+            if((!subId || subId === "")) return;
+
             try {
                 await prisma.stripeAccount.update({
                     where: {
@@ -63,7 +63,6 @@ async function handleStripeWebhook(body: any) {
             const emailResponse = await sendCardByEmail(response.card, body.data?.object.customer_email, passUrl, passUrl)
 
             return { success: true, message: "Customer payment succeeded!", mail: JSON.stringify(emailResponse) }
-        case "customer.subscription.created": break;
         case "customer.subscription.updated":
             if(body.data?.object.cancel_at) { // cancel
                 await prisma.stripeAccount.update({
