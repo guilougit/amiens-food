@@ -103,7 +103,7 @@ export const CardInformations = ({isRegistering = true}:{isRegistering?: boolean
                         render={({field: {ref, name, onBlur, onChange}}) => (
                             <FormItem>
                                 <FormLabel className={"flex"}>
-                                    Photo {"d'identité"}
+                                    Photo {"de toi"}
                                     <sup><Asterisk size={12} color={"red"}/></sup>
                                 </FormLabel>
                                 <FormControl>
