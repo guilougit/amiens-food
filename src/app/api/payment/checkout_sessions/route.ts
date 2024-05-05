@@ -62,7 +62,8 @@ export async function POST(request : Request) {
                     locale: 'fr',
                     line_items: [{price: priceId, quantity: 1}],
                     success_url: `http://${baseUrl}/payment/success`,
-                    cancel_url: `http://${baseUrl}/`
+                    cancel_url: `http://${baseUrl}/`,
+                    allow_promotion_codes: true
                 })
 
                 return NextResponse.json({success: true, url: checkout_session.url})
