@@ -117,3 +117,18 @@
 .swiper-wrapper {
   row-gap: 30px;
 }
+
+
+.fade-in {
+  animation: fadeInAnimation 1.5s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
