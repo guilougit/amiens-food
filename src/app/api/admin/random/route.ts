@@ -1,7 +1,7 @@
 import {auth} from "@/src/auth";
 import {NextResponse} from "next/server";
 import prisma from "@/src/lib/prisma";
-import {Prisma} from ".prisma/client";
+import {Prisma} from "@prisma/client";
 import sql = Prisma.sql;
 
 export async function GET() {
