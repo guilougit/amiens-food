@@ -133,12 +133,12 @@ export async function DELETE(request: Request, {params}: { params: { slug: strin
     try {
         // Remove images on aws
         if(partner.logo) {
-            await deleteFileOnAws(partner.logo)
+            //await deleteFileOnAws(partner.logo)
         }
 
         if(partner.medias.length > 0) {
             for (const media of partner.medias) {
-                if(media.path) await deleteFileOnAws(media.path)
+                //if(media.path) await deleteFileOnAws(media.path)
             }
         }
 
