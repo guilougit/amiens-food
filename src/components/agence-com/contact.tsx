@@ -55,23 +55,23 @@ export const AgenceComContact = () => {
     }
 
     return (
-        <div className={'bg-[#FFFAF7] rounded-t-[120px] flex mt-24'}>
+        <div className={'bg-[#FFFAF7] rounded-t-[120px] flex flex-col lg:flex-row mt-72 lg:mt-24'}>
 
-            <div className={'mx-20 my-14'}>
-                <h6 className={'uppercase text-4xl font-bold'}>
+            <div className={'mx-2  lg:ml-14 mt-14 mb-6 lg:my-14'}>
+                <h6 className={'uppercase text-2xl lg:text-3xl font-bold text-center lg:text-left'}>
                     Prêt à révolutionner <br/> votre <span className={'text-primary'}>communication</span> ?
                 </h6>
-                <p className={'text-4xl font-bold uppercase mt-5'}>contactez-nous</p>
+                <p className={'text-2xl lg:text-3xl font-bold uppercase mt-5 text-center lg:text-left'}>contactez-nous</p>
                 <Image
                     src={ContactImage}
                     alt={'Contactez-nous | Amiens food agence de communication'}
-                    className={'w-[400px] mt-12'}
+                    className={'w-[400px] mt-12 hidden lg:block'}
                 />
             </div>
 
-            <div className={'bg-[#F8EBE0] mx-28 my-12 rounded-[50px] w-full max-w-[650px]'}>
+            <div className={'lg:bg-[#F8EBE0] mx-auto lg:my-12 rounded-[50px] w-full max-w-[650px]'}>
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className={"space-y-6 mx-12 my-6"}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className={"space-y-6 mx-6 lg:mx-12 my-6"}>
                         <div className={'flex gap-4'}>
                             <FormField
                                 control={form.control}

@@ -52,12 +52,12 @@ const AgenceCommunicationPage = () => {
             </h6>
 
             {/* FIRST SECTION : PRESENTATION */}
-            <section className={'flex justify-center mt-14 w-3/4 max-w-[800px] mx-auto'} data-aos="fade-up">
+            <section className={'flex justify-center mt-14 w-[90%] sm:w-3/4 max-w-[800px] mx-auto'} data-aos="fade-up">
                 <PresentationBloc/>
             </section>
 
             {/* SECOND SECTION : SERVICES */}
-            <section className={'w-full bg-[#F8EBE0] rounded-t-[120px] mt-28'}>
+            <section className={'w-full bg-[#F8EBE0] rounded-t-[80px] sm:rounded-t-[120px] mt-28'}>
                 <div data-aos="fade-up">
                     <h3 className={'text-center text-3xl max-w-max mx-auto font-bold uppercase py-8 relative'} >
                         Community manager spécialisé <span className={'text-primary'}>FOOD</span>
@@ -73,7 +73,7 @@ const AgenceCommunicationPage = () => {
                 </div>
 
 
-                <div className={'space-y-32  mx-20'}>
+                <div className={'space-y-80 sm:space-y-32  mx-2 sm:mx-20'}>
                     <div data-aos="fade-right">
                         <ExampleCustomerCard data={MamatteExample}/>
                     </div>

@@ -1,5 +1,5 @@
 .swiper-container {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -7,7 +7,17 @@
 .services_slider_item {
     width: 100%;
     min-width: 250px;
-    height: 270px;
+}
+
+
+@media screen and (min-width: 480px) {
+    .swiper-container {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .services_slider_item {
+        height: 270px;
+    }
 }
 
 .services_slider_item h4 {

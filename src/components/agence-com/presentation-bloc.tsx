@@ -9,7 +9,7 @@ export const PresentationBloc = () => {
         <div className={'bg-[#F8EBE0] px-8 py-5 rounded-[50px]'}>
 
             <div className={'flex gap-4'}>
-                <div className={'w-2/3'}>
+                <div className={'w-3/4 sm:w-2/3'}>
                     <h2 className={'text-2xl font-bold'}>Amiens food</h2>
 
                     <p className={'text-justify text-sm mt-2 '}>
@@ -30,8 +30,8 @@ export const PresentationBloc = () => {
                 </div>
 
 
-                <div className={'w-1/3 relative'}>
-                    <Image src={MockupPhoneEmpty} alt={"Amiens food - Votre agence de communication"} className={'absolute w-[180px] -top-16 left-1/2 transform -translate-x-1/2'} />
+                <div className={'w-1/4 sm:w-1/3 relative'}>
+                    <Image src={MockupPhoneEmpty} alt={"Amiens food - Votre agence de communication"} className={'absolute min-w-[140px] w-[220px] sm:w-[180px] -bottom-12 -right-12 sm:-top-16 sm:left-1/2 sm:transform sm:-translate-x-1/2'} />
                 </div>
 
             </div>

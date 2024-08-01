@@ -20,6 +20,16 @@ export interface TextCustom {
         | 'PAYMENT_FORM_INF'
         | 'PAYMENT_FORM_PREVIEW'
         | 'ABOUT_PAGE'
-    
+
     text: string
+}
+
+export interface ComCustomerExample {
+    from: string,
+    to: string,
+    name: string,
+    description: string,
+    logo: string,
+    mockup: any,
+    reversed?: boolean
 }
