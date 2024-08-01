@@ -1,0 +1,45 @@
+.swiper-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+.services_slider_item {
+    width: 100%;
+    min-width: 250px;
+    height: 270px;
+}
+
+.services_slider_item h4 {
+    min-height: 60px;
+}
+
+.services_slider_item svg, .services_slider_item img:not(.flexible) {
+    min-height: 140px;
+}
+
+
+.custom-prev, .custom-next {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #F78E3D;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    font-size: 24px;
+}
+
+
+.custom-prev:hover, .custom-next:hover {
+    background-color: #e07c2b;
+}
+
+.swiper-button-disabled {
+    background-color: #FFD1A9;
+    cursor: not-allowed;
+    pointer-events: none;
+}
